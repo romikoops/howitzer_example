@@ -1,21 +1,23 @@
 <%= title 'Listing Articles' %>
+<% if signed_in_as_admin? %>
+    <%= link_to new_article_path, class: "btn btn-primary" do %>
+        <span class="glyphicon glyphicon-plus"></span> New article
+    <% end %>
+    <br/>
+    <br/>
+<% end %>
 
-<%= link_to 'New article', new_article_path %>
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-    <th colspan="3"></th>
-  </tr>
+<% @articles.each do |article| %>
+    <strong><%= link_to article.title, article %></strong><br>
+    <%= article.text %><br>
 
-  <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.title %></td>
-        <td><%= article.text %></td>
-        <td><%= link_to 'Show', article_path(article) %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article_path(article),
-                        method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-  <% end %>
-</table>
+    <% if signed_in_as_admin? %>
+        <%= link_to edit_article_path(article), class: "btn btn-default btn-xs btn-success" do %>
+          <span class="glyphicon glyphicon-pencil"></span> Edit
+        <% end %>
+        <%= link_to article_path(article), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-xs btn-danger" do %>
+          <span class="glyphicon glyphicon-remove"></span> Destroy
+        <% end %>
+    <% end %>
+    <br><br>
+<% end %>
