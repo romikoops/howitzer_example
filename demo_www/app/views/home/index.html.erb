@@ -1,4 +1,5 @@
-<h3>Home</h3>
+<%= title 'Home' %>
+
 <% @users.each do |user| %>
   <p>User: <%=link_to user.email, user %></p>
 <% end %>
