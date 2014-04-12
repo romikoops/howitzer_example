@@ -1,0 +1,5 @@
+source "https://rubygems.org"
+
+gem 'howitzer', git: "git://github.com/romikoops/howitzer.git", branch: "develop"
+gem 'debugger'
+
