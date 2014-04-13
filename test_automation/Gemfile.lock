@@ -1,0 +1,140 @@
+GIT
+  remote: git://github.com/romikoops/howitzer.git
+  revision: a546f6d4c2fc21f860243794364a6d9500266ab0
+  branch: develop
+  specs:
+    howitzer (1.0.1)
+      activeresource (~> 4.0)
+      capybara
+      cucumber
+      gli
+      i18n
+      launchy
+      log4r (= 1.1.10)
+      mail
+      poltergeist
+      rake
+      rawler
+      repeater
+      rest-client
+      rspec (~> 2.0)
+      selenium-webdriver
+      sexy_settings
+      syntax
+      testingbot
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    activemodel (4.1.0)
+      activesupport (= 4.1.0)
+      builder (~> 3.1)
+    activeresource (4.0.0)
+      activemodel (~> 4.0)
+      activesupport (~> 4.0)
+      rails-observers (~> 0.1.1)
+    activesupport (4.1.0)
+      i18n (~> 0.6, >= 0.6.9)
+      json (~> 1.7, >= 1.7.7)
+      minitest (~> 5.1)
+      thread_safe (~> 0.1)
+      tzinfo (~> 1.1)
+    addressable (2.3.6)
+    builder (3.2.2)
+    capybara (2.2.1)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
+    childprocess (0.5.2)
+      ffi (~> 1.0, >= 1.0.11)
+    cliver (0.3.2)
+    columnize (0.3.6)
+    cucumber (1.3.14)
+      builder (>= 2.1.2)
+      diff-lcs (>= 1.1.3)
+      gherkin (~> 2.12)
+      multi_json (>= 1.7.5, < 2.0)
+      multi_test (>= 0.1.1)
+    debugger (1.6.6)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.2.0)
+      debugger-ruby_core_source (~> 1.3.2)
+    debugger-linecache (1.2.0)
+    debugger-ruby_core_source (1.3.2)
+    diff-lcs (1.2.5)
+    ffi (1.9.3)
+    gherkin (2.12.2)
+      multi_json (~> 1.3)
+    gli (2.9.0)
+    i18n (0.6.9)
+    json (1.8.1)
+    launchy (2.4.2)
+      addressable (~> 2.3)
+    log4r (1.1.10)
+    mail (2.2.7)
+      activesupport (>= 2.3.6)
+      mime-types
+      treetop (>= 1.4.5)
+    mime-types (2.2)
+    mini_portile (0.5.3)
+    minitest (5.3.2)
+    multi_json (1.9.2)
+    multi_test (0.1.1)
+    net-http-persistent (2.9.4)
+    nokogiri (1.6.1)
+      mini_portile (~> 0.5.0)
+    poltergeist (1.5.0)
+      capybara (~> 2.1)
+      cliver (~> 0.3.1)
+      multi_json (~> 1.0)
+      websocket-driver (>= 0.2.0)
+    polyglot (0.3.4)
+    rack (1.5.2)
+    rack-test (0.6.2)
+      rack (>= 1.0)
+    rails-observers (0.1.2)
+      activemodel (~> 4.0)
+    rake (10.2.2)
+    rawler (0.1.8)
+      nokogiri (~> 1.5)
+    repeater (0.0.1)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
+    rspec (2.14.1)
+      rspec-core (~> 2.14.0)
+      rspec-expectations (~> 2.14.0)
+      rspec-mocks (~> 2.14.0)
+    rspec-core (2.14.8)
+    rspec-expectations (2.14.5)
+      diff-lcs (>= 1.1.3, < 2.0)
+    rspec-mocks (2.14.6)
+    rubyzip (1.1.3)
+    selenium-webdriver (2.41.0)
+      childprocess (>= 0.5.0)
+      multi_json (~> 1.0)
+      rubyzip (~> 1.0)
+      websocket (~> 1.0.4)
+    sexy_settings (0.0.1)
+    syntax (1.2.0)
+    testingbot (0.1.5)
+      json
+      net-http-persistent
+      selenium-webdriver
+    thread_safe (0.3.3)
+    treetop (1.5.3)
+      polyglot (~> 0.3)
+    tzinfo (1.1.0)
+      thread_safe (~> 0.1)
+    websocket (1.0.7)
+    websocket-driver (0.3.2)
+    xpath (2.0.0)
+      nokogiri (~> 1.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  debugger
+  howitzer!

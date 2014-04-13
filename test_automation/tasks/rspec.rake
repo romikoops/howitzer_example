@@ -6,7 +6,7 @@ include RSpec::Core
 TEST_TYPES = [:all, :health, :bvt, :p1]
 
 # Specify here your business areas, ex. [:accounts, :blog, :news]
-TEST_AREAS = []
+TEST_AREAS = [:functionality, :permissions]
 
 namespace :rspec do
   std_opts = "--format html --out=./#{settings.log_dir}/#{settings.html_log}"
