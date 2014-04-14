@@ -16,8 +16,17 @@ Feature: Log In
     Then I should be logged in the system
     And home page should be displayed
 
-#  Scenario: Visitor can login with remembering credentials
-#  Scenario: Visitor can not login without credentials
-#  Scenario: Visitor can not login with incorrect credentials
-#  Scenario: Visitor can initiate sign up
+  @bvt
+  Scenario: Visitor can login with remembering credentials
+  @p1
+  Scenario: Visitor can not login without credentials
+  @p1
+  Scenario: Visitor can not login with incorrect credentials
+  @p1
+  Scenario: Visitor can initiate sign up
+  @bvt
+  Scenario: Not confirmed user can not login
+  @bvt
+  Scenario: Canceled user can not login
+
 

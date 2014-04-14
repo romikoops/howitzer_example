@@ -2,6 +2,7 @@ require_relative 'main_menu'
 
 class LoginPage < WebPage
   URL = '/users/sign_in'
+  validates :title, pattern: /\ADemo web application - Log In\z/
   validates :url, pattern: /\/sign_in\/?\z/
 
   add_field_locator :email_input, 'user_email'
