@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/romikoops/howitzer.git
-  revision: ebe6b14b4c94efc6642fed563d0def9936807990
+  revision: a46519b2775113c8ef21f101849046d9d95c38f7
   branch: develop
   specs:
     howitzer (1.0.1)
@@ -67,7 +67,7 @@ GEM
     log4r (1.1.10)
     mime-types (2.2)
     mini_portile (0.5.3)
-    minitest (5.3.2)
+    minitest (5.3.3)
     multi_json (1.9.2)
     multi_test (0.1.1)
     net-http-persistent (2.9.4)

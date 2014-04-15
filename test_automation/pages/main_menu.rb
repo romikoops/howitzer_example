@@ -1,7 +1,7 @@
 module MainMenu
   def self.included(base)
     base.class_eval do
-      add_locator   :menu_item,  lambda{|name| {xpath: ".//*[@id='main_menu']//li[.='#{name}']"} }
+      add_locator   :menu_item,  lambda{|name| {xpath: ".//*[@id='main_menu']//li[.='#{name}']/a"} }
 
       def self.authenticated?
         !first(locator(:menu_item).('Logout')).nil?
