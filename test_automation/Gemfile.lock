@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/romikoops/howitzer.git
-  revision: a46519b2775113c8ef21f101849046d9d95c38f7
+  revision: 35531c7c4115276b0a9b1cfdb911f5757e438d26
   branch: develop
   specs:
     howitzer (1.0.1)
@@ -81,7 +81,7 @@ GEM
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
-    rake (10.2.2)
+    rake (10.3.1)
     rawler (0.1.8)
       nokogiri (~> 1.5)
     repeater (0.0.1)

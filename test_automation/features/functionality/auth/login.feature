@@ -28,5 +28,3 @@ Feature: Log In
   Scenario: Not confirmed user can not login
   @bvt
   Scenario: Canceled user can not login
-
-

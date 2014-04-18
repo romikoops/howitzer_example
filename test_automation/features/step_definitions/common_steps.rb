@@ -31,7 +31,7 @@ end
 ####################################
 
 Then /^(.+) page should be displayed$/ do |page|
-  page.given
+  page.wait_for_opened
 end
 
 Then /^I should be logged in the system$/ do
