@@ -2,6 +2,10 @@
 #                      PREREQUISITES                        #
 #############################################################
 
+Given /^opened browser$/ do
+  BlankPage.instance
+end
+
 Given /^(.+) page of web application$/ do |page|
   page.open
 end
@@ -9,6 +13,10 @@ end
 ####################################
 #              ACTIONS             #
 ####################################
+
+When /^I open (.+?) page$/ do |page|
+  page.open
+end
 
 When /^I click (.+?) menu item on (.+) page$/ do |text, page|
   page.given.choose_menu(text)
