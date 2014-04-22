@@ -11,7 +11,6 @@ gem 'spring',        group: :development
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'devise_invitable'
-gem 'pg'
 gem 'simple_form'
 group :development do
   gem 'better_errors'
@@ -19,4 +18,12 @@ group :development do
   gem 'quiet_assets'
   gem 'rails_layout'
   gem 'ffaker'
+end
+
+group :development, :test do
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
 end
