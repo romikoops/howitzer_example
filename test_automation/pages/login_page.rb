@@ -5,14 +5,14 @@ class LoginPage < WebPage
   validates :title, pattern: /\ADemo web application - Log In\z/
   validates :url, pattern: /\/sign_in\/?\z/
 
+  add_locator :login_btn, '[name="commit"]'
+
   add_field_locator :email_input, 'user_email'
   add_field_locator :password_input, 'user_password'
   add_field_locator :remember_me, 'user_remember_me'
 
   add_link_locator :sign_up_link, 'new_user_sign_up'
   add_link_locator :forgot_password_link, 'Forgot password?'
-
-  add_button_locator :login_btn, 'Log in'
 
   include MainMenu
 
@@ -24,7 +24,7 @@ class LoginPage < WebPage
   end
 
   def submit_form
-    click_button button_locator(:login_btn)
+    js_click(locator(:login_btn))
   end
 
   def login_as(email, password, remember_me=false)
