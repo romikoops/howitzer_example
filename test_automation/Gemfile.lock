@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/romikoops/howitzer.git
-  revision: 2d1ab642071aed2813b87929af2cb0e76e016f9b
+  revision: ecda83d204b7d775b855ee1fe90dd3e1178ba66b
   branch: develop
   specs:
     howitzer (1.0.1)
@@ -111,7 +111,7 @@ GEM
     tzinfo (1.1.0)
       thread_safe (~> 0.1)
     websocket (1.0.7)
-    websocket-driver (0.3.2)
+    websocket-driver (0.3.3)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
