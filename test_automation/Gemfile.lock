@@ -1,27 +1,3 @@
-GIT
-  remote: git://github.com/romikoops/howitzer.git
-  revision: ecda83d204b7d775b855ee1fe90dd3e1178ba66b
-  branch: develop
-  specs:
-    howitzer (1.0.1)
-      activesupport (~> 4.0)
-      capybara
-      cucumber
-      gli
-      i18n
-      launchy
-      log4r (= 1.1.10)
-      poltergeist
-      rake
-      rawler
-      repeater
-      rest-client
-      rspec (~> 2.0)
-      selenium-webdriver
-      sexy_settings
-      syntax
-      testingbot
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -60,6 +36,24 @@ GEM
     gherkin (2.12.2)
       multi_json (~> 1.3)
     gli (2.10.0)
+    howitzer (1.0.2)
+      activesupport (~> 4.0)
+      capybara
+      cucumber
+      gli
+      i18n
+      launchy
+      log4r (= 1.1.10)
+      poltergeist
+      rake
+      rawler
+      repeater
+      rest-client
+      rspec (~> 2.0)
+      selenium-webdriver
+      sexy_settings
+      syntax
+      testingbot
     i18n (0.6.9)
     json (1.8.1)
     launchy (2.4.2)
@@ -68,7 +62,7 @@ GEM
     mime-types (2.2)
     mini_portile (0.5.3)
     minitest (5.3.3)
-    multi_json (1.9.2)
+    multi_json (1.9.3)
     multi_test (0.1.1)
     net-http-persistent (2.9.4)
     nokogiri (1.6.1)
@@ -120,4 +114,4 @@ PLATFORMS
 
 DEPENDENCIES
   debugger
-  howitzer!
+  howitzer
