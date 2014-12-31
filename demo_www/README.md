@@ -4,9 +4,8 @@ Simple demo web application
 ## Installation
 
 ```
-bundle install --without production
-rake db:create:all db:migrate db:seed
-rails s
+bin/setup
+bin/rails s
 ```
 
 ## Known issues
