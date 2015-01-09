@@ -13,6 +13,8 @@ gem 'devise'
 gem 'devise_invitable'
 gem 'simple_form'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
+gem 'active_model_serializers', github: 'rails-api/active_model_serializers', branch: '0-9-stable'
+gem 'responders', '~> 2.0'
 
 group :development do
   gem 'better_errors'
