@@ -10,6 +10,17 @@ Given /^(.+) page of web application$/ do |page|
   page.open
 end
 
+Given /^registered user with parameters$/ do |table|
+  user = table.rows_hash.symbolize_keys
+  #TODO add user creation
+  LoginPage.open.login_as(user[:email], user[:password])
+end
+
+Given /^article with parameters$/ do |table|
+  article = table.rows_hash.symbolize_keys
+  #TODO add article creation
+end
+
 ####################################
 #              ACTIONS             #
 ####################################
