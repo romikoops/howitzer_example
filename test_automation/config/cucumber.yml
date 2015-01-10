@@ -7,5 +7,4 @@ default: -r features <%= std_opts %>  --tags ~@demo features
 wip: -r features --tags @wip --wip features
 demo: -r features <%= std_opts %> --tags @demo features
 bug: -r features --tags @bug --wip features
-none: --format pretty
 rerun: <%= rerun_opts %> --format rerun --out rerun.txt --strict --tags ~@wip
