@@ -4,17 +4,15 @@ Feature: Article Comment Adding
   So other users can see my opinion about article
 
   Background:
-    Given registered user with parameters
-      | name     | Tester          |
-      | email    | tester@test.com |
-      | password | test1234        |
-    And article with parameters
-      | title         | Cucumber test                  |
-      | text          | Cucumber is very cool BDD tool |
-    And opened article 'Cucumber test' page
+
+    Given logged in FACTORY_USER user
+    And article with parameters:
+      | title         | FACTORY_ARTICLE[:title] |
+      | text          | FACTORY_ARTICLE[:text]  |
+    And opened article 'FACTORY_ARTICLE[:title]' page
 
   Scenario: with valid comment body
-    When I fill form data on Article page:
+    When I fill form data on article page:
       | body | Test comment|
     And I submit form on Article page
     Then I see following text on Article page:
