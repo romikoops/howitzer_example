@@ -34,3 +34,6 @@ admin_password: 1234567890
 gmail_username: howitzerexample
 gmail_password: strongqa.com
 ```
+##API
+
+curl 'http://localhost:3000/api/v1/articles' -H 'Authorization: Token token="97f85fa997125c758a67213c44e1c0543a603f3819b31456b9"'

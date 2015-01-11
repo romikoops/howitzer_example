@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/rails-api/active_model_serializers.git
+  revision: 3baff109eb45bd620eff5ce53f5fe19135b673c3
+  branch: 0-9-stable
+  specs:
+    active_model_serializers (0.9.1)
+      activemodel (>= 3.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -68,6 +76,9 @@ GEM
     devise_invitable (1.4.0)
       actionmailer (>= 3.2.6, < 5)
       devise (>= 3.2.0)
+    dotenv (1.0.2)
+    dotenv-rails (1.0.2)
+      dotenv (= 1.0.2)
     erubis (2.7.0)
     execjs (2.2.2)
     ffaker (1.25.0)
@@ -181,12 +192,14 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  active_model_serializers!
   better_errors
   binding_of_caller
   bootstrap-sass
   coffee-rails (~> 4.0.0)
   devise
   devise_invitable
+  dotenv-rails
   ffaker
   jbuilder (~> 2.0)
   jquery-rails
@@ -194,6 +207,7 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.2.0)
   rails_layout
+  responders (~> 2.0)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   simple_form
