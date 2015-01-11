@@ -2,8 +2,7 @@ require 'cucumber'
 require 'capybara/cucumber'
 require_relative '../../boot'
 
-World(CapybaraSettings)
-require 'capybara-screenshot/cucumber'
+World(Capybara::Settings)
 World(DataGenerator)
 
 log.settings_as_formatted_text
@@ -11,7 +10,7 @@ DataStorage.store('sauce', :start_time, Time.now.utc)
 DataStorage.store('sauce', :status, true)
 
 if sauce_driver?
-  Capybara.drivers[:sauce][].options[:desired_capabilities][:name] = CapybaraSettings.suite_name
+  Capybara.drivers[:sauce][].options[:desired_capabilities][:name] = Capybara::Settings.suite_name
 end
 
 Before do |scenario|
@@ -26,13 +25,16 @@ After do |scenario|
     DataStorage.store('sauce', :status, false) if scenario.failed?
     session_end = duration(Time.now.utc - DataStorage.extract('sauce', :start_time))
     log.info "SAUCE VIDEO #@session_start - #{session_end} URL: #{sauce_resource_path('video.flv')}"
+  elsif ie_browser?
+    log.info 'IE reset session'
+    page.execute_script("void(document.execCommand('ClearAuthenticationCache', false));")
   end
-  DataStorage.clear_ns("user")
+  DataStorage.clear_all_ns
 end
 
 at_exit do
   if sauce_driver?
-    log.info "SAUCE SERVER LOG URL: #{CapybaraSettings.sauce_resource_path('selenium-server.log')}"
-    CapybaraSettings.update_sauce_job_status(passed: DataStorage.extract('sauce', :status))
+    log.info "SAUCE SERVER LOG URL: #{Capybara::Settings.sauce_resource_path('selenium-server.log')}"
+    Capybara::Settings.update_sauce_job_status(passed: DataStorage.extract('sauce', :status))
   end
 end
