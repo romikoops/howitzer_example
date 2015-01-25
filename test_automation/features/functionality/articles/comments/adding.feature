@@ -4,12 +4,10 @@ Feature: Article Comment Adding
   So other users can see my opinion about article
 
   Background:
-
-    Given logged in FACTORY_USER user
-    And article with parameters:
-      | title         | FACTORY_ARTICLE[:title] |
-      | text          | FACTORY_ARTICLE[:text]  |
-    And opened article 'FACTORY_ARTICLE[:title]' page
+    Given created FACTORY_USER entity
+    And created FACTORY_ARTICLE entity
+    And logged in FACTORY_USER user
+    And opened article FACTORY_ARTICLE[:title] page
 
   Scenario: with valid comment body
     When I fill form data on article page:

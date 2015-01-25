@@ -2,7 +2,7 @@
 #                      PREREQUISITES                        #
 #############################################################
 
-Given /^opened article '(.*)' page$/ do |article_title|
+Given /^opened article (.*) page$/ do |article_title|
   HomePage.given.view_article article_title
 end
 
