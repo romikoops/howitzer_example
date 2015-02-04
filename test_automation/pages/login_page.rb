@@ -29,7 +29,7 @@ class LoginPage < WebPage
 
   def login_as(email, password, remember_me=false)
     log.info "Login with: Email=#{email}, Password=#{password}, Remember Me=#{remember_me}"
-    fill_form(email: email, password: password, remeber_me: remember_me)
+    fill_form(email: email, password: password, remember_me: remember_me)
     submit_form
     HomePage.given
   end

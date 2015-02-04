@@ -18,6 +18,8 @@
 ###########################################################
 # TEST ENVIRONMENTS SETTINGS                              #
 ###########################################################
+# Specify maximized browser window size
+ maximized_window: true
 
  # Specify one of the following drivers: selenium, selenium_dev, webkit, poltergeist, sauce, testingbot, phantomjs
  driver: phantomjs
