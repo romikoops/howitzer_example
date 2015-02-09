@@ -27,7 +27,8 @@ Feature: Article Adding
   Scenario: user can not add article with blank field
     When I click New article button on Articles list page
     And  I fill New article form on New article page with blank data:
-      | title     |  |
+      | title     |                       |
+      | text      | UNIQ_ARTICLE[:text]   |
     And I submit New article form on New article page
     Then I should see following text on New article page:
       """
@@ -39,7 +40,8 @@ Feature: Article Adding
   Scenario: user can not add article with title is too short
     When I click New article button on Articles list page
     And I fill New article form on New article page with data:
-      | title     | 1234 |
+      | title     | 1234                  |
+      | text      | UNIQ_ARTICLE[:text]   |
     And I submit New article form on New article page
     Then I should see following text on New article page:
       """
