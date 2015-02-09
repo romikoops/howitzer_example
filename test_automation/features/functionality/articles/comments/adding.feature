@@ -5,31 +5,31 @@ Feature: Article Comment Adding
 
   Background:
     Given registered user with parameters
-      | name     | Tester          |
-      | email    | tester@test.com |
-      | password | test1234        |
+      | user_name | UNIQ_USER[:full_name] |
+      | email     | UNIQ_USER[:email]     |
+      | password  | UNIQ_USER[:password]  |
     And article with parameters
-      | title         | Cucumber test                  |
-      | text          | Cucumber is very cool BDD tool |
-    And opened article 'Cucumber test' page
+      | title     | UNIQ_ARTICLE[:title]  |
+      | text      | UNIQ_ARTICLE[:text]   |
+    And opened UNIQ_ARTICLE[:title] article page
 
-  Scenario: with valid comment body
-    When I fill form data on Article page:
-      | body | Test comment|
-    And I submit form on Article page
-    Then I see following text on Article page:
+  Scenario: user can add comment with valid comment body
+    When I fill New Comment form on Article page with data:
+      | body      | UNIQ_COMMENT[:text]   |
+    And I submit New Comment form on Article page
+    Then I should see following text on Article page:
       """
       Comment was successfully added to current article.
       """
-    And I see comment displayed on Article page:
-      | commenter       | tester@test.com |
-      | comment         | Test comment    |
+    And I should see comment on Article page with data:
+      | commenter | UNIQ_USER[:email]     |
+      | comment   | UNIQ_COMMENT[:text]   |
 
-  Scenario: with blank comment body
-    When I fill form data on Article page:
-      | body | |
-    And I submit form on Article page
-    Then I see following text on Article page:
+  Scenario: user can not add comment with blank comment body
+    When I fill New Comment form on Article page with blank data:
+      | body      |                       |
+    And I submit New Comment form on Article page
+    Then I should see following text on Article page:
       """
       Body can't be blank
       """
