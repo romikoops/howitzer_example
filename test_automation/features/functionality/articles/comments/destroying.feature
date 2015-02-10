@@ -11,7 +11,7 @@ Feature: Article Comment Destroying
     And article with parameters:
       | title     | UNIQ_ARTICLE[:title]  |
       | text      | UNIQ_ARTICLE[:text]   |
-    And comment for article with parameter:
+    And comment for UNIQ_ARTICLE[:title] article with parameter:
       | body      | UNIQ_COMMENT[:text]   |
     And opened UNIQ_ARTICLE[:title] article page
 
@@ -23,6 +23,6 @@ Feature: Article Comment Destroying
 
   Scenario: user can not remove comment without confirmation action
     When I click Destroy comment button on Article page
-    And I do not confirm action
+    And I don't confirm action
     Then I should see comment on Article page with data:
       | body      | UNIQ_COMMENT[:text]   |
