@@ -17,9 +17,9 @@ Feature: Articles list
 
   Scenario: user can see articles in Articles list
     When I go to the Articles list page
-    Then I should see UNIQ_ARTICLE1[:title] article on Articles list page with data:
+    Then I should see article on Articles list page with data:
       | title     | UNIQ_ARTICLE1[:title] |
       | text      | UNIQ_ARTICLE1[:text]  |
-    And I should see UNIQ_ARTICLE2[:title] article on Articles list page with data:
+    And I should see article on Articles list page with data:
       | title     | UNIQ_ARTICLE2[:title] |
       | text      | UNIQ_ARTICLE2[:text]  |
