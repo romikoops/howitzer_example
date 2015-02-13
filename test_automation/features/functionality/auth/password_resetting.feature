@@ -5,26 +5,26 @@ Feature: Password Resetting
   So I can login the system with new password
 
   @bvt
-  Scenario: visitor can reset password with correct data
+  Scenario: user can reset password with correct data
     Given registered user with data:
       | user_name            | UNIQ_USER[:full_name] |
       | email                | UNIQ_USER[:email]     |
       | password             | UNIQ_USER[:password]  |
     And Login page of web application
-    When I click 'Forgot password' item on Login page
-    And I fill Email form on Forgot password page with data:
+    When I click 'Forgot password' link on Login page
+    And I fill 'Forgot password' form on Forgot password page with data:
       | email                | UNIQ_USER[:email]     |
-    And I submit Email form on Forgot password page
+    And I submit 'Forgot password' form on Forgot password page
     Then I should see following text on Login page:
       """
       You will receive an email with instructions on how to reset your password in a few minutes.
       """
     And I should receive reset password confirmation email for UNIQ_USER[:email] recipient
     When I confirm UNIQ_USER[:email] resetting password from confirmation email
-    And I fill Password form on Change password page with data:
+    And I fill 'Change password' form on Change password page with data:
       | new password         | UNIQ_USER1[:password] |
       | confirm new password | UNIQ_USER1[:password] |
-    And I submit Password form on Change password page
+    And I submit 'Change password' form on Change password page
     Then I should be logged in the system
     And I should see following text on Home page:
       """
@@ -32,35 +32,35 @@ Feature: Password Resetting
       """
       
   @p1
-  Scenario: visitor can not reset password with incorrect new password
+  Scenario: user can not reset password with incorrect new password
     Given registered user with data:
       | user_name            | UNIQ_USER[:full_name] |
       | email                | UNIQ_USER[:email]     |
       | password             | UNIQ_USER[:password]  |
     And Login page of web application
-    When I click 'Forgot password' item on Login page
-    And I fill Email form on Forgot password page with data:
+    When I click 'Forgot password' link on Login page
+    And I fill 'Forgot password' form on Forgot password page with data:
       | email                | UNIQ_USER[:email]     |
-    And I submit Email form on Forgot password page
+    And I submit 'Forgot password' form on Forgot password page
     Then I should see following text on Login page:
       """
       You will receive an email with instructions on how to reset your password in a few minutes.
       """
     And I should receive reset password confirmation email for UNIQ_USER[:email] recipient
     When I confirm UNIQ_USER[:email] resetting password from confirmation email
-    And I fill Password form on Change password page with data:
-      | new password         | UNIQ_USER[:1234567890] |
-      | confirm new password | UNIQ_USER[:123456789]  |
-    And I submit Password form on Change password page
+    And I fill 'Change password' form on Change password page with data:
+      | new password         | 1234567890 |
+      | confirm new password | 1234567    |
+    And I submit 'Change password' form on Change password page
     Then I should see following text on Change password page:
       """
       1 error prohibited this user from being saved:
       Password confirmation doesn't match Password
       """
-    When I fill Password form on Change password page with data:
-      | new password         | UNIQ_USER[:1234567] |
-      | confirm new password | UNIQ_USER[:1234567] |
-    And I submit Password form on Change password page
+    When I fill 'Change password' form on Change password page with data:
+      | new password         | 1234567    |
+      | confirm new password | 1234567    |
+    And I submit 'Change password' form on Change password page
     Then I should see following text on Change password page:
       """
       1 error prohibited this user from being saved:
@@ -68,40 +68,40 @@ Feature: Password Resetting
       """
       
   @p1
-  Scenario: visitor can not reset password with incorrect email
+  Scenario: user can not reset password with incorrect email
     Given registered user with data:
-      | user_name | UNIQ_USER[:full_name] |
-      | email     | UNIQ_USER[:email]     |
-      | password  | UNIQ_USER[:password]  |
+      | user_name | UNIQ_USER[:full_name]  |
+      | email     | UNIQ_USER[:email]      |
+      | password  | UNIQ_USER[:password]   |
     And Login page of web application
-    When I click 'Forgot password' item on Login page
-    And I fill Email form on Forgot password page with data:
-      | email     | UNIQ_USER[:test@resetpassword.com] |
-    And I submit Email form on Forgot password page
+    When I click 'Forgot password' link on Login page
+    And I fill 'Forgot password' form on Forgot password page with data:
+      | email     | test@resetpassword.com |
+    And I submit 'Forgot password' form on Forgot password page
     Then I should see following text on Forgot password page:
       """
       1 error prohibited this user from being saved:
       Email not found
       """
-    When I fill Email form on Forgot password page with data:
-      | email    | UNIQ_USER[:test.1234567890] |
-    And I submit Email form on Forgot password page
+    When I fill 'Forgot password' form on Forgot password page with data:
+      | email     | test.1234567890        |
+    And I submit 'Forgot password' form on Forgot password page
     Then I should see following text on Forgot password page:
       """
       Email format data must contain symbol @
       """
       
   @p1
-  Scenario: visitor can login with old password until confirmation email for new password is not confirmed
+  Scenario: user can login with old password until confirmation email for new password is not confirmed
     Given registered user with data:
       | user_name | UNIQ_USER[:full_name] |
       | email     | UNIQ_USER[:email]     |
       | password  | UNIQ_USER[:password]  |
     And Login page of web application
-    When I click 'Forgot password' item on Login page
-    And I fill Email form on Forgot password page with data:
+    When I click 'Forgot password' link on Login page
+    And I fill 'Forgot password' form on Forgot password page with data:
       | email     | UNIQ_USER[:email]     |
-    And I submit Email form on Forgot password page
+    And I submit 'Forgot password' form on Forgot password page
     Then I should see following text on Login page:
       """
       You will receive an email with instructions on how to reset your password in a few minutes.
