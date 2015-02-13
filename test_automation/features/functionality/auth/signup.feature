@@ -8,13 +8,13 @@ Feature: Sign Up
   Scenario: user can open Sign up page via menu
     Given Home page of web application
     When I click Sign up menu item on Home page
-    Then Sign up page should be displayed
+    Then I should be redirected to Sign up page
 
   @bvt
   Scenario: visitor can initiate sign up
     Given Login page of web application
     When I click Sign up menu item on Login page
-    Then Sign up page should be displayed
+    Then I should be redirected to Sign up page
 
   @bvt
   Scenario: user can sign up with correct credentials
@@ -129,7 +129,7 @@ Feature: Sign Up
       | password              | UNIQ_USER[:password]  |
     And Sign up page of web application
     When I fill Sign up form on Sign up page with data:
-      | user_name             |                       |
+      | user_name             | UNIQ_USER[:full_name] |
       | email                 | UNIQ_USER[:email]     |
       | password              | UNIQ_USER[:password]  |
       | password_confirmation | UNIQ_USER[:password]  |
