@@ -1,6 +1,6 @@
 Feature: Account Cancelling
   As a user 
-  I want to cancel my account
+  I do not want to login the system
   So I can cancel my account
 
   Scenario: user can cancel his account
@@ -14,12 +14,4 @@ Feature: Account Cancelling
     Then I should see following text on Home page:
       """
       Bye! Your account was successfully cancelled. We hope to see you again soon.
-      """
-    When I fill Login form on Login page with data:
-      | email     | UNIQ_USER[:email]     |
-      | password  | UNIQ_USER[:password]  |
-    And I submit Login form on Login page
-    Then I should see following text on Login page:
-      """
-      Invalid email or password.
       """
