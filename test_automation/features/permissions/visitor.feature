@@ -20,7 +20,19 @@ Feature: Visitor Permissions
     Then I should be redirected to Articles list page
 
   Scenario: visitor can view Article page
-    Given created article by UNIQ_USER[:email] user with parameters:
+    Given registered user with parameters:
+      | user_name | UNIQ_USER[:full_name] |
+      | email     | UNIQ_USER[:email]     |
+      | password  | UNIQ_USER[:password]  |
+    And registered user with parameters:
+      | user_name | UNIQ_USER1[:full_name] |
+      | email     | UNIQ_USER1[:email]     |
+      | password  | UNIQ_USER1[:password]  |
+    And registered user with parameters:
+      | user_name | UNIQ_USER2[:full_name] |
+      | email     | UNIQ_USER2[:email]     |
+      | password  | UNIQ_USER2[:password]  |
+    And article created by UNIQ_USER[:email] user with parameters:
       | title     | UNIQ_ARTICLE[:title] |
       | text      | UNIQ_ARTICLE[:text]  |
     And comment to UNIQ_ARTICLE[:title] article created by UNIQ_USER1[:email] user with parameter:
