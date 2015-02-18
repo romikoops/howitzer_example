@@ -1,5 +1,5 @@
 Feature: Account Editing
-  As user 
+  As a user 
   I want to edit my account
   So I can change my name, password and email
 
@@ -8,13 +8,9 @@ Feature: Account Editing
       | user_name | UNIQ_USER[:full_name]  |
       | email     | UNIQ_USER[:email]      |
       | password  | UNIQ_USER[:password]   |
-    And registered user with parameters:
-      | user_name | UNIQ_USER1[:full_name] |
-      | email     | UNIQ_USER1[:email]     |
-      | password  | UNIQ_USER1[:password]  |
+    And Edit account page of web application for UNIQ_USER[:email] user
 
   Scenario: user can edit password and name with correct credentials
-    Given Edit account page of web application for UNIQ_USER[:email] user 
     When I fill 'Edit account' form on Edit account page with data:
       | user_name              | UNIQ_USER2[:full_name] |
       | email                  | UNIQ_USER[:email]      |
@@ -27,8 +23,8 @@ Feature: Account Editing
       You updated your account successfully.
       """
     When I fill Login form on Login page with data:
-      | email     | UNIQ_USER[:email]     |
-      | password  | UNIQ_USER2[:password] |
+      | email                  | UNIQ_USER[:email]      |
+      | password               | UNIQ_USER2[:password]  |
     And I submit Login form on Login page
     Then I should be logged in the system
     And I should be redirected to Home page
@@ -40,7 +36,6 @@ Feature: Account Editing
       | current password       |                        |
 
   Scenario: user can edit email with correct credentials
-    Given Edit account page of web application for UNIQ_USER[:email] user 
     When I fill 'Edit account' form on Edit account page with data:
       | user_name              | UNIQ_USER[:full_name]  |
       | email                  | UNIQ_USER2[:email]     |
@@ -67,14 +62,17 @@ Feature: Account Editing
       Signed in successfully.
       """
       
-  Scenario: user can not edit account with incorrect credentials
-    Given Edit account page of web application for UNIQ_USER[:email] user 
+  Scenario: user can not edit account with incorrect email
+    Given registered user with parameters:
+      | user_name              | UNIQ_USER1[:full_name] |
+      | email                  | UNIQ_USER1[:email]     |
+      | password               | UNIQ_USER1[:password]  |
     When I fill 'Edit account' form on Edit account page with data:
-      | user_name              | UNIQ_USER[:full_name] |
-      | email                  | test.1234567890       |
-      | password               |                       |
-      | password confirmation  |                       |
-      | current password       |                       |
+      | user_name              | UNIQ_USER[:full_name]  |
+      | email                  | test.1234567890        |
+      | password               |                        |
+      | password confirmation  |                        |
+      | current password       |                        |
     Then I should see following text on Edit account page:
       """
       Необходимо ввести допустимый адрес электронной почты
@@ -91,6 +89,8 @@ Feature: Account Editing
       1 error prohibited this user from being saved:
       •Email has already been taken
       """
+
+  Scenario: user can not edit account with incorrect password 
     When I fill 'Edit account' form on Edit account page with data:
       | user_name              | UNIQ_USER[:full_name] |
       | email                  | UNIQ_USER[:email]     |
@@ -140,12 +140,18 @@ Feature: Account Editing
       •Password is too short (minimum is 8 characters)
       •Current password is invalid
       """
+
+  Scenario: user can not edit account with incorrect email and password
+    Given registered user with parameters:
+      | user_name              | UNIQ_USER1[:full_name] |
+      | email                  | UNIQ_USER1[:email]     |
+      | password               | UNIQ_USER1[:password]  |
     When I fill 'Edit account' form on Edit account page with data:
-      | user_name              | UNIQ_USER[:full_name] |
-      | email                  | UNIQ_USER1[:email]    |
-      | password               | 1234567               |
-      | password confirmation  | 1234567               |
-      | current password       | UNIQ_USER2[:password] |
+      | user_name              | UNIQ_USER[:full_name]  |
+      | email                  | UNIQ_USER1[:email]     |
+      | password               | 1234567                |
+      | password confirmation  | 1234567                |
+      | current password       | UNIQ_USER2[:password]  |
     And I submit 'Edit account' form on Edit account page
     Then I should see following text on Edit account page:
       """
