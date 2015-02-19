@@ -1,4 +1,4 @@
-Feature: Admin user Permissions
+Feature: Admin User Permissions
   As admin user
   I want to open pages of the system
   So I can see what in system is available to the admin user
@@ -23,7 +23,7 @@ Feature: Admin user Permissions
     Then I should be redirected to Articles list page
 
   Scenario: admin user can open Article page
-    Given article created by UNIQ_USER2[:email] user with parameters:
+    Given created article by UNIQ_USER2[:email] user with parameters:
       | title     | UNIQ_ARTICLE[:title]    |
       | text      | UNIQ_ARTICLE[:text]     |
     And comment to UNIQ_ARTICLE[:title] article created by UNIQ_USER1[:email] user with parameter:
