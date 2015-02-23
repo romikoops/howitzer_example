@@ -4,11 +4,7 @@ Feature: Admin User Permissions
   So I can see what in system is available to the admin user
 
   Background:
-    Given registered user with parameters:
-      | user_name | UNIQ_USER1[:full_name]  |
-      | email     | UNIQ_USER1[:email]      |
-      | password  | UNIQ_USER1[:password]   |
-    And registered admin user with parameters:
+    Given registered admin user with parameters:
       | user_name | UNIQ_USER2[:full_name]  |
       | email     | UNIQ_USER2[:email]      |
       | password  | UNIQ_USER2[:password]   |
@@ -23,7 +19,11 @@ Feature: Admin User Permissions
     Then I should be redirected to Articles list page
 
   Scenario: admin user can open Article page
-    Given created article by UNIQ_USER2[:email] user with parameters:
+    Given registered user with parameters:
+      | user_name | UNIQ_USER1[:full_name]  |
+      | email     | UNIQ_USER1[:email]      |
+      | password  | UNIQ_USER1[:password]   |
+    And created article by UNIQ_USER2[:email] user with parameters:
       | title     | UNIQ_ARTICLE[:title]    |
       | text      | UNIQ_ARTICLE[:text]     |
     And comment to UNIQ_ARTICLE[:title] article created by UNIQ_USER1[:email] user with parameter:
@@ -42,11 +42,11 @@ Feature: Admin User Permissions
       | comment   | UNIQ_COMMENT2[:text]    |
     
   Scenario: admin user can open New Article page
-    When I click on 'New Article' button on Listing articles page
+    When I click on 'New Article' button on Articles list page
     Then I should be redirected to New Article page
 
   Scenario: admin user can open Edit Article page
-    When I click on Edit button on UNIQ_ARTICLE[:title] article on Listing articles page
+    When I click on Edit button on UNIQ_ARTICLE[:title] article on Articles list page
     Then I should be redirected to Edit Article page
 
   Scenario: admin user can open Users list page
@@ -54,6 +54,10 @@ Feature: Admin User Permissions
     Then I should be redirected to Users list page
 
   Scenario: admin user can open User page
+    Given registered user with parameters:
+      | user_name | UNIQ_USER1[:full_name]  |
+      | email     | UNIQ_USER1[:email]      |
+      | password  | UNIQ_USER1[:password]   |
     When I click on UNIQ_USER1[:email] user on Users list page
     Then I should be redirected to UNIQ_USER1[:email] user page
     And I should see user parameter with data:
