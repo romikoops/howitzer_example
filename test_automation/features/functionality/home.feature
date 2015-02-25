@@ -1,7 +1,7 @@
 Feature: Home
 
   Scenario: visitor can see Home page of web application
-    Given registered article with parameters:
+    Given created article with parameters:
       | title     | UNIQ_ARTICLE[:title] |
       | text      | UNIQ_ARTICLE[:text]  |
     And Home page of web application
