@@ -9,7 +9,7 @@
  app_base_auth_login:
  app_base_auth_pass:
  app_protocol: http
- app_host: localhost:3000
+ app_host: demoapp.strongqa.com
 
  def_test_user: admin@test.com
  def_test_pass: 1234567890
