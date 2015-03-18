@@ -1,14 +1,14 @@
 Feature: User Viewing
   As a user
-  I want to view other user registered in system
-  So I can see data of other user registered in system
+  I want to view other user
+  So I can see data of other user
 
   Background:
-    Given registered user with parameters:
+    Given user with parameters:
       | user_name | UNIQ_USER[:full_name]  |
       | email     | UNIQ_USER[:email]      |
       | password  | UNIQ_USER[:password]   |
-    And registered user with parameters:
+    And user with parameters:
       | user_name | UNIQ_USER1[:full_name] |
       | email     | UNIQ_USER1[:email]     |
       | password  | UNIQ_USER1[:password]  |
