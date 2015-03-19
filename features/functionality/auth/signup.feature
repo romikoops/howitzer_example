@@ -25,14 +25,14 @@ Feature: Sign Up
       | password              | UNIQ_USER[:password]  |
       | password_confirmation | UNIQ_USER[:password]  |
     And I submit Sign up form on Sign up page
-    Then I should not be logged to the system
-    And I should see following text on Home page:
+    Then I should not be logged in the system
+    And I see following text on Home page:
       """
       A message with a confirmation link has been sent to your email address. Please open the link to activate your account.
       """
     And I should receive confirmation instruction email for UNIQ_USER[:email] recipient
     When I confirm UNIQ_USER[:email] account from confirmation instruction email
-    Then I should see following text on Login page:
+    Then I see following text on Login page:
       """
       Your account was successfully confirmed.
       """
@@ -53,7 +53,7 @@ Feature: Sign Up
       | password_confirmation |         |
     And I submit Sign up form on Sign up page
     Then I should not be logged in the system
-    And I should see following text on Sign up page:
+    And I see following text on Sign up page:
       """
       2 errors prohibited this user from being saved:
       •Email can't be blank
@@ -66,11 +66,12 @@ Feature: Sign Up
       | password_confirmation |                      |
     And I submit Sign up form on Sign up page
     Then I should not be logged in the system
-    And I should see following text on Sign up page:
+    And I see following text on Sign up page:
       """
       1 error prohibited this user from being saved:
       •Password can't be blank
       """
+  I fill form data on (.+) page:
     When I fill Sign up form on Sign up page with data:
       | user_name             |                      |
       | email                 |                      |
@@ -78,7 +79,7 @@ Feature: Sign Up
       | password_confirmation | UNIQ_USER[:password] |
     And I submit Sign up form on Sign up page
     Then I should not be logged in the system
-    And I should see following text on Sign up page:
+    And I see following text on Sign up page:
       """
       1 error prohibited this user from being saved:
       •Email can't be blank
@@ -92,7 +93,7 @@ Feature: Sign Up
       | email                 | test.1234567890      |
       | password              |                      |
       | password_confirmation |                      |
-    Then I should see following text on Sign up page:
+    Then I see following text on Sign up page:
       """
       Необходимо ввести допустимый адрес электронной почты
       """
@@ -103,7 +104,7 @@ Feature: Sign Up
       | password_confirmation | 1234567              |
     And I submit Sign up form on Sign up page
     Then I should not be logged in the system
-    And I should see following text on Sign up page:
+    And I see following text on Sign up page:
       """
       1 error prohibited this user from being saved:
       •Password is too short (minimum is 8 characters)
@@ -115,7 +116,7 @@ Feature: Sign Up
       | password_confirmation | 1234567890123        |
     And I submit Sign up form on Sign up page
     Then I should not be logged in the system
-    And I should see following text on Sign up page:
+    And I see following text on Sign up page:
       """
       1 error prohibited this user from being saved:
       •Password confirmation doesn't match Password
@@ -123,7 +124,7 @@ Feature: Sign Up
 
   @p1
   Scenario: user can not sign up with duplicated email
-    Given registered user with data:
+    Given registered user with parameters:
       | user_name             | UNIQ_USER[:full_name] |
       | email                 | UNIQ_USER[:email]     |
       | password              | UNIQ_USER[:password]  |
@@ -135,7 +136,7 @@ Feature: Sign Up
       | password_confirmation | UNIQ_USER[:password]  |
     And I submit Sign up form on Sign up page
     Then I should not be logged in the system
-    And I should see following text on Sign up page:
+    And I see following text on Sign up page:
       """
       1 error prohibited this user from being saved:
       •Email has already been taken
