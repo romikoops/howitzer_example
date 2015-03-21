@@ -16,7 +16,7 @@ class LoginPage < WebPage
 
   include MainMenu
 
-  def fill_form(email: nil, password: nil, remember_me: nil)
+  def fill_form(email, password, remember_me: nil)
     fill_in(field_locator(:email_input), with: email) unless email.nil?
     fill_in(field_locator(:password_input), with: password) unless password.nil?
     check(field_locator(:remember_me)) unless remember_me.nil?
@@ -32,5 +32,10 @@ class LoginPage < WebPage
     fill_form(email: email, password: password, remember_me: remember_me)
     submit_form
     HomePage.given
+  end
+
+  def forgot_password
+    click_link link_locator(:forgot_password_link)
+    self
   end
 end
