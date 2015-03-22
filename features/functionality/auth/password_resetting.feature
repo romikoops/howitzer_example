@@ -67,11 +67,11 @@ Feature: Password Resetting
 
   @p1
   Scenario: user can not reset password with incorrect email
-    Given registered user with data:
-      | user_name | UNIQ_USER[:full_name]  |
-      | email     | UNIQ_USER[:email]      |
-      | password  | UNIQ_USER[:password]   |
-    And Login page of web application
+    #Given registered user with data:
+#      | user_name | UNIQ_USER[:full_name]  |
+#      | email     | UNIQ_USER[:email]      |
+#      | password  | UNIQ_USER[:password]   |
+    Given Login page of web application
     When I click 'Forgot password' link on Login page
     And I fill 'Forgot password' form on Forgot password page with data:
       | email     | test@resetpassword.com |
@@ -83,10 +83,8 @@ Feature: Password Resetting
     When I fill 'Forgot password' form on Forgot password page with data:
       | email     | test.1234567890        |
     And I submit 'Forgot password' form on Forgot password page
-    Then I see following text on Forgot password page:
-      """
-      Email format data must contain symbol @
-      """
+    Then Forgot password page should be displayed
+
   @p1
   Scenario: user can login with old password until confirmation email for new password is not confirmed
     Given registered user with data:
