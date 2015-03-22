@@ -11,19 +11,19 @@ Feature: Password Resetting
       | email                | UNIQ_USER[:email]     |
       | password             | UNIQ_USER[:password]  |
     And Login page of web application
-    When I click 'Forgot password' link on Login page
-    And I fill 'Forgot password' form on Forgot password page with data:
+    When I click Forgot password? link on Login page
+    And I fill form data on Forgot password page:
       | email                | UNIQ_USER[:email]     |
-    And I submit 'Forgot password' form on Forgot password page
+    And I submit form on Forgot password page
     Then I should see following text on Login page:
       """
       You will receive an email with instructions on how to reset your password in a few minutes.
       """
     And I should receive reset password confirmation email for UNIQ_USER[:email] recipient
-    When I confirm UNIQ_USER[:email] account from reset password confirmation email
-    And I fill 'Change password' form on Change password page with data:
-      | new password         | UNIQ_USER1[:password] |
-      | confirm new password | UNIQ_USER1[:password] |
+    When I confirm UNIQ_USER[:email] resetting password from reset password confirmation email
+    And I fill form data on Change password page:
+      | new_password         | UNIQ_USER1[:password] |
+      | confirm_new_password | UNIQ_USER1[:password] |
     And I submit form on Change password page
     Then I should be logged in the system
     And I see following text on Home page:
@@ -38,27 +38,27 @@ Feature: Password Resetting
       | email                | UNIQ_USER[:email]     |
       | password             | UNIQ_USER[:password]  |
     And Login page of web application
-    When I click 'Forgot password' link on Login page
-    And I fill 'Forgot password' form on Forgot password page with data:
+    When I click Forgot password? link on Login page
+    And I fill form data on Forgot password page:
       | email                | UNIQ_USER[:email]     |
-    And I submit 'Forgot password' form on Forgot password page
+    And I submit form on Forgot password page
     Then I should see following text on Login page:
       """
       You will receive an email with instructions on how to reset your password in a few minutes.
       """
     And I should receive reset password confirmation email for UNIQ_USER[:email] recipient
-    When I confirm UNIQ_USER[:email] account from reset password confirmation email
-    And I fill 'Change password' form on Change password page with data:
-      | new password         | 1234567890 |
-      | confirm new password | 1234567    |
+    When I confirm UNIQ_USER[:email] resetting password from reset password confirmation email
+    And I fill form data on Change password page:
+      | new_password         | 1234567890 |
+      | confirm_new_password | 1234567    |
     And I submit form on Change password page
     Then I see following text on Change password page:
       """
       Password confirmation doesn't match Password
       """
-    When I fill 'Change password' form on Change password page with data:
-      | new password         | 1234567    |
-      | confirm new password | 1234567    |
+    When I fill form data on Change password page:
+      | new_password         | 1234567    |
+      | confirm_new_password | 1234567    |
     And I submit form on Change password page
     Then I see following text on Change password page:
       """
@@ -67,22 +67,18 @@ Feature: Password Resetting
 
   @p1
   Scenario: user can not reset password with incorrect email
-    #Given registered user with data:
-#      | user_name | UNIQ_USER[:full_name]  |
-#      | email     | UNIQ_USER[:email]      |
-#      | password  | UNIQ_USER[:password]   |
     Given Login page of web application
-    When I click 'Forgot password' link on Login page
-    And I fill 'Forgot password' form on Forgot password page with data:
+    When I click Forgot password? link on Login page
+    And I fill form data on Forgot password page:
       | email     | test@resetpassword.com |
-    And I submit 'Forgot password' form on Forgot password page
+    And I submit form on Forgot password page
     Then I see following text on Forgot password page:
       """
       Email not found
       """
-    When I fill 'Forgot password' form on Forgot password page with data:
+    When I fill form data on Forgot password page:
       | email     | test.1234567890        |
-    And I submit 'Forgot password' form on Forgot password page
+    And I submit form on Forgot password page
     Then Forgot password page should be displayed
 
   @p1
@@ -92,15 +88,15 @@ Feature: Password Resetting
       | email     | UNIQ_USER[:email]     |
       | password  | UNIQ_USER[:password]  |
     And Login page of web application
-    When I click 'Forgot password' link on Login page
-    And I fill 'Forgot password' form on Forgot password page with data:
+    When I click Forgot password? link on Login page
+    And I fill form data on Forgot password page:
       | email     | UNIQ_USER[:email]     |
-    And I submit 'Forgot password' form on Forgot password page
+    And I submit form on Forgot password page
     Then I should see following text on Login page:
-    """
+      """
       You will receive an email with instructions on how to reset your password in a few minutes.
       """
-    When I fill Login form on Login page with data:
+    When I fill form data on Login page:
       | email     | UNIQ_USER[:email]     |
       | password  | UNIQ_USER[:password]  |
     And I submit form on Login page

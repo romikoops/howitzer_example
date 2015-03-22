@@ -5,7 +5,7 @@ class ForgotPasswordPage < WebPage
   add_field_locator :email_input, 'user_email'
   add_button_locator :reset_password_button, 'Reset Password'
 
-  def fill_email(email)
+  def fill_form(email: nil)
     fill_in(field_locator(:email_input), with: email) unless email.nil?
     self
   end

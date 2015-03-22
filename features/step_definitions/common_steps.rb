@@ -21,6 +21,21 @@ Given /^article with parameters$/ do |table|
   #TODO add article creation
 end
 
+Given(/^registered user with data:$/) do |table|
+  step "Sign up page of web application"
+  step "I fill form data on Sign up page:", table(%{
+  | user_name             | UNIQ_USER[:full_name] |
+  | email                 | UNIQ_USER[:email]     |
+  | password              | UNIQ_USER[:password]  |
+  | password_confirmation | UNIQ_USER[:password]  |})
+  step "I submit form on Sign up page"
+  step "I should not be logged in the system"
+  step "I see following text on Home page:", "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
+  step "I should receive confirmation instruction email for UNIQ_USER[:email] recipient"
+  step "I confirm UNIQ_USER[:email] account from confirmation instruction email"
+  step "I see following text on Login page:","Your account was successfully confirmed."
+end
+
 ####################################
 #              ACTIONS             #
 ####################################
@@ -43,6 +58,10 @@ end
 
 When /^I confirm (.+) account from (.+) email$/ do |recipient, email|
   email.as_email_class.find_by_recipient(recipient).confirm_my_account
+end
+
+When /^I click (.+) link on (.+) page$/ do |link, page|
+  page.given.click_link link
 end
 
 ####################################
