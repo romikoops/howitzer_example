@@ -85,6 +85,12 @@ Feature: Sign Up
     Given Sign up page of web application
     When I fill Sign up form on Sign up page with data:
       | user_name             |                      |
+      | email                 | test.1234567890      |
+      | password              |                      |
+      | password_confirmation |                      |
+    Then I should not be logged in the system
+    When I fill Sign up form on Sign up page with data:
+      | user_name             |                      |
       | email                 | UNIQ_USER[:email]    |
       | password              | 1234567              |
       | password_confirmation | 1234567              |

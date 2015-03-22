@@ -16,8 +16,4 @@ class HomePage < WebPage
     find(apply(locator(:article_link), article_title)).click
     ArticlePage.given
   end
-
-  def confirmation_text
-    find(locator(:message))
-  end
 end
