@@ -88,6 +88,6 @@ Then /^I should receive (.+) email for (.+) recipient$/ do |email, recipient|
   email.as_email_class.find_by_recipient(recipient)
 end
 
-And(/^I should be redirected to (.+) page$/) do |page|
+Then (/^I should be redirected to (.+) page$/) do |page|
   page.given
 end
