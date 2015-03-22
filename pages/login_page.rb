@@ -36,6 +36,6 @@ class LoginPage < WebPage
 
   def click_forgot_password_link
     click_link link_locator(:forgot_password_link)
-    self
+    ForgotPasswordPage.given
   end
 end
