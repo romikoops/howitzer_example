@@ -26,7 +26,7 @@ Feature: Password Resetting
       | confirm_new_password | UNIQ_USER1[:password] |
     And I submit form on Change password page
     Then I should be logged in the system
-    And I see following text on Home page:
+    And I should see following text on Home page:
       """
       Your password was changed successfully. You are now signed in.
       """
@@ -52,7 +52,7 @@ Feature: Password Resetting
       | new_password         | 1234567890 |
       | confirm_new_password | 1234567    |
     And I submit form on Change password page
-    Then I see following text on Change password page:
+    Then I should see following text on Change password page:
       """
       Password confirmation doesn't match Password
       """
@@ -60,7 +60,7 @@ Feature: Password Resetting
       | new_password         | 1234567    |
       | confirm_new_password | 1234567    |
     And I submit form on Change password page
-    Then I see following text on Change password page:
+    Then I should see following text on Change password page:
       """
       Password is too short (minimum is 8 characters)
       """
@@ -72,7 +72,7 @@ Feature: Password Resetting
     And I fill form data on Forgot password page:
       | email     | test@resetpassword.com |
     And I submit form on Forgot password page
-    Then I see following text on Forgot password page:
+    Then I should see following text on Forgot password page:
       """
       Email not found
       """
