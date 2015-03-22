@@ -12,9 +12,12 @@ end
 
 Given /^registered user with parameters:$/ do |table|
   user = table.rows_hash.symbolize_keys
-  #TODO add user creation
-  LoginPage.open.login_as(user[:email], user[:password])
-end
+  SignUpPage.open
+  SignUpPage.given.fill_form(table.rows_hash.symbolize_keys)
+  SignUpPage.given.submit_form
+  email = ConfirmationInstructionEmail.find_by_recipient(user[:email])
+  email.confirm_my_account
+ end
 
 Given /^article with parameters$/ do |table|
   article = table.rows_hash.symbolize_keys
@@ -33,11 +36,11 @@ When /^I click (.+?) menu item on (.+) page$/ do |text, page|
   page.given.choose_menu(text)
 end
 
-When /^I fill (.+) form on (.+) page with data:$/ do |page, table|
+When /^I fill form on (.+) page with data:$/ do |page, table|
   page.given.fill_form(table.rows_hash.symbolize_keys)
 end
 
-When /^I submit (.+) form on (.+) page$/ do |page|
+When /^I submit form on (.+) page$/ do |page|
   page.given.submit_form
 end
 
@@ -61,7 +64,7 @@ Then /^I should not be logged in the system$/ do
   expect(HomePage).to_not be_authenticated
 end
 
-Then /^I see following text on (.+) page:$/ do |page, text|
+Then /^I should see following text on (.+) page:$/ do |page, text|
   expect(page.given.text).to include(text)
 end
 
