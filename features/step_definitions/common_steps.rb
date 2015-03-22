@@ -80,7 +80,7 @@ Then /^I should not be logged in the system$/ do
   expect(HomePage).to_not be_authenticated
 end
 
-Then /^I see following text on (.+) page:$/ do |page, text|
+Then /^I should see following text on (.+) page:$/ do |page, text|
   expect(page.given.text).to include(text)
 end
 
@@ -88,6 +88,6 @@ Then /^I should receive (.+) email for (.+) recipient$/ do |email, recipient|
   email.as_email_class.find_by_recipient(recipient)
 end
 
-Then (/^I should be redirected to (.+) page$/) do |page|
+Then /^I should be redirected to (.+) page$/ do |page|
   page.given
 end
