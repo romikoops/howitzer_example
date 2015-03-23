@@ -4,7 +4,7 @@ Feature: Article Comments List
   So I can view my article comments on Article comments list on Article page
 
   Background:
-    Given registered user with parameters:
+    Given registered user with data:
       | user_name | UNIQ_USER[:full_name] |
       | email     | UNIQ_USER[:email]     |
       | password  | UNIQ_USER[:password]  |

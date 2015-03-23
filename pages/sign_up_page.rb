@@ -13,11 +13,12 @@ class SignUpPage < WebPage
 
   include MainMenu
 
-  def fill_form(params={})
-    fill_in(field_locator(:user_name_input), with: params[:username]) if params[:username]
-    fill_in(field_locator(:email_input), with: params[:email]) if params[:email]
-    fill_in(field_locator(:password_input), with: params[:password]) if params[:password]
-    fill_in(field_locator(:password_confirmation_input), with: params[:password_confirmation]) if params[:password_confirmation]
+  def fill_form(user_name: nil, email: nil, password: nil, password_confirmation: nil)
+    fill_in(field_locator(:user_name_input), with: user_name) unless user_name.nil?
+    fill_in(field_locator(:email_input), with: email) unless email.nil?
+    fill_in(field_locator(:password_input), with: password) unless password.nil?
+    fill_in(field_locator(:password_confirmation_input), with: password_confirmation) unless password_confirmation.nil?
+    self
   end
 
   def submit_form

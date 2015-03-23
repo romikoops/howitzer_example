@@ -4,7 +4,7 @@ Feature: Account Editing
   So I can change my name, password and email
 
   Background:
-    Given registered user with parameters:
+    Given registered user with data:
       | user_name | UNIQ_USER[:full_name]  |
       | email     | UNIQ_USER[:email]      |
       | password  | UNIQ_USER[:password]   |
@@ -63,7 +63,7 @@ Feature: Account Editing
       """
       
   Scenario: user can not edit account with incorrect email
-    Given registered user with parameters:
+    Given registered user with data:
       | user_name              | UNIQ_USER1[:full_name] |
       | email                  | UNIQ_USER1[:email]     |
       | password               | UNIQ_USER1[:password]  |
@@ -142,7 +142,7 @@ Feature: Account Editing
       """
 
   Scenario: user can not edit account with incorrect email and password
-    Given registered user with parameters:
+    Given registered user with data:
       | user_name              | UNIQ_USER1[:full_name] |
       | email                  | UNIQ_USER1[:email]     |
       | password               | UNIQ_USER1[:password]  |

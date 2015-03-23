@@ -10,7 +10,7 @@ Given /^(.+) page of web application$/ do |page|
   page.open
 end
 
-Given /^registered user with parameters:$/ do |table|
+Given /^registered user with data:$/ do |table|
   user = table.rows_hash.symbolize_keys
   SignUpPage.open
   SignUpPage.given.fill_form(table.rows_hash.symbolize_keys)

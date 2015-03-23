@@ -113,18 +113,20 @@ Feature: Sign Up
      """
 
   @p1
-  Scenario: user can not sign up with duplicated email
-    Given registered user with parameters:
+  Scenario: user cannot sign up with duplicated email
+    Given registered user with data:
       | user_name             | UNIQ_USER[:full_name] |
       | email                 | UNIQ_USER[:email]     |
       | password              | UNIQ_USER[:password]  |
-      |password_confirmation  | UNIQ_USER[:password]  |
+      | password_confirmation | UNIQ_USER[:password]  |
+
     And Sign up page of web application
     When I fill Sign up form on Sign up page with data:
       | user_name             | UNIQ_USER[:full_name] |
       | email                 | UNIQ_USER[:email]     |
       | password              | UNIQ_USER[:password]  |
       | password_confirmation | UNIQ_USER[:password]  |
+
     And I submit Sign up form on Sign up page
     Then I should not be logged in the system
     And I should see following text on Sign up page:
