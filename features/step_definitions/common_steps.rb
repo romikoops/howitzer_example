@@ -30,10 +30,10 @@ Given(/^registered user with data:$/) do |table|
   | password_confirmation | UNIQ_USER[:password]  |})
   step "I submit form on Sign up page"
   step "I should not be logged in the system"
-  step "I see following text on Home page:", "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
+  step "I should see following text on Home page:", "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
   step "I should receive confirmation instruction email for UNIQ_USER[:email] recipient"
   step "I confirm UNIQ_USER[:email] account from confirmation instruction email"
-  step "I see following text on Login page:","Your account was successfully confirmed."
+  step "I should see following text on Login page:","Your account was successfully confirmed."
 end
 
 ####################################
@@ -89,5 +89,9 @@ Then /^I should receive (.+) email for (.+) recipient$/ do |email, recipient|
 end
 
 Then /^I should be redirected to (.+) page$/ do |page|
+  page.given
+end
+
+Then /^I should see (.+) page$/ do |page|
   page.given
 end
