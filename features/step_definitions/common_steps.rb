@@ -21,7 +21,7 @@ Given /^article with parameters$/ do |table|
   #TODO add article creation
 end
 
-Given(/^registered user with data:$/) do |table|
+Given /^registered user with data:$/ do |table|
   step "Sign up page of web application"
   step "I fill form data on Sign up page:", table(%{
   | user_name             | UNIQ_USER[:full_name] |
