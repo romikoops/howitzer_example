@@ -1,3 +1,4 @@
+@wip
 Feature: Article Comment Destroying
   As a user
   I want to delete a comment of article

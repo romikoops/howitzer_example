@@ -1,4 +1,3 @@
-@ok
 Feature: Sign Up
   As a user 
   I want to sign up to the system
@@ -10,7 +9,7 @@ Feature: Sign Up
     When I click Sign up menu item on Home page
     Then I should be redirected to Sign up page
 
-  @bvt
+  @bvt @wip
   Scenario: visitor can initiate sign up
     Given Login page of web application
     When I click Sign up menu item on Login page
@@ -43,7 +42,7 @@ Feature: Sign Up
     Then I should be logged in the system
     And I should be redirected to Home page
 
-  @p1
+  @p1 @wip
   Scenario: user can not sign up with blank data
     Given Sign up page of web application
     When I fill Sign up form on Sign up page with data:
@@ -84,7 +83,7 @@ Feature: Sign Up
       •Email can't be blank
       """
 
-  @p1
+  @p1 @wip
   Scenario: user can not sign up with incorrect data
     Given Sign up page of web application
     When I fill Sign up form on Sign up page with data:
@@ -121,7 +120,7 @@ Feature: Sign Up
       •Password confirmation doesn't match Password
       """
 
-  @p1
+  @p1 @wip
   Scenario: user can not sign up with duplicated email
     Given registered user with data:
       | user_name             | UNIQ_USER[:full_name] |
