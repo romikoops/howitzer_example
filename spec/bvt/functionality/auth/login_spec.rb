@@ -10,7 +10,7 @@ feature "Log In" do
   scenario "Visitor can login with correct credentials" do
     LoginPage.
         open.
-        fill_form(email: 'admin@test.com', password: '1234567890').
+        fill_form(email: 'admin@strongqa.com', password: '1234567890').
         submit_form
     expect(HomePage).to be_authenticated
     HomePage.wait_for_opened

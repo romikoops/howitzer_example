@@ -3,7 +3,7 @@ require 'rake/clean'
 require 'howitzer/settings'
 require 'howitzer/utils/log'
 
-load 'howitzer/tasks/framework.rake'
+#load 'howitzer/tasks/framework.rake'
 
 Dir.chdir(File.join(File.dirname(__FILE__), '.'))
 
