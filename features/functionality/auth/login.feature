@@ -12,14 +12,14 @@ Feature: Log In
   @bvt
   Scenario: user can login with correct credentials
     Given registered user with data:
-      | user_name | UNIQ_USER[:full_name] |
-      | email     | UNIQ_USER[:email]     |
-      | password  | UNIQ_USER[:password]  |
+      | user_name             | UNIQ_USER[:full_name] |
+      | email                 | UNIQ_USER[:email]     |
+      | password              | UNIQ_USER[:password]  |
     And Login page of web application
-    When I fill Login form on Login page with data:
+    When I fill form data on Login page:
       | email     | UNIQ_USER[:email]     |
       | password  | UNIQ_USER[:password]  |
-    And I submit Login form on Login page
+    And I submit form on Login page
     Then I should be logged in the system
     And I should be redirected to Home page
 
