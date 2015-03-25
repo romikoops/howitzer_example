@@ -16,6 +16,13 @@ Given /^registered user with parameters$/ do |table|
   LoginPage.open.login_as(user[:email], user[:password])
 end
 
+Given /^registered user with data:$/ do |table|
+  data = table.rows_hash.symbolize_keys
+  SignUpPage.open.sign_up_as(data[:user_name], data[:email], data[:password])
+  step "I should receive confirmation instruction email for #{data[:email]} recipient"
+  step "I confirm #{data[:email]} account from confirmation instruction email"
+end
+
 Given /^article with parameters$/ do |table|
   article = table.rows_hash.symbolize_keys
   #TODO add article creation
@@ -61,10 +68,14 @@ Then /^I should not be logged in the system$/ do
   expect(HomePage).to_not be_authenticated
 end
 
-Then /^I see following text on (.+) page:$/ do |page, text|
+Then /^I should see following text on (.+) page:$/ do |page, text|
   expect(page.given.text).to include(text)
 end
 
 Then /^I should receive (.+) email for (.+) recipient$/ do |email, recipient|
   email.as_email_class.find_by_recipient(recipient)
+end
+
+Then /^I should be redirected to (.+) page$/ do |page|
+  page.given
 end

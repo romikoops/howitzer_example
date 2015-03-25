@@ -17,7 +17,9 @@ Before do |scenario|
   log.print_feature_name(scenario.feature.title)
   log.print_scenario_name(scenario.name)
   @session_start = duration(Time.now.utc - DataStorage.extract('sauce', :start_time))
-  page.driver.browser.manage.window.maximize if settings.maximized_window
+  if selenium_driver?
+    page.driver.browser.manage.window.maximize if settings.maximized_window
+  end
 end
 
 After do |scenario|

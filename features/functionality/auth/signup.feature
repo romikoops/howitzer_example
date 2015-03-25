@@ -18,13 +18,13 @@ Feature: Sign Up
   @bvt
   Scenario: user can sign up with correct credentials
     Given Sign up page of web application
-    When I fill Sign up form on Sign up page with data:
+    When I fill form data on Sign up page:
       | user_name             | UNIQ_USER[:full_name] |
       | email                 | UNIQ_USER[:email]     |
       | password              | UNIQ_USER[:password]  |
       | password_confirmation | UNIQ_USER[:password]  |
-    And I submit Sign up form on Sign up page
-    Then I should not be logged to the system
+    And I submit form on Sign up page
+    Then I should not be logged in the system
     And I should see following text on Home page:
       """
       A message with a confirmation link has been sent to your email address. Please open the link to activate your account.
@@ -35,10 +35,10 @@ Feature: Sign Up
       """
       Your account was successfully confirmed.
       """
-    When I fill Login form on Login page with data:
+    When I fill form data on Login page:
       | email    | UNIQ_USER[:email]    |
       | password | UNIQ_USER[:password] |
-    And I submit Login form on Login page
+    And I submit form on Login page
     Then I should be logged in the system
     And I should be redirected to Home page
 

@@ -11,5 +11,5 @@ end
 ####################################
 
 Then /^I see comment displayed on (.*) page:$/ do |page, table|
-  expect(page.given.comment_data).to eql(table.rows_hash.symbolize_keys)
+  expect(page.given.comment_data).to eql(table.rows_hash.symbolize_keys).submit_form
 end
