@@ -39,7 +39,7 @@ Feature: Sign Up
     When I fill form on Login page with data:
       | email    | UNIQ_USER[:email]    |
       | password | UNIQ_USER[:password] |
-    And I submit Login form on Login page
+    And I submit form on Login page
     Then I should be logged in the system
     And I should be redirected to Home page
 
