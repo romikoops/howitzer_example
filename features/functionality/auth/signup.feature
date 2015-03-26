@@ -1,3 +1,4 @@
+@ok
 Feature: Sign Up
   As a user 
   I want to sign up to the system
@@ -9,7 +10,7 @@ Feature: Sign Up
     When I click Sign up menu item on Home page
     Then I should be redirected to Sign up page
 
-  @bvt @wip
+  @bvt
   Scenario: visitor can initiate sign up
     Given Login page of web application
     When I click Sign up menu item on Login page
@@ -18,12 +19,12 @@ Feature: Sign Up
   @bvt
   Scenario: user can sign up with correct credentials
     Given Sign up page of web application
-    When I fill form data on Sign up page:
+    When I fill Sign up form on Sign up page with data:
       | user_name             | UNIQ_USER[:full_name] |
       | email                 | UNIQ_USER[:email]     |
       | password              | UNIQ_USER[:password]  |
       | password_confirmation | UNIQ_USER[:password]  |
-    And I submit form on Sign up page
+    And I submit Sign up form on Sign up page
     Then I should not be logged in the system
     And I should see following text on Home page:
       """
@@ -35,14 +36,14 @@ Feature: Sign Up
       """
       Your account was successfully confirmed.
       """
-    When I fill form data on Login page:
+    When I fill form on Login page with data:
       | email    | UNIQ_USER[:email]    |
       | password | UNIQ_USER[:password] |
-    And I submit form on Login page
+    And I submit Login form on Login page
     Then I should be logged in the system
     And I should be redirected to Home page
 
-  @p1 @wip
+  @p1
   Scenario: user can not sign up with blank data
     Given Sign up page of web application
     When I fill Sign up form on Sign up page with data:
@@ -53,11 +54,9 @@ Feature: Sign Up
     And I submit Sign up form on Sign up page
     Then I should not be logged in the system
     And I should see following text on Sign up page:
-      """
-      2 errors prohibited this user from being saved:
-      •Email can't be blank
-      •Password can't be blank
-      """
+    """
+    2 errors prohibited this user from being saved: Email can't be blank Password can't be blank
+    """
     When I fill Sign up form on Sign up page with data:
       | user_name             |                      |
       | email                 | UNIQ_USER[:email]    |
@@ -66,10 +65,9 @@ Feature: Sign Up
     And I submit Sign up form on Sign up page
     Then I should not be logged in the system
     And I should see following text on Sign up page:
-      """
-      1 error prohibited this user from being saved:
-      •Password can't be blank
-      """
+    """
+    1 error prohibited this user from being saved: Password can't be blank
+    """
     When I fill Sign up form on Sign up page with data:
       | user_name             |                      |
       | email                 |                      |
@@ -78,12 +76,11 @@ Feature: Sign Up
     And I submit Sign up form on Sign up page
     Then I should not be logged in the system
     And I should see following text on Sign up page:
-      """
-      1 error prohibited this user from being saved:
-      •Email can't be blank
-      """
+    """
+    1 error prohibited this user from being saved: Email can't be blank
+    """
 
-  @p1 @wip
+  @p1
   Scenario: user can not sign up with incorrect data
     Given Sign up page of web application
     When I fill Sign up form on Sign up page with data:
@@ -91,10 +88,7 @@ Feature: Sign Up
       | email                 | test.1234567890      |
       | password              |                      |
       | password_confirmation |                      |
-    Then I should see following text on Sign up page:
-      """
-      Необходимо ввести допустимый адрес электронной почты
-      """
+    Then I should not be logged in the system
     When I fill Sign up form on Sign up page with data:
       | user_name             |                      |
       | email                 | UNIQ_USER[:email]    |
@@ -103,10 +97,9 @@ Feature: Sign Up
     And I submit Sign up form on Sign up page
     Then I should not be logged in the system
     And I should see following text on Sign up page:
-      """
-      1 error prohibited this user from being saved:
-      •Password is too short (minimum is 8 characters)
-      """
+    """
+     1 error prohibited this user from being saved: Password is too short (minimum is 8 characters)
+     """
     When I fill Sign up form on Sign up page with data:
       | user_name             |                      |
       | email                 | UNIQ_USER[:email]    |
@@ -115,27 +108,28 @@ Feature: Sign Up
     And I submit Sign up form on Sign up page
     Then I should not be logged in the system
     And I should see following text on Sign up page:
-      """
-      1 error prohibited this user from being saved:
-      •Password confirmation doesn't match Password
-      """
+    """
+     1 error prohibited this user from being saved: Password confirmation doesn't match Password
+     """
 
-  @p1 @wip
-  Scenario: user can not sign up with duplicated email
+  @p1
+  Scenario: user cannot sign up with duplicated email
     Given registered user with data:
       | user_name             | UNIQ_USER[:full_name] |
       | email                 | UNIQ_USER[:email]     |
       | password              | UNIQ_USER[:password]  |
+      | password_confirmation | UNIQ_USER[:password]  |
+
     And Sign up page of web application
     When I fill Sign up form on Sign up page with data:
       | user_name             | UNIQ_USER[:full_name] |
       | email                 | UNIQ_USER[:email]     |
       | password              | UNIQ_USER[:password]  |
       | password_confirmation | UNIQ_USER[:password]  |
+
     And I submit Sign up form on Sign up page
     Then I should not be logged in the system
     And I should see following text on Sign up page:
-      """
-      1 error prohibited this user from being saved:
-      •Email has already been taken
-      """
+    """
+   1 error prohibited this user from being saved: Email has already been taken
+   """

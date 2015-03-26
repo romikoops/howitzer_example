@@ -3,7 +3,6 @@ require_relative 'main_menu'
 class SignUpPage < WebPage
   URL = '/users/sign_up'
   validates :title, pattern: /\ADemo web application - Sign Up\z/
-  validates :url, pattern: /\/sign_up\/?\z/
 
   add_field_locator :user_name_input, 'user_name'
   add_field_locator :email_input, 'user_email'
