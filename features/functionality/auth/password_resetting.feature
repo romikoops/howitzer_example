@@ -1,4 +1,4 @@
-@ok @wip
+@ok
 Feature: Password Resetting
   As a user
   I want to reset my password

@@ -21,6 +21,7 @@ Given /^registered user with data:$/ do |table|
   SignUpPage.open.sign_up_as(data[:user_name], data[:email], data[:password])
   step "I should receive confirmation instruction email for #{data[:email]} recipient"
   step "I confirm #{data[:email]} account from confirmation instruction email"
+  step "I should see following text on Login page:","Your account was successfully confirmed."
 end
 
 Given /^article with parameters$/ do |table|
@@ -28,20 +29,6 @@ Given /^article with parameters$/ do |table|
   #TODO add article creation
 end
 
-Given /^registered user with data:$/ do |table|
-  step "Sign up page of web application"
-  step "I fill form data on Sign up page:", table(%{
-  | user_name             | UNIQ_USER[:full_name] |
-  | email                 | UNIQ_USER[:email]     |
-  | password              | UNIQ_USER[:password]  |
-  | password_confirmation | UNIQ_USER[:password]  |})
-  step "I submit form on Sign up page"
-  step "I should not be logged in the system"
-  step "I should see following text on Home page:", "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
-  step "I should receive confirmation instruction email for UNIQ_USER[:email] recipient"
-  step "I confirm UNIQ_USER[:email] account from confirmation instruction email"
-  step "I should see following text on Login page:","Your account was successfully confirmed."
-end
 
 ####################################
 #              ACTIONS             #
