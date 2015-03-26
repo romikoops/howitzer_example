@@ -4,6 +4,7 @@ def settings
   SexySettings::Base.instance()
 end
 
+require 'active_support/all' #TODO remove after upgrading to next version of Howitzer
 require 'howitzer'
 Capybara.asset_host = 'http://localhost:3000'
 

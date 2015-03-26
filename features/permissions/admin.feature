@@ -1,3 +1,4 @@
+@wip
 Feature: Admin User Permissions
   As admin user
   I want to open pages of the system

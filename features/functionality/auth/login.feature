@@ -1,4 +1,3 @@
-@ok
 Feature: Log In
   As a user 
   I want to use my credentials to login the system
@@ -13,18 +12,18 @@ Feature: Log In
   @bvt
   Scenario: user can login with correct credentials
     Given registered user with data:
-      | user_name | UNIQ_USER[:full_name] |
-      | email     | UNIQ_USER[:email]     |
-      | password  | UNIQ_USER[:password]  |
+      | user_name             | UNIQ_USER[:full_name] |
+      | email                 | UNIQ_USER[:email]     |
+      | password              | UNIQ_USER[:password]  |
     And Login page of web application
-    When I fill Login form on Login page with data:
+    When I fill form data on Login page:
       | email     | UNIQ_USER[:email]     |
       | password  | UNIQ_USER[:password]  |
-    And I submit Login form on Login page
+    And I submit form on Login page
     Then I should be logged in the system
     And I should be redirected to Home page
 
-  @bvt
+  @bvt @wip
   Scenario: user can login with remembering credentials
     Given registered user with data:
       | user_name | UNIQ_USER[:full_name] |
@@ -47,7 +46,7 @@ Feature: Log In
     Then I should be logged in the system
     And I should be redirected to Home page
 
-  @p1
+  @p1 @wip
   Scenario: user can not login without credentials
     Given registered user with data:
       | user_name | UNIQ_USER[:full_name] |
@@ -82,7 +81,7 @@ Feature: Log In
       Invalid email or password.
       """
       
-  @p1
+  @p1 @wip
   Scenario: user can not login with incorrect credentials
     Given registered user with data:
       | user_name | UNIQ_USER[:full_name] |
@@ -121,7 +120,7 @@ Feature: Log In
       Необходимо ввести допустимый адрес электронной почты
       """
   
-  @bvt
+  @bvt @wip
   Scenario: user can not login until confirmation email is not confirmed
     Given Sign up page of web application
     When I fill 'Sign up' form on Sign up page with data:
@@ -146,7 +145,7 @@ Feature: Log In
       You have to confirm your account before continuing.
       """
 
-  @bvt
+  @bvt @wip
   Scenario: canceled user can not login
     Given registered user with data:
       | user_name | UNIQ_USER[:full_name] |
