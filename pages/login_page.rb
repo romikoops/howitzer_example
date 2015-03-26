@@ -33,4 +33,5 @@ class LoginPage < WebPage
     submit_form
     HomePage.given
   end
+
 end

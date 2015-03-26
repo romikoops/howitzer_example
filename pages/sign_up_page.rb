@@ -14,7 +14,7 @@ class SignUpPage < WebPage
 
   include MainMenu
 
-  def fill_form(user_name: nil, email: nil, password: nil, password_confirmation: nil)
+  def fill_form(user_name:nil, email:nil, password:nil, password_confirmation:nil)
     fill_in(field_locator(:user_name_input), with: user_name) unless user_name.nil?
     fill_in(field_locator(:email_input), with: email) unless email.nil?
     fill_in(field_locator(:password_input), with: password) unless password.nil?

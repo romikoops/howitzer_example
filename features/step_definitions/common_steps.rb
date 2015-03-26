@@ -21,12 +21,14 @@ Given /^registered user with data:$/ do |table|
   SignUpPage.open.sign_up_as(data[:user_name], data[:email], data[:password])
   step "I should receive confirmation instruction email for #{data[:email]} recipient"
   step "I confirm #{data[:email]} account from confirmation instruction email"
+  step "I should see following text on Login page:","Your account was successfully confirmed."
 end
 
 Given /^article with parameters$/ do |table|
   article = table.rows_hash.symbolize_keys
   #TODO add article creation
 end
+
 
 ####################################
 #              ACTIONS             #
@@ -50,6 +52,10 @@ end
 
 When /^I confirm (.+) account from (.+) email$/ do |recipient, email|
   email.as_email_class.find_by_recipient(recipient).confirm_my_account
+end
+
+When /^I click (.+) link on (.+) page$/ do |link, page|
+  page.given.click_link link
 end
 
 ####################################
@@ -77,5 +83,9 @@ Then /^I should receive (.+) email for (.+) recipient$/ do |email, recipient|
 end
 
 Then /^I should be redirected to (.+) page$/ do |page|
+  page.given
+end
+
+Then /^I should see (.+) page$/ do |page|
   page.given
 end
