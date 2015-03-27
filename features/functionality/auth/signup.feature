@@ -19,7 +19,7 @@ Feature: Sign Up
   @bvt
   Scenario: user can sign up with correct credentials
     Given Sign up page of web application
-    When I fill Sign up form on Sign up page with data:
+    When I fill form on Sign Up page with data:
       | user_name             | UNIQ_USER[:full_name] |
       | email                 | UNIQ_USER[:email]     |
       | password              | UNIQ_USER[:password]  |
@@ -46,7 +46,7 @@ Feature: Sign Up
   @p1
   Scenario: user can not sign up with blank data
     Given Sign up page of web application
-    When I fill Sign up form on Sign up page with data:
+    When I fill form on Sign Up page with data:
       | user_name             |         |
       | email                 |         |
       | password              |         |
@@ -57,7 +57,7 @@ Feature: Sign Up
     """
     2 errors prohibited this user from being saved: Email can't be blank Password can't be blank
     """
-    When I fill Sign up form on Sign up page with data:
+    When I fill form on Sign Up page with data:
       | user_name             |                      |
       | email                 | UNIQ_USER[:email]    |
       | password              |                      |
@@ -68,7 +68,7 @@ Feature: Sign Up
     """
     1 error prohibited this user from being saved: Password can't be blank
     """
-    When I fill Sign up form on Sign up page with data:
+    When I fill form on Sign Up page with data:
       | user_name             |                      |
       | email                 |                      |
       | password              | UNIQ_USER[:password] |
@@ -83,13 +83,13 @@ Feature: Sign Up
   @p1
   Scenario: user can not sign up with incorrect data
     Given Sign up page of web application
-    When I fill Sign up form on Sign up page with data:
+    When I fill form on Sign Up page with data:
       | user_name             |                      |
       | email                 | test.1234567890      |
       | password              |                      |
       | password_confirmation |                      |
     Then I should not be logged in the system
-    When I fill Sign up form on Sign up page with data:
+    When I fill form on Sign Up page with data:
       | user_name             |                      |
       | email                 | UNIQ_USER[:email]    |
       | password              | 1234567              |
@@ -100,7 +100,7 @@ Feature: Sign Up
     """
      1 error prohibited this user from being saved: Password is too short (minimum is 8 characters)
      """
-    When I fill Sign up form on Sign up page with data:
+    When I fill form on Sign Up page with data:
       | user_name             |                      |
       | email                 | UNIQ_USER[:email]    |
       | password              | 1234567890           |
@@ -118,15 +118,13 @@ Feature: Sign Up
       | user_name             | UNIQ_USER[:full_name] |
       | email                 | UNIQ_USER[:email]     |
       | password              | UNIQ_USER[:password]  |
-      | password_confirmation | UNIQ_USER[:password]  |
 
     And Sign up page of web application
-    When I fill Sign up form on Sign up page with data:
+    When I fill form on Sign Up page with data:
       | user_name             | UNIQ_USER[:full_name] |
       | email                 | UNIQ_USER[:email]     |
       | password              | UNIQ_USER[:password]  |
       | password_confirmation | UNIQ_USER[:password]  |
-
     And I submit Sign up form on Sign up page
     Then I should not be logged in the system
     And I should see following text on Sign up page:

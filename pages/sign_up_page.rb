@@ -8,7 +8,6 @@ class SignUpPage < WebPage
   add_field_locator :email_input, 'user_email'
   add_field_locator :password_input, 'user_password'
   add_field_locator :password_confirmation_input, 'user_password_confirmation'
-
   add_button_locator :sign_up_btn, 'Sign up'
 
   include MainMenu

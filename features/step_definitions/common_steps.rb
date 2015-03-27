@@ -11,12 +11,11 @@ Given /^(.+) page of web application$/ do |page|
 end
 
 Given /^registered user with data:$/ do |table|
-  user = table.rows_hash.symbolize_keys
-  SignUpPage.open
-  SignUpPage.given.fill_form(table.rows_hash.symbolize_keys)
-  SignUpPage.given.submit_form
-  email = ConfirmationInstructionEmail.find_by_recipient(user[:email])
-  email.confirm_my_account
+  data = table.rows_hash.symbolize_keys
+  SignUpPage.open.sign_up_as(data[:user_name], data[:email], data[:password])
+  step "I should receive confirmation instruction email for #{data[:email]} recipient"
+  step "I confirm #{data[:email]} account from confirmation instruction email"
+  step "I should see following text on Login page:","Your account was successfully confirmed."
  end
 
 Given /^article with parameters$/ do |table|
@@ -77,5 +76,9 @@ Then /^I should receive (.+) email for (.+) recipient$/ do |email, recipient|
 end
 
 Then /^I should be redirected to (.+) page$/ do |page|
-  page.wait_for_opened
+  page.given
+end
+
+Then /^I should see (.+) page$/ do |page|
+  page.given
 end

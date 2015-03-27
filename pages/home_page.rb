@@ -6,8 +6,6 @@ class HomePage < WebPage
   validates :url, pattern: /\A(?:.*?:\/\/)?[^\/]*\/?\z/
 
   add_locator :article_link, lambda{|title| {xpath: ".//a[.='#{title}']"}}
-  add_locator :message,        css: "#flash_notice"
-  add_locator :log_oul_link,   css: "a[href='/users/sign_out']"
 
   include MainMenu
 
