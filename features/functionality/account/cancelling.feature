@@ -1,4 +1,4 @@
-@wip
+
 Feature: Account Cancelling
   As a user 
   I do not want to login the system
@@ -9,10 +9,17 @@ Feature: Account Cancelling
       | user_name | UNIQ_USER[:full_name] |
       | email     | UNIQ_USER[:email]     |
       | password  | UNIQ_USER[:password]  |
-    And Edit account page of web application for UNIQ_USER[:email] user
-    When I click 'Cancel account' button on Edit account page
+    When I fill form on Login page with data:
+      | email     | UNIQ_USER[:email]     |
+      | password  | UNIQ_USER[:password]  |
+    And I submit form on Login page
+    And I should be logged in the system
+    And I should be redirected to Home page
+    And I open Edit account page
+    And I click 'Cancel account' button on Edit account page
     And I confirm action
     Then I should see following text on Home page:
       """
       Bye! Your account was successfully cancelled. We hope to see you again soon.
       """
+
