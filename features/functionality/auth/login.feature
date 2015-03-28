@@ -30,11 +30,11 @@ Feature: Log In
       | email     | UNIQ_USER[:email]     |
       | password  | UNIQ_USER[:password]  |
     And Login page of web application
-    When I fill Login form on Login page with data:
+    When I fill form on Login page with data:
       | email     | UNIQ_USER[:email]     |
       | password  | UNIQ_USER[:password]  |
     And I check 'Remember me' checkbox
-    And I submit Login form on Login page
+    And I submit form on Login page
     Then I should be logged in the system
     And I should be redirected to Home page
     When I click Logout menu item
@@ -42,7 +42,7 @@ Feature: Log In
     Then I should see Login form on Login page with parameters:
       | email     | UNIQ_USER[:email]     |
       | password  | UNIQ_USER[:password]  |
-    When I submit Login form on Login page
+    When I submit form on Login page
     Then I should be logged in the system
     And I should be redirected to Home page
 
@@ -53,28 +53,28 @@ Feature: Log In
       | email     | UNIQ_USER[:email]     |
       | password  | UNIQ_USER[:password]  |
     And Login page of web application
-    When I fill Login form on Login page with data:
+    When I fill form on Login page with data:
       | email     | UNIQ_USER[:email]     |
       | password  |                       |
-    And I submit Login form on Login page
+    And I submit form on Login page
     Then I should not be logged in the system
     And I should see following text on Login page:
       """
       Invalid email or password.
       """
-    When I fill Login form on Login page with data:
+    When I fill form on Login page with data:
       | email     |                       |
       | password  | UNIQ_USER[:password]  |
-    And I submit Login form on Login page
+    And I submit form on Login page
     Then I should not be logged in the system
     And I should see following text on Login page:
       """
       Invalid email or password.
       """
-    When I fill Login form on Login page with data:
+    When I fill form on Login page with data:
       | email     |                       |
       | password  |                       |
-    And I submit Login form on Login page
+    And I submit form on Login page
     Then I should not be logged in the system
     And I should see following text on Login page:
       """
@@ -88,31 +88,31 @@ Feature: Log In
       | email     | UNIQ_USER[:email]     |
       | password  | UNIQ_USER[:password]  |
     And Login page of web application
-    When I fill Login form on Login page with data:
+    When I fill form on Login page with data:
       | email     | test@test.com         |
       | password  | UNIQ_USER[:password]  |
-    And I submit Login form on Login page
+    And I submit form on Login page
     Then I should see following text on Login page:
       """
       Invalid email or password.
       """
-    When I fill Login form on Login page with data:
+    When I fill form on Login page with data:
       | email     | UNIQ_USER[:email]     |
       | password  | test_login            |
-    And I submit Login form on Login page
+    And I submit form on Login page
     Then I should see following text on Login page:
       """
       Invalid email or password.
       """
-    When I fill Login form on Login page with data:
+    When I fill form on Login page with data:
       | email     | test@test.com         |
       | password  | test_login            |
-    And I submit Login form on Login page
+    And I submit form on Login page
     Then I should see following text on Login page:
       """
       Invalid email or password.
       """
-    When I fill Login form on Login page with data:
+    When I fill form on Login page with data:
       | email     | test.1234567890       |
       | password  |                       |
     Then I should see following text on Login page:
@@ -123,22 +123,22 @@ Feature: Log In
   @bvt @wip
   Scenario: user can not login until confirmation email is not confirmed
     Given Sign up page of web application
-    When I fill 'Sign up' form on Sign up page with data:
+    When I fill form on Sign up page with data:
       | user_name             | UNIQ_USER[:full_name] |
       | email                 | UNIQ_USER[:email]     |
       | password              | UNIQ_USER[:password]  |
       | password_confirmation | UNIQ_USER[:password]  |
-    And I submit 'Sign up' form on Sign up page
+    And I submit form on Sign up page
     Then I should not be logged in the system
     And I should be redirected to Home page
     And I should see following text on Home page:
       """
       A message with a confirmation link has been sent to your email address. Please open the link to activate your account.
       """
-    When I fill Login form on Login page with data:
+    When I fill form on Login page with data:
       | email    | UNIQ_USER[:email]    |
       | password | UNIQ_USER[:password] |
-    And I submit Login form on Login page
+    And I submit form on Login page
     Then I should not be logged in the system
     And I should see following text on Login page:
       """
@@ -158,10 +158,10 @@ Feature: Log In
       """
       Bye! Your account was successfully cancelled. We hope to see you again soon.
       """
-    When I fill Login form on Login page with data:
+    When I fill form on Login page with data:
       | email     | UNIQ_USER[:email]     |
       | password  | UNIQ_USER[:password]  |
-    And I submit Login form on Login page
+    And I submit form on Login page
     Then I should see following text on Home page:
       """
       Invalid email or password.

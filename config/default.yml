@@ -87,5 +87,4 @@
  timeout_tiny: 1
  timeout_short: 3
  timeout_small: 20
- timeout_medium: 60
-
+ timeout_medium: 70

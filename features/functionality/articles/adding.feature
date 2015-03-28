@@ -5,7 +5,7 @@ Feature: Article Adding
   So other users can see my article
 
   Background:
-    Given registered user with parameters
+    Given registered user with data:
       | user_name | UNIQ_USER[:full_name] |
       | email     | UNIQ_USER[:email]     |
       | password  | UNIQ_USER[:password]  |

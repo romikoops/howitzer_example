@@ -10,25 +10,18 @@ Given /^(.+) page of web application$/ do |page|
   page.open
 end
 
-Given /^registered user with parameters$/ do |table|
-  user = table.rows_hash.symbolize_keys
-  #TODO add user creation
-  LoginPage.open.login_as(user[:email], user[:password])
-end
-
 Given /^registered user with data:$/ do |table|
   data = table.rows_hash.symbolize_keys
   SignUpPage.open.sign_up_as(data[:user_name], data[:email], data[:password])
   step "I should receive confirmation instruction email for #{data[:email]} recipient"
   step "I confirm #{data[:email]} account from confirmation instruction email"
   step "I should see following text on Login page:","Your account was successfully confirmed."
-end
+ end
 
 Given /^article with parameters$/ do |table|
   article = table.rows_hash.symbolize_keys
   #TODO add article creation
 end
-
 
 ####################################
 #              ACTIONS             #
@@ -42,7 +35,7 @@ When /^I click (.+?) menu item on (.+) page$/ do |text, page|
   page.given.choose_menu(text)
 end
 
-When /^I fill form data on (.+) page:$/ do |page, table|
+When /^I fill form on (.+) page with data:$/ do |page, table|
   page.given.fill_form(table.rows_hash.symbolize_keys)
 end
 
