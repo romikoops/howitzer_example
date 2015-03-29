@@ -16,8 +16,8 @@ Feature: Account Cancelling
     And I should be logged in the system
     And I should be redirected to Home page
     And I open Edit account page
-    And I click 'Cancel account' button on Edit account page
-    And I confirm action
+    And I cancel account on Edit account page
+    And I confirm account cancelling
     Then I should see following text on Home page:
       """
       Bye! Your account was successfully cancelled. We hope to see you again soon.

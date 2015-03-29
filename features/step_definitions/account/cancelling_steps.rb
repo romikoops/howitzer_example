@@ -1,10 +1,10 @@
 #############################################################
 #                      ACTIONS                              #
 #############################################################
-When /^I click 'Cancel account' button on Edit account page$/ do
+When /^I cancel account on Edit account page$/ do
   EditAccountPage.given.cancel_my_account
 end
 
-When /^I confirm action$/ do
+When /^I confirm account cancelling$/ do
   EditAccountPage.accept_alert
 end
