@@ -1,5 +1,5 @@
 @bvt
-Feature: Blank page
+Feature: blank page
 
   Scenario: Testing General Blank Page
     Given opened browser

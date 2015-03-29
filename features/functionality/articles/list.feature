@@ -17,10 +17,10 @@ Feature: Articles list
       | text      | UNIQ_ARTICLE2[:text]  |
 
   Scenario: user can see articles in Articles list
-    When I go to the Articles list page
-    Then I should see article on Articles list page with data:
+    When I go to the articles list page
+    Then I should see article on articles list page with data:
       | title     | UNIQ_ARTICLE1[:title] |
       | text      | UNIQ_ARTICLE1[:text]  |
-    And I should see article on Articles list page with data:
+    And I should see article on articles list page with data:
       | title     | UNIQ_ARTICLE2[:title] |
       | text      | UNIQ_ARTICLE2[:text]  |

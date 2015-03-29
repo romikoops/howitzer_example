@@ -15,7 +15,7 @@ Given /^registered user with data:$/ do |table|
   SignUpPage.open.sign_up_as(data[:user_name], data[:email], data[:password])
   step "I should receive confirmation instruction email for #{data[:email]} recipient"
   step "I confirm #{data[:email]} account from confirmation instruction email"
-  step "I should see following text on Login page:","Your account was successfully confirmed."
+  step "I should see following text on login page:","Your account was successfully confirmed."
  end
 
 Given /^article with parameters$/ do |table|
