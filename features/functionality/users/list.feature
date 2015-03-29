@@ -17,6 +17,6 @@ Feature: Users List
 
   Scenario: user is viewing users in Users list
     When I click Users menu item
-    Then I should see Users list page with data:
+    Then I should see users list page with data:
       | user_data | UNIQ_USER[:email] signed up UNIQ_USER[:registration_date]   |
       | user_data | UNIQ_USER1[:email] signed up UNIQ_USER1[:registration_date] |

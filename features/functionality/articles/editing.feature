@@ -15,22 +15,22 @@ Feature: Article Editing
     And opened UNIQ_ARTICLE[:title] article page
 
   Scenario: user can edit article with correct credentials
-    When I click Edit article button on Article page
-    And I fill form on Edit article page with data:
+    When I click Edit article button on article page
+    And I fill form on edit article page with data:
       | title     | UNIQ_ARTICLE1[:title]  |
       | text      | UNIQ_ARTICLE1[:text]   |
-    And I submit form on Edit article page
-    Then I should see following article parameters on Article page:
+    And I submit form on edit article page
+    Then I should see following article parameters on article page:
       | title     | UNIQ_ARTICLE1[:title]  |
       | text      | UNIQ_ARTICLE1[:text]   |
 
   Scenario: user can not edit article with blank title
-    When I click Edit article button on Article page
-    And I fill form on Edit article page with data:
+    When I click Edit article button on article page
+    And I fill form on edit article page with data:
       | title     |                       |
       | text      |                       |
-    And I submit form on Edit article page
-    Then I should see following text on Edit article page:
+    And I submit form on edit article page
+    Then I should see following text on edit article page:
       """
       2 errors prohibited this article from being saved:
       Title can't be blank
@@ -38,12 +38,12 @@ Feature: Article Editing
       """
       
   Scenario: user can not edit article with title is too short
-    When I click Edit article button on Article page
-    And I fill form on Edit article page with data:
+    When I click Edit article button on article page
+    And I fill form on edit article page with data:
       | title     | 1234                  |
       | text      |                       |
-    And I submit form on Edit article page
-    Then I should see following text on Edit article page:
+    And I submit form on edit article page
+    Then I should see following text on edit article page:
       """
       1 error prohibited this article from being saved:
       Title is too short (minimum is 5 characters)

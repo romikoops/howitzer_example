@@ -15,15 +15,15 @@ Feature: User Permissions
       | password  | UNIQ_USER2[:password]   |
     And I logged as UNIQ_USER1[:email] user
 
-  Scenario: user can open Home page
+  Scenario: user can open home page
     When I click on Home menu item
-    Then I should be redirected to Home page
+    Then I should be redirected to home page
 
-  Scenario: user can open Articles list page
+  Scenario: user can open articles list page
     When I click on Articles menu item
-    Then I should be redirected to Articles list page
+    Then I should be redirected to articles list page
 
-  Scenario: user can open Article page
+  Scenario: user can open article page
     Given created article by UNIQ_USER2[:email] user with parameters:
       | title     | UNIQ_ARTICLE[:title]    |
       | text      | UNIQ_ARTICLE[:text]     |
@@ -31,7 +31,7 @@ Feature: User Permissions
       | body      | UNIQ_COMMENT1[:text]    |
     And comment to UNIQ_ARTICLE[:title] article created by UNIQ_USER2[:email] user with parameter:
       | body      | UNIQ_COMMENT2[:text]    |
-    When I click on UNIQ_ARTICLE[:title] article on Articles list page
+    When I click on UNIQ_ARTICLE[:title] article on articles list page
     Then I should be redirected to UNIQ_ARTICLE[:title] article page
     And I should see article parameters with data:
       | title     | UNIQ_ARTICLE[:title]    |
@@ -42,25 +42,25 @@ Feature: User Permissions
       | commenter | UNIQ_USER2[:email]      |
       | comment   | UNIQ_COMMENT2[:text]    |
 
-  Scenario: user can open Users list page
+  Scenario: user can open users list page
     When I click on Users menu item
-    Then I should be redirected to Users list page
+    Then I should be redirected to users list page
 
-  Scenario: user can open User page
-    When I click on UNIQ_USER2[:email] user on Users list page
+  Scenario: user can open user page
+    When I click on UNIQ_USER2[:email] user on users list page
     Then I should be redirected to UNIQ_USER2[:email] user page
     And I should see user parameter with data:
       | email     | UNIQ_USER1[:email]      |
 
-  Scenario: user can open Edit account page
+  Scenario: user can open edit account page
     When I click on 'Edit account' menu item
-    Then I should be redirected to Edit account page
+    Then I should be redirected to edit account page
 
   Scenario: user can signed out
     When I click on Logout menu item
     Then I should be signed out
-    And I should be redirected to Home page
-    And I should see following text on Home page:
+    And I should be redirected to home page
+    And I should see following text on home page:
       """
       Signed out successfully.
       """
