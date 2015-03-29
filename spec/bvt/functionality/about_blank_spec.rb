@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature "blank page" do
+feature "Blank page" do
   scenario "Testing General Blank Page" do
     HomePage.open
     HomePage.wait_for_opened
