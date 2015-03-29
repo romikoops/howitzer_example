@@ -9,16 +9,16 @@ Feature: Account Cancelling
       | user_name | UNIQ_USER[:full_name] |
       | email     | UNIQ_USER[:email]     |
       | password  | UNIQ_USER[:password]  |
-    When I fill form on Login page with data:
+    When I fill form on login page with data:
       | email     | UNIQ_USER[:email]     |
       | password  | UNIQ_USER[:password]  |
-    And I submit form on Login page
+    And I submit form on login page
     And I should be logged in the system
-    And I should be redirected to Home page
-    And I open Edit account page
-    And I cancel account on Edit account page
-    And I confirm account cancelling
-    Then I should see following text on Home page:
+    And I should be redirected to home page
+    And I open edit account page
+    And I cancel account on edit account page
+    And I confirm account cancelling on edit account page
+    Then I should see following text on home page:
       """
       Bye! Your account was successfully cancelled. We hope to see you again soon.
       """
