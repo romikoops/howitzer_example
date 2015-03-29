@@ -1,4 +1,3 @@
-@wip
 Feature: Article Comment Adding
   As a user
   I want to add a comment to article

@@ -16,7 +16,7 @@ Given /^registered user with data:$/ do |table|
   step "I should receive confirmation instruction email for #{data[:email]} recipient"
   step "I confirm #{data[:email]} account from confirmation instruction email"
   step "I should see following text on Login page:","Your account was successfully confirmed."
- end
+end
 
 Given /^built (.+) entity$/ do |factory|
   factory
@@ -28,6 +28,7 @@ end
 
 Given /^created (.+) factory with parameters:$/ do |name, table|
   create(name.to_sym, table.rows_hash.symbolize_keys)
+end
 
 Given /^logged in (.+) user$/ do |user|
   LoginPage.open.login_as(user.email, user.password)
