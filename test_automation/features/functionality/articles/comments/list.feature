@@ -1,1 +1,0 @@
-Feature: Article Comment List
