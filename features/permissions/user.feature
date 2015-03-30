@@ -43,7 +43,7 @@ Feature: User Permissions
       | comment   | UNIQ_COMMENT2[:text]    |
 
   Scenario: user can open users list page
-    When I click on Users menu item
+    When I click on users menu item
     Then I should be redirected to users list page
 
   Scenario: user can open user page
