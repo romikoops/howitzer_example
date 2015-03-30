@@ -2,7 +2,7 @@
 Feature: Article Comments List
   As user
   I want to view my article comments 
-  So I can view my article comments on Article comments list on article page
+  So I can view my article comments on article comments list on article page
 
   Background:
     Given registered user with data:
