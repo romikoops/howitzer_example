@@ -14,9 +14,9 @@ Feature: User Viewing
       | email     | UNIQ_USER1[:email]     |
       | password  | UNIQ_USER1[:password]  |
     And I logged as UNIQ_USER[:email] user
-    And opened Users page
+    And opened user page
 
-  Scenario: user is viewing other user on User page
-    When I click on UNIQ_USER1[:email] link on Users page
+  Scenario: user is viewing other user on user page
+    When I click on UNIQ_USER1[:email] link on user page
     Then I should see UNIQ_USER1[:email] user page with data:
       | user_data | Email: UNIQ_USER1[:email] |

@@ -12,18 +12,18 @@ Feature: Article Destroying
     And article with parameters:
       | title     | UNIQ_ARTICLE[:title]  |
       | text      | UNIQ_ARTICLE[:text]   |
-    And opened Articles list page
+    And opened articles list page
 
   Scenario: user can remove article with confirmation action
-    When I click Destroy button on article UNIQ_ARTICLE[:title] on Articles list page
+    When I click Destroy button on article UNIQ_ARTICLE[:title] on articles list page
     And I confirm action
-    Then I should not see article on Articles list page with parameters:
+    Then I should not see article on articles list page with parameters:
       | title     | UNIQ_ARTICLE[:title]  |
       | text      | UNIQ_ARTICLE[:text]   |
 
   Scenario: user can not remove article without confirmation action
-    When I click Destroy button on article UNIQ_ARTICLE[:title] on Articles list page
+    When I click Destroy button on article UNIQ_ARTICLE[:title] on articles list page
     And I don't confirm action
-    Then I should see article on Articles list page with parameters:
+    Then I should see article on articles list page with parameters:
       | title     | UNIQ_ARTICLE[:title]  |
       | text      | UNIQ_ARTICLE[:text]   |
