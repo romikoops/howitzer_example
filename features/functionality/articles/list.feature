@@ -2,7 +2,7 @@
 Feature: Articles list
   As user
   I want to view my articles
-  So I can view my articles in Articles list
+  So I can view my articles in articles list
 
   Background:
     Given registered user with data::

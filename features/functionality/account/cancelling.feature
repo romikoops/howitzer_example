@@ -22,4 +22,3 @@ Feature: Account Cancelling
       """
       Bye! Your account was successfully cancelled. We hope to see you again soon.
       """
-

@@ -12,11 +12,11 @@ Feature: Article Adding
     And opened articles list page
 
   Scenario: user can add article with correct credentials
-    When I click New article button on articles list page
-    And I fill New article form on new article page with data:
+    When I click new article button on articles list page
+    And I fill new article form on new article page with data:
       | title     | UNIQ_ARTICLE[:title]  |
       | text      | UNIQ_ARTICLE[:text]   |
-    And I submit New article form on new article page
+    And I submit new article form on new article page
     Then I should see article parameters on article page with data:
       | title     | UNIQ_ARTICLE[:title]  |
       | text      | UNIQ_ARTICLE[:text]   |
@@ -26,11 +26,11 @@ Feature: Article Adding
       | text      | UNIQ_ARTICLE[:text]   |
       
   Scenario: user can not add article with blank field
-    When I click New article button on articles list page
-    And  I fill New article form on new article page with blank data:
+    When I click new article button on articles list page
+    And  I fill new article form on new article page with blank data:
       | title     |                       |
       | text      | UNIQ_ARTICLE[:text]   |
-    And I submit New article form on new article page
+    And I submit new article form on new article page
     Then I should see following text on new article page:
       """
       2 errors prohibited this article from being saved:
@@ -39,11 +39,11 @@ Feature: Article Adding
       """
 
   Scenario: user can not add article with title is too short
-    When I click New article button on articles list page
-    And I fill New article form on new article page with data:
+    When I click new article button on articles list page
+    And I fill new article form on new article page with data:
       | title     | 1234                  |
       | text      | UNIQ_ARTICLE[:text]   |
-    And I submit New article form on new article page
+    And I submit new article form on new article page
     Then I should see following text on new article page:
       """
       1 error prohibited this article from being saved:

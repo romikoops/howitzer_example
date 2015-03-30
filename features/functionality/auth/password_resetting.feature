@@ -12,7 +12,7 @@ Feature: Password Resetting
       | password             | UNIQ_USER[:password]  |
     And login page of web application
     When I click Forgot password? link on login page
-    And I fill form data on forgot password page:
+    And I fill form on forgot password page with data:
       | email                | UNIQ_USER[:email]     |
     And I submit form on forgot password page
     Then I should see following text on login page:
@@ -21,7 +21,7 @@ Feature: Password Resetting
       """
     And I should receive reset password confirmation email for UNIQ_USER[:email] recipient
     When I confirm UNIQ_USER[:email] resetting password from reset password confirmation email
-    And I fill form data on change password page:
+    And I fill form on change password page with data:
       | new_password         | UNIQ_USER1[:password] |
       | confirm_new_password | UNIQ_USER1[:password] |
     And I submit form on change password page
@@ -49,7 +49,7 @@ Feature: Password Resetting
       """
     And I should receive reset password confirmation email for UNIQ_USER[:email] recipient
     When I confirm UNIQ_USER[:email] resetting password from reset password confirmation email
-    And I fill form on forgot password page with data:
+    And I fill form on change password page with data:
       | new_password         | 1234567890 |
       | confirm_new_password | 1234567    |
     And I submit form on change password page
@@ -57,7 +57,7 @@ Feature: Password Resetting
       """
       Password confirmation doesn't match Password
       """
-    And I fill form on forgot password page with data:
+    And I fill form on change password page with data:
       | new_password         | 1234567    |
       | confirm_new_password | 1234567    |
     And I submit form on change password page

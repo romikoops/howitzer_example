@@ -57,7 +57,7 @@ Feature: User Permissions
     Then I should be redirected to edit account page
 
   Scenario: user can signed out
-    When I click on Logout menu item
+    When I click on logout menu item
     Then I should be signed out
     And I should be redirected to home page
     And I should see following text on home page:

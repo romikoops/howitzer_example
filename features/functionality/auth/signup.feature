@@ -7,13 +7,13 @@ Feature: Sign Up
   @bvt
   Scenario: user can open sign up page via menu
     Given home page of web application
-    When I click Sign up menu item on home page
+    When I click sign up menu item on home page
     Then I should be redirected to sign up page
 
   @bvt
   Scenario: visitor can initiate sign up
     Given login page of web application
-    When I click Sign up menu item on login page
+    When I click sign up menu item on login page
     Then I should be redirected to sign up page
 
   @bvt
@@ -24,7 +24,7 @@ Feature: Sign Up
       | email                 | UNIQ_USER[:email]     |
       | password              | UNIQ_USER[:password]  |
       | password_confirmation | UNIQ_USER[:password]  |
-    And I submit Sign up form on sign up page
+    And I submit sign up form on sign up page
     Then I should not be logged in the system
     And I should see following text on home page:
       """
@@ -51,7 +51,7 @@ Feature: Sign Up
       | email                 |         |
       | password              |         |
       | password_confirmation |         |
-    And I submit Sign up form on sign up page
+    And I submit sign up form on sign up page
     Then I should not be logged in the system
     And I should see following text on sign up page:
     """
@@ -62,7 +62,7 @@ Feature: Sign Up
       | email                 | UNIQ_USER[:email]    |
       | password              |                      |
       | password_confirmation |                      |
-    And I submit Sign up form on sign up page
+    And I submit sign up form on sign up page
     Then I should not be logged in the system
     And I should see following text on sign up page:
     """
@@ -73,7 +73,7 @@ Feature: Sign Up
       | email                 |                      |
       | password              | UNIQ_USER[:password] |
       | password_confirmation | UNIQ_USER[:password] |
-    And I submit Sign up form on sign up page
+    And I submit sign up form on sign up page
     Then I should not be logged in the system
     And I should see following text on sign up page:
     """
@@ -94,7 +94,7 @@ Feature: Sign Up
       | email                 | UNIQ_USER[:email]    |
       | password              | 1234567              |
       | password_confirmation | 1234567              |
-    And I submit Sign up form on sign up page
+    And I submit sign up form on sign up page
     Then I should not be logged in the system
     And I should see following text on sign up page:
     """
@@ -105,7 +105,7 @@ Feature: Sign Up
       | email                 | UNIQ_USER[:email]    |
       | password              | 1234567890           |
       | password_confirmation | 1234567890123        |
-    And I submit Sign up form on sign up page
+    And I submit sign up form on sign up page
     Then I should not be logged in the system
     And I should see following text on sign up page:
     """
@@ -125,7 +125,7 @@ Feature: Sign Up
       | email                 | UNIQ_USER[:email]     |
       | password              | UNIQ_USER[:password]  |
       | password_confirmation | UNIQ_USER[:password]  |
-    And I submit Sign up form on sign up page
+    And I submit sign up form on sign up page
     Then I should not be logged in the system
     And I should see following text on sign up page:
     """

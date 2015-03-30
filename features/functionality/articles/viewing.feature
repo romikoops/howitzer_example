@@ -23,8 +23,8 @@ Feature: Article Viewing
     And I should see comment parameters with data:
       | commenter | UNIQ_USER[:email]     |
       | comment   | UNIQ_COMMENT[:text]   |
-    And I should see Add comment form on article page
-    And I should see Body field on article page
-    And I should see buttons: Edit article, Destroy comment, Create comment on article page
-    When I click Back to articles link on article page
+    And I should see add comment form on article page
+    And I should see body field on article page
+    And I should see buttons: edit article, destroy comment, create comment on article page
+    When I click back to articles link on article page
     Then I should be redirected to articles list page

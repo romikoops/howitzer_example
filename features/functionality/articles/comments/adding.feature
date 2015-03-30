@@ -15,9 +15,9 @@ Feature: Article Comment Adding
     And opened UNIQ_ARTICLE[:title] article page
 
   Scenario: user can add comment with valid comment body
-    When I fill New Comment form on article page with data:
+    When I fill new comment form on article page with data:
       | body      | UNIQ_COMMENT[:text]   |
-    And I submit New Comment form on article page
+    And I submit new comment form on article page
     Then I should see following text on article page:
       """
       Comment was successfully added to current article.
@@ -27,9 +27,9 @@ Feature: Article Comment Adding
       | comment   | UNIQ_COMMENT[:text]   |
 
   Scenario: user can not add comment with blank comment body
-    When I fill New Comment form on article page with blank data:
+    When I fill new comment form on article page with blank data:
       | body      |                       |
-    And I submit New Comment form on article page
+    And I submit new comment form on article page
     Then I should see following text on article page:
       """
       Body can't be blank

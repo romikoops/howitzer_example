@@ -5,19 +5,19 @@ Feature: Visitor Permissions
   So I can see what in system is available to the visitor
 
   Scenario: visitor can view login page
-    When I click Login menu item
+    When I click login menu item
     Then I should be redirected to login page
 
   Scenario: visitor can view sign up page
-    When I click 'Sign up' menu item 
+    When I click 'sign up' menu item
     Then I should be redirected to sign up page
 
   Scenario: visitor can view home page
-    When I click Home menu item 
+    When I click home menu item
     Then I should be redirected to home page
 
   Scenario: visitor can view articles list page
-    When I click Articles menu item
+    When I click articles menu item
     Then I should be redirected to articles list page
 
   Scenario: visitor can view article page

@@ -6,7 +6,7 @@ Feature: Log In
   @bvt
   Scenario: user can open login page via menu
     Given home page of web application
-    When I click Login menu item on home page
+    When I click login menu item on home page
     Then login page should be displayed
 
   @bvt
@@ -37,8 +37,8 @@ Feature: Log In
     And I submit form on login page
     Then I should be logged in the system
     And I should be redirected to home page
-    When I click Logout menu item
-    And I click Login menu item 
+    When I click logout menu item
+    And I click login menu item
     Then I should see Login form on login page with parameters:
       | email     | UNIQ_USER[:email]     |
       | password  | UNIQ_USER[:password]  |
@@ -151,9 +151,15 @@ Feature: Log In
       | user_name | UNIQ_USER[:full_name] |
       | email     | UNIQ_USER[:email]     |
       | password  | UNIQ_USER[:password]  |
-    And edit account page of web application
-    When I click 'Cancel account' item on edit account page
-    And I submit action
+    When I fill form on login page with data:
+         | email     | UNIQ_USER[:email]     |
+         | password  | UNIQ_USER[:password]  |
+    And I submit form on login page
+    And I should be logged in the system
+    And I should be redirected to home page
+    And I open edit account page
+    And I cancel account on edit account page
+    And I confirm account cancelling on edit account page
     Then I should see following text on home page:
       """
       Bye! Your account was successfully cancelled. We hope to see you again soon.
