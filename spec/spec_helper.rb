@@ -1,6 +1,7 @@
 require 'rspec'
 require 'capybara/rspec'
 require_relative '../boot'
+require_relative '../spec/cancelling_helper'
 
 RSpec.configure do |config|
   log.settings_as_formatted_text
@@ -11,6 +12,7 @@ RSpec.configure do |config|
   config.include Capybara::Settings
   config.include Capybara::RSpecMatchers
   config.include DataGenerator
+  config.include SignUpHelper
 
   #config.disable_monkey_patching = true
   config.color = true
