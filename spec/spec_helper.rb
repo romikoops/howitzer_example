@@ -1,7 +1,7 @@
 require 'rspec'
 require 'capybara/rspec'
 require_relative '../boot'
-require_relative '../spec/registered_helper'
+require_relative '../spec/signup_helper'
 
 RSpec.configure do |config|
   log.settings_as_formatted_text
