@@ -1,5 +1,5 @@
 module SignUpHelper
-  def user_signs_up(user)
+  def sign_up(user)
     SignUpPage.
         open.fill_form(
         user_name: user.full_name,
@@ -14,7 +14,7 @@ module SignUpHelper
     expect(LoginPage.given.text).to include('Your account was successfully confirmed.')
   end
 
-  def user_logs_in_into_system(user)
+  def log_in_into_system(user)
     LoginPage.
         open.
         fill_form(email: user.email, password: user.password).
