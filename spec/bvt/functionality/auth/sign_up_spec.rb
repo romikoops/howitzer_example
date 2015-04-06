@@ -42,10 +42,10 @@ feature "Sign Up" do
   scenario "User can not sign up with blank data" do
     SignUpPage.
         open.fill_form(
-        user_name:nil,
-        email:nil,
-        password:nil,
-        password_confirmation:nil).submit_form
+        user_name: nil,
+        email: nil,
+        password: nil,
+        password_confirmation: nil).submit_form
     expect(HomePage).to_not be_authenticated
     error_text = "2 errors prohibited this user from being saved: Email can't be blank Password can't be blank"
     expect(SignUpPage.given.text).to include(error_text)
@@ -55,10 +55,10 @@ feature "Sign Up" do
     user = Gen.user
     SignUpPage.
         open.fill_form(
-        user_name:nil,
-        email:user.email,
-        password:nil,
-        password_confirmation:nil).submit_form
+        user_name: nil,
+        email: user.email,
+        password: nil,
+        password_confirmation: nil).submit_form
     expect(HomePage).to_not be_authenticated
     error_text = "1 error prohibited this user from being saved: Password can't be blank"
     expect(SignUpPage.given.text).to include(error_text)
@@ -68,10 +68,10 @@ feature "Sign Up" do
     user = Gen.user
     SignUpPage.
         open.fill_form(
-        user_name:nil,
-        email:nil,
-        password:user.password,
-        password_confirmation:user.password).submit_form
+        user_name: nil,
+        email: nil,
+        password: user.password,
+        password_confirmation: user.password).submit_form
     expect(HomePage).to_not be_authenticated
     error_text = "1 error prohibited this user from being saved: Email can't be blank"
     expect(SignUpPage.given.text).to include(error_text)
@@ -93,10 +93,10 @@ feature "Sign Up" do
     user = Gen.user
     SignUpPage.
         open.fill_form(
-        user_name:nil,
-        email:user.email,
-        password:'1234567',
-        password_confirmation:'1234567').submit_form
+        user_name: nil,
+        email: user.email,
+        password: '1234567',
+        password_confirmation: '1234567').submit_form
     expect(HomePage).to_not be_authenticated
     error_text = "1 error prohibited this user from being saved: Password is too short (minimum is 8 characters)"
     expect(SignUpPage.given.text).to include(error_text)
@@ -105,10 +105,10 @@ feature "Sign Up" do
     user = Gen.user
     SignUpPage.
         open.fill_form(
-        user_name:nil,
-        email:user.email,
-        password:'1234567890',
-        password_confirmation:'1234567890123').submit_form
+        user_name: nil,
+        email: user.email,
+        password: '1234567890',
+        password_confirmation: '1234567890123').submit_form
     expect(HomePage).to_not be_authenticated
     error_text = "1 error prohibited this user from being saved: Password confirmation doesn't match Password"
     expect(SignUpPage.given.text).to include(error_text)
