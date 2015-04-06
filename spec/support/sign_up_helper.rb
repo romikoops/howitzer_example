@@ -1,5 +1,5 @@
 module SignUpHelper
-  def sign_up(user)
+  def sign_up_as(user)
     SignUpPage.
         open.fill_form(
         user_name: user.full_name,
