@@ -25,7 +25,8 @@ module SignUpHelper
     HomePage.wait_for_opened
   end
 
+end
 
-
-
+RSpec.configure do |config|
+  config.include SignUpHelper
 end
