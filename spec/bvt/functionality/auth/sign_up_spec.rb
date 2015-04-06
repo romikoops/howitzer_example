@@ -80,10 +80,10 @@ feature "Sign Up" do
   scenario "User can not sign up with invalid email and empty password" do
     SignUpPage.
         open.fill_form(
-        user_name:nil,
-        email:'test.1234567890',
-        password:nil,
-        password_confirmation:nil).submit_form
+        user_name: nil,
+        email: 'test.1234567890',
+        password: nil,
+        password_confirmation: nil).submit_form
     expect(HomePage).to_not be_authenticated
     error_text = "2 errors prohibited this user from being saved: Email is invalid Password can't be blank"
     expect(SignUpPage.given.text).to include(error_text)
@@ -115,13 +115,13 @@ feature "Sign Up" do
   end
 
   scenario "User cannot sign up with duplicated email" do
-    user_signs_up
+    sign_uped_as(Gen::given_user_by_number(0))
+    user = Gen::given_user_by_number(0)
     SignUpPage.
         open.fill_form(
-        user_name:DataStorage.extract(:user, 'user_name'),
-        email:DataStorage.extract(:user, 'email'),
-        password:DataStorage.extract(:user, 'password'),
-        password_confirmation:DataStorage.extract(:user, 'password')).submit_form
+        email: user.email,
+        password: user.password,
+        password_confirmation: user.password).submit_form
     expect(HomePage).to_not be_authenticated
     error_text = "1 error prohibited this user from being saved: Email has already been taken"
     expect(SignUpPage.given.text).to include(error_text)

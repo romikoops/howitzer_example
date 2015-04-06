@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature "Account cancelling" do
   scenario "User can cancel his own account if he is signed in" do
-    sign_up_as(Gen::given_user_by_number(0))
+    sign_uped_as(Gen::given_user_by_number(0))
     log_in_as(Gen::given_user_by_number(0))
 
     EditAccountPage.open
