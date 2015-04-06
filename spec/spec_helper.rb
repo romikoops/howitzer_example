@@ -2,7 +2,7 @@ require 'rspec'
 require 'capybara/rspec'
 require_relative '../boot'
 Dir[File.join(File.dirname(__FILE__), 'support', '**', '*.rb')].each{ |f| require f }
-#require_relative '../spec/sign_up_helper'
+
 
 RSpec.configure do |config|
   log.settings_as_formatted_text

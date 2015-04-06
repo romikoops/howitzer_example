@@ -12,8 +12,6 @@ module SignUpHelper
         find_by_recipient(user.email).
         confirm_my_account
     expect(LoginPage.given.text).to include('Your account was successfully confirmed.')
-
-
   end
 
   def user_logs_in_into_system(user)
