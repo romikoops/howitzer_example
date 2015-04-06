@@ -1,6 +1,8 @@
 require 'rspec'
 require 'capybara/rspec'
 require_relative '../boot'
+Dir[File.join(File.dirname(__FILE__), 'support', '**', '*.rb')].each{ |f| require f }
+
 
 RSpec.configure do |config|
   log.settings_as_formatted_text
@@ -11,7 +13,6 @@ RSpec.configure do |config|
   config.include Capybara::Settings
   config.include Capybara::RSpecMatchers
   config.include DataGenerator
-
   #config.disable_monkey_patching = true
   config.color = true
 
