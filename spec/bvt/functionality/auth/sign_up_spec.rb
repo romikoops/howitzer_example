@@ -24,8 +24,7 @@ feature "Sign Up" do
         password: user.password,
         password_confirmation: user.password).submit_form
     expect(HomePage).to_not be_authenticated
-    confirmation_text = "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
-    expect(HomePage.given.text).to include(confirmation_text)
+    expect(HomePage.given.text).to include('A message with a confirmation link has been sent to your email address. Please open the link to activate your account.')
 
     ConfirmationInstructionEmail.
         find_by_recipient(user.email).
@@ -47,8 +46,7 @@ feature "Sign Up" do
         password: nil,
         password_confirmation: nil).submit_form
     expect(HomePage).to_not be_authenticated
-    error_text = "2 errors prohibited this user from being saved: Email can't be blank Password can't be blank"
-    expect(SignUpPage.given.text).to include(error_text)
+    expect(SignUpPage.given.text).to include('2 errors prohibited this user from being saved: Email can't be blank Password can't be blank')
   end
 
   scenario "User can not sign up with blank username and password" do
@@ -60,8 +58,7 @@ feature "Sign Up" do
         password: nil,
         password_confirmation: nil).submit_form
     expect(HomePage).to_not be_authenticated
-    error_text = "1 error prohibited this user from being saved: Password can't be blank"
-    expect(SignUpPage.given.text).to include(error_text)
+    expect(SignUpPage.given.text).to include('1 error prohibited this user from being saved: Password can't be blank')
   end
 
   scenario "User can not sign up with blank email" do
@@ -73,8 +70,7 @@ feature "Sign Up" do
         password: user.password,
         password_confirmation: user.password).submit_form
     expect(HomePage).to_not be_authenticated
-    error_text = "1 error prohibited this user from being saved: Email can't be blank"
-    expect(SignUpPage.given.text).to include(error_text)
+    expect(SignUpPage.given.text).to include('1 error prohibited this user from being saved: Email can't be blank')
   end
 
   scenario "User can not sign up with invalid email and empty password" do
@@ -85,8 +81,7 @@ feature "Sign Up" do
         password: nil,
         password_confirmation: nil).submit_form
     expect(HomePage).to_not be_authenticated
-    error_text = "2 errors prohibited this user from being saved: Email is invalid Password can't be blank"
-    expect(SignUpPage.given.text).to include(error_text)
+    expect(SignUpPage.given.text).to include('2 errors prohibited this user from being saved: Email is invalid Password can't be blank')
   end
 
   scenario "User can not sign up with too short password" do
@@ -98,8 +93,7 @@ feature "Sign Up" do
         password: '1234567',
         password_confirmation: '1234567').submit_form
     expect(HomePage).to_not be_authenticated
-    error_text = "1 error prohibited this user from being saved: Password is too short (minimum is 8 characters)"
-    expect(SignUpPage.given.text).to include(error_text)
+    expect(SignUpPage.given.text).to include('1 error prohibited this user from being saved: Password is too short (minimum is 8 characters)')
   end
   scenario "User can not sign up when password confirmation doesn`t match" do
     user = Gen.user
@@ -110,8 +104,7 @@ feature "Sign Up" do
         password: '1234567890',
         password_confirmation: '1234567890123').submit_form
     expect(HomePage).to_not be_authenticated
-    error_text = "1 error prohibited this user from being saved: Password confirmation doesn't match Password"
-    expect(SignUpPage.given.text).to include(error_text)
+    expect(SignUpPage.given.text).to include('1 error prohibited this user from being saved: Password confirmation doesn't match Password')
   end
 
   scenario "User cannot sign up with duplicated email" do
@@ -123,7 +116,6 @@ feature "Sign Up" do
         password: user.password,
         password_confirmation: user.password).submit_form
     expect(HomePage).to_not be_authenticated
-    error_text = "1 error prohibited this user from being saved: Email has already been taken"
-    expect(SignUpPage.given.text).to include(error_text)
+    expect(SignUpPage.given.text).to include('1 error prohibited this user from being saved: Email has already been taken')
   end
 end
