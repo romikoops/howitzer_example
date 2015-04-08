@@ -23,7 +23,7 @@ Feature: Account Editing
       | current_password       | UNIQ_USER[:password]   |
     And I submit form on edit account page
     Then I should see following text on home page:
-    """
+      """
       You updated your account successfully.
       """
     And I logged out on system
@@ -50,12 +50,12 @@ Feature: Account Editing
       | current_password       | UNIQ_USER[:password]   |
     And I submit form on edit account page
     Then I should see following text on home page:
-    """
+      """
       You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address.
       """
     When I confirm UNIQ_USER2[:email] account from confirmation instruction email
     Then I should see following text on home page:
-    """
+      """
       Your account was successfully confirmed.
       """
     And I logged out on system
@@ -67,7 +67,7 @@ Feature: Account Editing
     And I submit form on login page
     Then I should be logged in the system
     And I should see following text on home page:
-    """
+      """
       Signed in successfully.
       """
 
@@ -80,7 +80,7 @@ Feature: Account Editing
       | current_password       |                        |
     And I submit form on edit account page
     Then I should see following text on edit account page:
-    """
+      """
       1 error prohibited this user from being saved: Current password can't be blank
       """
     When I fill form on edit account page with data:
@@ -91,7 +91,7 @@ Feature: Account Editing
       | current_password       | UNIQ_USER[:password]  |
     And I submit form on edit account page
     Then I should see following text on edit account page:
-    """
+      """
       1 error prohibited this user from being saved: Email has already been taken
       """
 
@@ -104,7 +104,7 @@ Feature: Account Editing
       | current_password       | 123456789             |
     And I submit form on edit account page
     Then I should see following text on edit account page:
-    """
+      """
       1 error prohibited this user from being saved: Current password is invalid
       """
     When I fill form on edit account page with data:
@@ -115,7 +115,7 @@ Feature: Account Editing
       | current_password       | UNIQ_USER[:password]  |
     And I submit form on edit account page
     Then I should see following text on edit account page:
-    """
+      """
       1 error prohibited this user from being saved: Password confirmation doesn't match Password
       """
     When I fill form on edit account page with data:
@@ -126,7 +126,7 @@ Feature: Account Editing
       | current_password       | UNIQ_USER[:password]  |
     And I submit form on edit account page
     Then I should see following text on edit account page:
-    """
+      """
       1 error prohibited this user from being saved: Password is too short (minimum is 8 characters)
       """
     When I fill form on edit account page with data:
@@ -137,7 +137,7 @@ Feature: Account Editing
       | current_password       | 123456789             |
     And I submit form on edit account page
     Then I should see following text on edit account page:
-    """
+      """
       2 errors prohibited this user from being saved: Password is too short (minimum is 8 characters) Current password is invalid
       """
 
@@ -150,6 +150,6 @@ Feature: Account Editing
       | current_password       | UNIQ_USER[:password]   |
     And I submit form on edit account page
     Then I should see following text on edit account page:
-    """
+      """
       3 errors prohibited this user from being saved: Email has already been taken Password confirmation doesn't match Password Password is too short (minimum is 8 characters)
       """
