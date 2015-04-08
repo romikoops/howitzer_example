@@ -2,7 +2,7 @@ module MainMenu
   def self.included(base)
     base.class_eval do
       add_locator   :menu, '#main_menu'
-      add_locator   :menu_item,  lambda{|name| {xpath: ".//*[@id='main_menu']//li[.='#{name}']/a"} }
+      add_locator   :menu_item,  lambda{|name| {xpath: ".//*[@id='main_menu']//li/a[.='#{name}']"} }
       add_locator :menu_small, '.navbar-toggle'
 
       def self.authenticated?
