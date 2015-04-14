@@ -30,7 +30,7 @@ Given /^created (.+) factory with parameters:$/ do |name, table|
   create(name.to_sym, table.rows_hash.symbolize_keys)
 end
 
-Given /^logged in (.+) user$/ do |user|
+Given /^logged in as (.+) user$/ do |user|
   LoginPage.open.login_as(user.email, user.password)
 end
 

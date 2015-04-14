@@ -6,7 +6,7 @@ Feature: Article Comment Adding
   Background:
     Given created FACTORY_USER entity
     And created FACTORY_ARTICLE entity
-    And logged in FACTORY_USER user
+    And logged in as FACTORY_USER user
     And opened article FACTORY_ARTICLE[:title] page
 
   Scenario: user can add comment with valid comment body

@@ -4,12 +4,12 @@ require 'factory_girl'
 
 class MyTokenAuthentication < Faraday::Middleware
   def call(env)
-    env[:request_headers]["Authorization: Token token"] = "97f85fa997125c758a67213c44e1c0543a603f3819b31456b9"
+    env[:request_headers]["Authorization"] = 'Token token=97f85fa997125c758a67213c44e1c0543a603f3819b31456b9'
     @app.call(env)
   end
 end
 
-Her::API.setup url: "http://demoapp.strongqa.com" do |c|
+Her::API.setup url: "#{app_url}/api/v1" do |c|
   # Request
   c.use MyTokenAuthentication
   c.use Faraday::Request::UrlEncoded
