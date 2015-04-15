@@ -1,17 +1,16 @@
-@wip
+
 Feature: Article Adding
   As a user
   I want to add a new article
   So other users can see my article
 
   Background:
-    Given registered user with data:
-      | user_name | UNIQ_USER[:full_name] |
-      | email     | UNIQ_USER[:email]     |
-      | password  | UNIQ_USER[:password]  |
-    And opened articles list page
+    Given logged in as admin user with data:
+      | email     | admin@strongqa.com     |
+      | password  | 1234567890             |
+    And I open articles list page
 
-  Scenario: user can add article with correct credentials
+  Scenario: user can add article with correct data
     When I click new article button on articles list page
     And I fill new article form on new article page with data:
       | title     | UNIQ_ARTICLE[:title]  |
@@ -24,7 +23,7 @@ Feature: Article Adding
     Then I should see article on articles list page with data:
       | title     | UNIQ_ARTICLE[:title]  |
       | text      | UNIQ_ARTICLE[:text]   |
-      
+
   Scenario: user can not add article with blank field
     When I click new article button on articles list page
     And  I fill new article form on new article page with blank data:
