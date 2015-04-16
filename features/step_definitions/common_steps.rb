@@ -10,19 +10,32 @@ Given /^(.+) page of web application$/ do |page|
   page.open
 end
 
+Given /^(.+) page of web application is opened$/ do |page|
+  page.open
+end
+
 Given /^registered user with data:$/ do |table|
   data = table.rows_hash.symbolize_keys
   SignUpPage.open.sign_up_as(data[:user_name], data[:email], data[:password])
   step "I should receive confirmation instruction email for #{data[:email]} recipient"
   step "I confirm #{data[:email]} account from confirmation instruction email"
   step "I should see following text on login page:","Your account was successfully confirmed."
- end
+end
 
 Given /^article with parameters$/ do |table|
   article = table.rows_hash.symbolize_keys
   #TODO add article creation
 end
 
+Given /^I logged as (.+) user$/ do |user_email|
+  user = Gen.user
+  DataStorage.store(:user, 'email', user_email)
+  LoginPage.open.login_as(user_email, user.password)
+end
+
+Given /^opened user page$/ do
+  UsersPage.open
+end
 ####################################
 #              ACTIONS             #
 ####################################
@@ -79,6 +92,10 @@ Then /^I should be redirected to (.+) page$/ do |page|
   page.given
 end
 
-Then /^I should see (.+) page$/ do |page|
-  page.given
+Then /^I should see (.+) with data:$/ do |page, data|
+  expect(page.given.text).to include(data)
+end
+
+Then /^I should see (.+) on (.+) page$/ do |data, page|
+  expect(page.given.text).to include(data)
 end
