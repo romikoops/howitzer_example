@@ -65,6 +65,10 @@ Then /^(.+) page should be displayed$/ do |page|
   page.wait_for_opened
 end
 
+Then /^I should see (.+) page$/ do |page|
+  page.given
+end
+
 Then /^I should be logged in the system$/ do
   expect(HomePage).to be_authenticated
 end
@@ -83,9 +87,4 @@ end
 
 Then /^I should be redirected to (.+) page$/ do |page|
   page.given
-end
-
-
-Then /^I should see (.+) on (.+) page$/ do |data, page|
-  expect(page.given.text).to include(data)
 end
