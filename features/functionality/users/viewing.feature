@@ -12,9 +12,14 @@ Feature: User Viewing
       | user_name | UNIQ_USER1[:full_name] |
       | email     | UNIQ_USER1[:email]     |
       | password  | UNIQ_USER1[:password]  |
-    And I logged as UNIQ_USER[:email] user
-    And opened user page
+    And I logged as user:
+      | email     | UNIQ_USER1[:email]     |
+      | password  | UNIQ_USER1[:password]  |
+    And users page of web application
 
   Scenario: user is viewing other user on user page
     When I click on UNIQ_USER1[:email] link on users page
-    Then I should see UNIQ_USER1[:email] on user view page
+    Then I should see following text on user view page:
+    """
+    Email: UNIQ_USER1[:email]
+    """

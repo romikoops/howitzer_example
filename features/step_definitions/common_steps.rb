@@ -10,9 +10,6 @@ Given /^(.+) page of web application$/ do |page|
   page.open
 end
 
-Given /^(.+) page of web application is opened$/ do |page|
-  page.open
-end
 
 Given /^registered user with data:$/ do |table|
   data = table.rows_hash.symbolize_keys
@@ -27,15 +24,11 @@ Given /^article with parameters$/ do |table|
   #TODO add article creation
 end
 
-Given /^I logged as (.+) user$/ do |user_email|
-  user = Gen.user
-  DataStorage.store(:user, 'email', user_email)
-  LoginPage.open.login_as(user_email, user.password)
+Given /^I logged as user:$/ do |table|
+  data = table.rows_hash.symbolize_keys
+  LoginPage.open.login_as(data[:email], data[:password])
 end
 
-Given /^opened user page$/ do
-  UsersPage.open
-end
 ####################################
 #              ACTIONS             #
 ####################################
@@ -92,9 +85,6 @@ Then /^I should be redirected to (.+) page$/ do |page|
   page.given
 end
 
-Then /^I should see (.+) with data:$/ do |page, data|
-  expect(page.given.text).to include(data)
-end
 
 Then /^I should see (.+) on (.+) page$/ do |data, page|
   expect(page.given.text).to include(data)
