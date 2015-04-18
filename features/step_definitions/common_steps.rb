@@ -22,8 +22,9 @@ Given /^built (.+) entity$/ do |factory|
   factory
 end
 
-Given /^created (.+) entity$/ do |factory|
+Given /^I am logged in as (.+) user$/ do |factory|
   factory.save!
+  LoginPage.open.login_as(factory.email, factory.password)
 end
 
 Given /^created (.+) factory with parameters:$/ do |name, table|

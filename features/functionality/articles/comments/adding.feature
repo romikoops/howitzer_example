@@ -4,28 +4,18 @@ Feature: Article Comment Adding
   So other users can see my opinion about article
 
   Background:
-    Given created FACTORY_USER entity
-    And created FACTORY_ARTICLE entity
-    And logged in as FACTORY_USER user
-    And opened article FACTORY_ARTICLE[:title] page
+    Given there is FACTORY_ARTICLE article
+    And I am logged in as FACTORY_USER user
+    And I am on FACTORY_ARTICLE article page
 
   Scenario: user can add comment with valid comment body
-    When I fill form on Article page with data:
-      | body      | UNIQ_COMMENT[:text]   |
-    And I submit form on Article page
-    Then I should see following text on Article page:
+    When I fill form on article page with data:
+      | body      | FACTORY_COMMENT[:body]   |
+    And I submit form on article page
+    Then I should see following text on article page:
       """
       Comment was successfully added to current article.
       """
-    And I see comment displayed on Article page:
-      | commenter | UNIQ_USER[:email]     |
-      | comment   | UNIQ_COMMENT[:text]   |
-
-  Scenario: user can not add comment with blank comment body
-    When I fill form on Article page with data:
-      | body      |                       |
-    And I submit form on Article page
-    Then I should see following text on Article page:
-      """
-      Body can't be blank
-      """
+    And I see comment displayed on article page:
+      | commenter | FACTORY_USER[:email]     |
+      | comment   | FACTORY_COMMENT[:body]   |

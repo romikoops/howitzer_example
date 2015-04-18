@@ -2,8 +2,12 @@
 #                      PREREQUISITES                        #
 #############################################################
 
-Given /^opened article (.*) page$/ do |article_title|
-  HomePage.given.view_article article_title
+Given /^I am on (.+) article page$/ do |factory|
+  ArticlePage.open(factory.id)
+end
+
+Given /^there is (.+) article$/ do |factory|
+  factory.save!
 end
 
 ####################################

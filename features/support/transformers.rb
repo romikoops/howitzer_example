@@ -51,7 +51,7 @@ Transform /^table:.*$/ do |table|
     array.map do |el|
       res = el
 
-      data = /FACTORY_USER(?<factory>\w+)(?<num>\d*)(?:\[\:(?<property>.+)\])?/.match(el)
+      data = /FACTORY_(?<factory>\w+)(?<num>\d*)(?:\[\:(?<property>.+)\])?/.match(el)
       if data
         res = Prereq::given_factory_by_number(data[:factory].downcase, data[:num])
         if data[:property]
