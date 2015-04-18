@@ -34,4 +34,7 @@ class LoginPage < WebPage
     HomePage.given
   end
 
+  def navigate_to_forgot_password_page
+    click_link link_locator(:forgot_password_link)
+  end
 end
