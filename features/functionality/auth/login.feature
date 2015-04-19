@@ -11,10 +11,7 @@ Feature: Log In
 
   @bvt
   Scenario: user can login with correct credentials
-    Given registered user with data:
-      | user_name             | UNIQ_USER[:full_name] |
-      | email                 | UNIQ_USER[:email]     |
-      | password              | UNIQ_USER[:password]  |
+    Given there is registered UNIQ_USER user
     And login page of web application
     When I fill form data on login page:
       | email     | UNIQ_USER[:email]     |
@@ -25,10 +22,7 @@ Feature: Log In
 
   @bvt @wip
   Scenario: user can login with remembering credentials
-    Given registered user with data:
-      | user_name | UNIQ_USER[:full_name] |
-      | email     | UNIQ_USER[:email]     |
-      | password  | UNIQ_USER[:password]  |
+    Given there is registered UNIQ_USER user
     And login page of web application
     When I fill form on login page with data:
       | email     | UNIQ_USER[:email]     |
@@ -48,10 +42,7 @@ Feature: Log In
 
   @p1 @wip
   Scenario: user can not login without credentials
-    Given registered user with data:
-      | user_name | UNIQ_USER[:full_name] |
-      | email     | UNIQ_USER[:email]     |
-      | password  | UNIQ_USER[:password]  |
+    Given there is registered UNIQ_USER user
     And login page of web application
     When I fill form on login page with data:
       | email     | UNIQ_USER[:email]     |
@@ -83,10 +74,7 @@ Feature: Log In
       
   @p1 @wip
   Scenario: user can not login with incorrect credentials
-    Given registered user with data:
-      | user_name | UNIQ_USER[:full_name] |
-      | email     | UNIQ_USER[:email]     |
-      | password  | UNIQ_USER[:password]  |
+    Given there is registered UNIQ_USER user
     And login page of web application
     When I fill form on login page with data:
       | email     | test@test.com         |
@@ -147,10 +135,7 @@ Feature: Log In
 
   @bvt @wip
   Scenario: canceled user can not login
-    Given registered user with data:
-      | user_name | UNIQ_USER[:full_name] |
-      | email     | UNIQ_USER[:email]     |
-      | password  | UNIQ_USER[:password]  |
+    Given there is registered UNIQ_USER user
     When I fill form on login page with data:
          | email     | UNIQ_USER[:email]     |
          | password  | UNIQ_USER[:password]  |

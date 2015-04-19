@@ -6,10 +6,7 @@ Feature: Password Resetting
 
   @bvt
   Scenario: user can reset password with correct data
-    Given registered user with data:
-      | user_name            | UNIQ_USER[:full_name] |
-      | email                | UNIQ_USER[:email]     |
-      | password             | UNIQ_USER[:password]  |
+    Given there is registered UNIQ_USER user
     And login page of web application
     When I click Forgot password? link on login page
     And I fill form on forgot password page with data:
@@ -33,10 +30,7 @@ Feature: Password Resetting
 
   @p1
   Scenario: user can not reset password with incorrect new password
-    Given registered user with data:
-      | user_name            | UNIQ_USER[:full_name] |
-      | email                | UNIQ_USER[:email]     |
-      | password             | UNIQ_USER[:password]  |
+    Given there is registered UNIQ_USER user
     And login page of web application
     When I click Forgot password? link on login page
     And I fill form on forgot password page with data:
@@ -84,10 +78,7 @@ Feature: Password Resetting
 
   @p1
   Scenario: user can login with old password until confirmation email for new password is not confirmed
-    Given registered user with data:
-      | user_name | UNIQ_USER[:full_name] |
-      | email     | UNIQ_USER[:email]     |
-      | password  | UNIQ_USER[:password]  |
+    Given there is registered UNIQ_USER user
     And login page of web application
     When I click Forgot password? link on login page
     And I fill form on forgot password page with data:

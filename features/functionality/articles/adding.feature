@@ -5,10 +5,7 @@ Feature: Article Adding
   So other users can see my article
 
   Background:
-    Given registered user with data:
-      | user_name | UNIQ_USER[:full_name] |
-      | email     | UNIQ_USER[:email]     |
-      | password  | UNIQ_USER[:password]  |
+    Given there is registered UNIQ_USER user
     And opened articles list page
 
   Scenario: user can add article with correct credentials

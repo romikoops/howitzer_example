@@ -5,10 +5,7 @@ Feature: Article Destroying
   So other users can't see my article
 
   Background:
-    Given registered user with data:
-      | user_name | UNIQ_USER[:full_name] |
-      | email     | UNIQ_USER[:email]     |
-      | password  | UNIQ_USER[:password]  |
+    Given there is registered UNIQ_USER user
     And article with parameters:
       | title     | UNIQ_ARTICLE[:title]  |
       | text      | UNIQ_ARTICLE[:text]   |

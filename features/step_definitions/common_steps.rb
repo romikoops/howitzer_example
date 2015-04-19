@@ -10,13 +10,12 @@ Given /^(.+) page of web application$/ do |page|
   page.open
 end
 
-Given /^registered user with data:$/ do |table|
-  data = table.rows_hash.symbolize_keys
-  SignUpPage.open.sign_up_as(data[:user_name], data[:email], data[:password])
-  step "I should receive confirmation instruction email for #{data[:email]} recipient"
-  step "I confirm #{data[:email]} account from confirmation instruction email"
+Given /^there is registered (.+) user$/ do |user|
+  SignUpPage.open.sign_up_as(user.full_name, user.email, user.password)
+  step "I should receive confirmation instruction email for #{user.email} recipient"
+  step "I confirm #{user.email} account from confirmation instruction email"
   step "I should see following text on login page:","Your account was successfully confirmed."
- end
+end
 
 Given /^article with parameters$/ do |table|
   article = table.rows_hash.symbolize_keys
@@ -76,9 +75,13 @@ Then /^I should receive (.+) email for (.+) recipient$/ do |email, recipient|
 end
 
 Then /^I should be redirected to (.+) page$/ do |page|
-  page.given
+  page.open
 end
 
 Then /^I should see (.+) page$/ do |page|
   page.given
+end
+
+Then(/^I should be logged out$/) do
+  HomePage.given.choose_menu('Logout')
 end
