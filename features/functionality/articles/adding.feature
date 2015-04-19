@@ -26,16 +26,14 @@ Feature: Article Adding
 
   Scenario: user can not add article with blank field
     When I click new article button on articles list page
-    And  I fill new article form on new article page with blank data:
+    And  I fill new article form on new article page with data:
       | title     |                       |
-      | text      | UNIQ_ARTICLE[:text]   |
+      | text      |                       |
     And I submit new article form on new article page
     Then I should see following text on new article page:
-      """
-      2 errors prohibited this article from being saved:
-      Title can't be blank
-      Title is too short (minimum is 5 characters)
-      """
+    """
+   2 errors prohibited this article from being saved: Title can't be blank Title is too short (minimum is 5 characters)
+    """
 
   Scenario: user can not add article with title is too short
     When I click new article button on articles list page
@@ -44,7 +42,6 @@ Feature: Article Adding
       | text      | UNIQ_ARTICLE[:text]   |
     And I submit new article form on new article page
     Then I should see following text on new article page:
-      """
-      1 error prohibited this article from being saved:
-      Title is too short (minimum is 5 characters)
-      """
+    """
+    1 error prohibited this article from being saved: Title is too short (minimum is 5 characters)
+    """
