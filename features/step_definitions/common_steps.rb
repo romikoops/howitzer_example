@@ -22,11 +22,9 @@ Given /^article with parameters$/ do |table|
   #TODO add article creation
 end
 
-Given /^I logged as user:$/ do |table|
-  data = table.rows_hash.symbolize_keys
-  LoginPage.open.login_as(data[:email], data[:password])
+Given /^I am logged in as (.+) user$/ do |user|
+  LoginPage.open.login_as(user.email, user.password)
 end
-
 ####################################
 #              ACTIONS             #
 ####################################
@@ -53,6 +51,10 @@ end
 
 When /^I click (.+) link on (.+) page$/ do |link, page|
   page.given.click_link link
+end
+
+When /^I log out$/ do
+  HomePage.given.choose_menu('Logout')
 end
 
 ####################################

@@ -6,7 +6,7 @@ Feature: Account Editing
   Scenario: user can edit password and name with correct credentials
     Given there is registered UNIQ_USER user
     And I am logged in as UNIQ_USER user
-    And I am on edit account page for UNIQ_USER[:email] user
+    And I am on edit account page
     When I fill form on edit account page with data:
       | user_name              | UNIQ_USER1[:full_name] |
       | password               | UNIQ_USER1[:password]  |
@@ -17,9 +17,10 @@ Feature: Account Editing
       """
       You updated your account successfully.
       """
-    And I should be logged out
-    And I should be redirected to login page
-    When I fill form on login page with data:
+    When I log out
+    Then I should not be logged in the system
+    When I open login page
+    And I fill form on login page with data:
       | email                  | UNIQ_USER[:email]      |
       | password               | UNIQ_USER1[:password]  |
     And I submit form on login page
@@ -35,7 +36,7 @@ Feature: Account Editing
   Scenario: user can edit email with correct credentials
     Given there is registered UNIQ_USER user
     And I am logged in as UNIQ_USER user
-    And I am on edit account page for UNIQ_USER[:email] user
+    And I am on edit account page
     When I fill form on edit account page with data:
       | user_name              | UNIQ_USER[:full_name]  |
       | email                  | UNIQ_USER1[:email]     |
@@ -52,9 +53,10 @@ Feature: Account Editing
       """
       Your account was successfully confirmed.
       """
-    And I should be logged out
-    And I should be redirected to login page
-    When I fill form on login page with data:
+    When I log out
+    Then I should not be logged in the system
+    When I open login page
+    And I fill form on login page with data:
       | email                  | UNIQ_USER1[:email]     |
       | password               | UNIQ_USER[:password]   |
     And I submit form on login page
@@ -67,7 +69,7 @@ Feature: Account Editing
   Scenario: user can not edit account with incorrect email
     Given there is registered UNIQ_USER user
     And I am logged in as UNIQ_USER user
-    And I am on edit account page for UNIQ_USER[:email] user
+    And I am on edit account page
     When I fill form on edit account page with data:
       | email                  | test@i.ua              |
       | current_password       | UNIQ_USER[:password]   |
@@ -78,7 +80,7 @@ Feature: Account Editing
     Given there is registered UNIQ_USER user
     And there is registered UNIQ_USER1 user
     And I am logged in as UNIQ_USER1 user
-    And I am on edit account page for UNIQ_USER1[:email] user
+    And I am on edit account page
     When I fill form on edit account page with data:
       | email                  | UNIQ_USER[:email] |
       | current_password       | UNIQ_USER1[:password]  |
@@ -91,7 +93,7 @@ Feature: Account Editing
   Scenario: user can not edit account with incorrect password
     Given there is registered UNIQ_USER user
     And I am logged in as UNIQ_USER user
-    And I am on edit account page for UNIQ_USER[:email] user
+    And I am on edit account page
     When I fill form on edit account page with data:
       | password               | UNIQ_USER1[:password] |
       | password_confirmation  | UNIQ_USER1[:password] |
@@ -105,7 +107,7 @@ Feature: Account Editing
   Scenario: user can not edit account with incorrect password confirmation
     Given there is registered UNIQ_USER user
     And I am logged in as UNIQ_USER user
-    And I am on edit account page for UNIQ_USER[:email] user
+    And I am on edit account page
     When I fill form on edit account page with data:
       | password               | 12345678              |
       | password_confirmation  | 123456789             |
@@ -119,7 +121,7 @@ Feature: Account Editing
   Scenario: user can not edit account with short password (less then 8 characters)
     Given there is registered UNIQ_USER user
     And I am logged in as UNIQ_USER user
-    And I am on edit account page for UNIQ_USER[:email] user
+    And I am on edit account page
     When I fill form on edit account page with data:
       | password               | 1234567               |
       | password_confirmation  | 1234567               |
