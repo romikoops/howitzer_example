@@ -2,12 +2,13 @@ require 'spec_helper'
 
 feature "Password Resetting" do
   background "sign up user" do
-    sign_up_as(Gen::given_user_by_number(0))
+    user0 = Gen.user
+    sign_up_as(user0)
   end
 
   scenario "User can reset password with correct data" do
-    user1 = Gen::given_user_by_number(1)
-    user_restores_password(Gen::given_user_by_number(0).email)
+    user1 = Gen.user
+    user_restores_password(user0.email)
     ChangePasswordPage.given.
         fill_form(new_password: user1.password,
                   confirm_new_password: user1.password).
@@ -16,7 +17,7 @@ feature "Password Resetting" do
   end
 
   scenario "user can not reset password with incorrect confirmation password" do
-    user_restores_password(Gen::given_user_by_number(0).email)
+    user_restores_password(user0.email)
     ChangePasswordPage.given.
         fill_form(new_password: 1234567890,
                   confirm_new_password: 1234567).
@@ -25,7 +26,7 @@ feature "Password Resetting" do
   end
 
   scenario "user can not reset password with too short new password" do
-    user_restores_password(Gen::given_user_by_number(0).email)
+    user_restores_password(user0.email)
     ChangePasswordPage.given.
         fill_form(new_password: 1234567,
                   confirm_new_password: 1234567).
@@ -43,7 +44,7 @@ feature "Password Resetting" do
   end
 
   scenario "user can login with old password until confirmation email for new password is not confirmed" do
-    user = Gen::given_user_by_number(0)
+    user = Gen.user
     LoginPage.open.
         navigate_to_forgot_password_page
     ForgotPasswordPage.given.
