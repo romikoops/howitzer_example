@@ -20,8 +20,7 @@ Given /^registered user with data:$/ do |table|
 
 Given /^logged in as admin user with data:$/ do |table|
   data = table.rows_hash.symbolize_keys
-  LoginPage.open
-  LoginPage.given.fill_form(table.rows_hash.symbolize_keys).submit_form
+  LoginPage.open.fill_form(table.rows_hash.symbolize_keys).submit_form
 end
 
 Given /^article with parameters$/ do |table|
