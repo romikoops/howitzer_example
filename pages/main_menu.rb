@@ -4,6 +4,8 @@ module MainMenu
       add_locator   :menu, '#main_menu'
       add_locator   :menu_item,  lambda{|name| {xpath: ".//*[@id='main_menu']//li/a[.='#{name}']"} }
       add_locator :menu_small, '.navbar-toggle'
+      add_locator :error_message, css: '#error_explanation'
+      add_locator :flash_message, css: '#flash_notice'
 
       def self.authenticated?
         if phantomjs_driver?
@@ -24,5 +26,13 @@ module MainMenu
     else
       find(locator(:menu_item).(text)).click
     end
+  end
+
+  def flash_message
+    find(locator(:flash_message)).text
+  end
+
+  def error_message
+    find(locator(:error_message)).text
   end
 end

@@ -22,6 +22,11 @@ Given /^article with parameters$/ do |table|
   #TODO add article creation
 end
 
+Given /^I logged as user:$/ do |table|
+  data = table.rows_hash.symbolize_keys
+  LoginPage.open.login_as(data[:email], data[:password])
+end
+
 ####################################
 #              ACTIONS             #
 ####################################
@@ -58,6 +63,10 @@ Then /^(.+) page should be displayed$/ do |page|
   page.wait_for_opened
 end
 
+Then /^I should see (.+) page$/ do |page|
+  page.given
+end
+
 Then /^I should be logged in the system$/ do
   expect(HomePage).to be_authenticated
 end
@@ -75,13 +84,5 @@ Then /^I should receive (.+) email for (.+) recipient$/ do |email, recipient|
 end
 
 Then /^I should be redirected to (.+) page$/ do |page|
-  page.open
-end
-
-Then /^I should see (.+) page$/ do |page|
   page.given
-end
-
-Then(/^I should be logged out$/) do
-  HomePage.given.choose_menu('Logout')
 end
