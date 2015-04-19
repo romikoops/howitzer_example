@@ -58,7 +58,7 @@ feature "Sign Up" do
         password: nil,
         password_confirmation: nil).submit_form
     expect(HomePage).to_not be_authenticated
-    expect(SignUpPage.given.text).to include('1 error prohibited this user from being saved: Password can't be blank')
+    expect(SignUpPage.given.text).to include('1 error prohibited this user from being saved: Password can\'t be blank')
   end
 
   scenario "User can not sign up with blank email" do
@@ -70,7 +70,7 @@ feature "Sign Up" do
         password: user.password,
         password_confirmation: user.password).submit_form
     expect(HomePage).to_not be_authenticated
-    expect(SignUpPage.given.text).to include('1 error prohibited this user from being saved: Email can't be blank')
+    expect(SignUpPage.given.text).to include('1 error prohibited this user from being saved: Email can't be blank)
   end
 
   scenario "User can not sign up with invalid email and empty password" do

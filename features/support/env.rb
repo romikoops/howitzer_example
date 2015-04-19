@@ -24,6 +24,12 @@ Before do |scenario|
 end
 
 After do |scenario|
+  if scenario.failed?
+    file_path = File.join(File.expand_path(Dir.pwd),
+                          "#{settings.ss_save_folder}/#{scenario.feature.title} #{scenario.name}.png")
+    log.info "Test failed page SS is placed in: '#{file_path}'"
+    page.save_screenshot(file_path, full: true)
+  end
   if sauce_driver?
     DataStorage.store('sauce', :status, false) if scenario.failed?
     session_end = duration(Time.now.utc - DataStorage.extract('sauce', :start_time))
