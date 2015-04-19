@@ -2,22 +2,22 @@ require 'spec_helper'
 
 feature "Password Resetting" do
   background "sign up user" do
-    user0 = Gen.user
-    sign_up_as(user0)
+    @user1 = Gen.user
+    sign_up_as(@user1)
   end
 
   scenario "User can reset password with correct data" do
-    user1 = Gen.user
-    user_restores_password(user0.email)
+    user2 = Gen.user
+    user_restores_password(@user1.email)
     ChangePasswordPage.given.
-        fill_form(new_password: user1.password,
-                  confirm_new_password: user1.password).
+        fill_form(new_password: user2.password,
+                  confirm_new_password: user2.password).
         submit_form
     expect(HomePage.given.flash_message).to eql("Your password was changed successfully. You are now signed in.")
   end
 
   scenario "user can not reset password with incorrect confirmation password" do
-    user_restores_password(user0.email)
+    user_restores_password(@user1.email)
     ChangePasswordPage.given.
         fill_form(new_password: 1234567890,
                   confirm_new_password: 1234567).
@@ -26,7 +26,7 @@ feature "Password Resetting" do
   end
 
   scenario "user can not reset password with too short new password" do
-    user_restores_password(user0.email)
+    user_restores_password(@user1.email)
     ChangePasswordPage.given.
         fill_form(new_password: 1234567,
                   confirm_new_password: 1234567).
