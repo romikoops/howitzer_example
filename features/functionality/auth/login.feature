@@ -1,5 +1,5 @@
 Feature: Log In
-  As a user 
+  As a user
   I want to use my credentials to login the system
   So I can login the system
 
@@ -16,7 +16,7 @@ Feature: Log In
       | email                 | UNIQ_USER[:email]     |
       | password              | UNIQ_USER[:password]  |
     And login page of web application
-    When I fill form on login page with data:
+    When I fill form data on login page:
       | email     | UNIQ_USER[:email]     |
       | password  | UNIQ_USER[:password]  |
     And I submit form on login page
@@ -37,12 +37,11 @@ Feature: Log In
     And I submit form on login page
     Then I should be logged in the system
     And I should be redirected to home page
-    When I click logout menu item on home page
-    And I click login menu item on home page
-    Then I should see following text on login page:
-      """
-       UNIQ_USER[:email] UNIQ_USER[:password]
-      """
+    When I click logout menu item
+    And I click login menu item
+    Then I should see Login form on login page with parameters:
+      | email     | UNIQ_USER[:email]     |
+      | password  | UNIQ_USER[:password]  |
     When I submit form on login page
     Then I should be logged in the system
     And I should be redirected to home page
@@ -60,7 +59,7 @@ Feature: Log In
     And I submit form on login page
     Then I should not be logged in the system
     And I should see following text on login page:
-      """
+    """
       Invalid email or password.
       """
     When I fill form on login page with data:
@@ -69,7 +68,7 @@ Feature: Log In
     And I submit form on login page
     Then I should not be logged in the system
     And I should see following text on login page:
-      """
+    """
       Invalid email or password.
       """
     When I fill form on login page with data:
@@ -78,10 +77,10 @@ Feature: Log In
     And I submit form on login page
     Then I should not be logged in the system
     And I should see following text on login page:
-      """
+    """
       Invalid email or password.
       """
-      
+
   @p1 @wip
   Scenario: user can not login with incorrect credentials
     Given registered user with data:
@@ -94,7 +93,7 @@ Feature: Log In
       | password  | UNIQ_USER[:password]  |
     And I submit form on login page
     Then I should see following text on login page:
-      """
+    """
       Invalid email or password.
       """
     When I fill form on login page with data:
@@ -102,7 +101,7 @@ Feature: Log In
       | password  | test_login            |
     And I submit form on login page
     Then I should see following text on login page:
-      """
+    """
       Invalid email or password.
       """
     When I fill form on login page with data:
@@ -110,17 +109,17 @@ Feature: Log In
       | password  | test_login            |
     And I submit form on login page
     Then I should see following text on login page:
-      """
+    """
       Invalid email or password.
       """
     When I fill form on login page with data:
       | email     | test.1234567890       |
       | password  |                       |
     Then I should see following text on login page:
-      """
+    """
       Необходимо ввести допустимый адрес электронной почты
       """
-  
+
   @bvt @wip
   Scenario: user can not login until confirmation email is not confirmed
     Given sign up page of web application
@@ -133,7 +132,7 @@ Feature: Log In
     Then I should not be logged in the system
     And I should be redirected to home page
     And I should see following text on home page:
-      """
+    """
       A message with a confirmation link has been sent to your email address. Please open the link to activate your account.
       """
     When I fill form on login page with data:
@@ -142,7 +141,7 @@ Feature: Log In
     And I submit form on login page
     Then I should not be logged in the system
     And I should see following text on login page:
-      """
+    """
       You have to confirm your account before continuing.
       """
 
@@ -153,8 +152,8 @@ Feature: Log In
       | email     | UNIQ_USER[:email]     |
       | password  | UNIQ_USER[:password]  |
     When I fill form on login page with data:
-         | email     | UNIQ_USER[:email]     |
-         | password  | UNIQ_USER[:password]  |
+      | email     | UNIQ_USER[:email]     |
+      | password  | UNIQ_USER[:password]  |
     And I submit form on login page
     And I should be logged in the system
     And I should be redirected to home page
@@ -162,7 +161,7 @@ Feature: Log In
     And I cancel account on edit account page
     And I confirm account cancelling on edit account page
     Then I should see following text on home page:
-      """
+    """
       Bye! Your account was successfully cancelled. We hope to see you again soon.
       """
     When I fill form on login page with data:
@@ -170,6 +169,6 @@ Feature: Log In
       | password  | UNIQ_USER[:password]  |
     And I submit form on login page
     Then I should see following text on home page:
-      """
+    """
       Invalid email or password.
       """
