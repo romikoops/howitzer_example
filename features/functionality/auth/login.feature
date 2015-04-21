@@ -6,7 +6,7 @@ Feature: Log In
   @bvt
   Scenario: user can open login page via menu
     Given home page of web application
-    When I click login menu item on home page
+    When I click Login menu item on home page
     Then login page should be displayed
 
   @bvt
@@ -31,8 +31,8 @@ Feature: Log In
     And I submit form on login page
     Then I should be logged in the system
     And I should be redirected to home page
-    When I click logout menu item
-    And I click login menu item
+    When I click Logout menu item
+    And I click Login menu item
     Then I should see Login form on login page with parameters:
       | email     | UNIQ_USER[:email]     |
       | password  | UNIQ_USER[:password]  |

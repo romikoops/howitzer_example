@@ -71,7 +71,7 @@ Feature: Account Editing
     And I am logged in as UNIQ_USER user
     And I am on edit account page
     When I fill form on edit account page with data:
-      | email                  | test@i.ua              |
+      | email                  | test@.ua               |
       | current_password       | UNIQ_USER[:password]   |
     And I submit form on edit account page
     Then edit account page should be displayed
