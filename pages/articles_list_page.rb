@@ -1,7 +1,7 @@
 class ArticlesListPage < WebPage
   URL = '/articles/'
   validates :title, pattern: /\ADemo web application - Listing Articles\z/
-  validates :url, pattern: /\/articles/
+
 
 
   add_locator :new_article_button,  xpath: "//a[@href='/articles/new']"

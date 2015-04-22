@@ -1,4 +1,6 @@
-module Gen
+module DataGenerator
+  module Gen
+    class << self
 
   def article(params={})
     prefix = serial
@@ -35,3 +37,5 @@ module Gen
   end
 
 end
+  end
+  end
