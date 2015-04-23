@@ -1,8 +1,11 @@
 require_relative 'main_menu'
 
 class ChangePasswordPage < WebPage
-  URL = '/users/password/new'
-  validates :url, pattern: /\/users\/password/
+  URL = '/users/password'
+  #http://demoapp.strongqa.com/users/password
+  #http://demoapp.strongqa.com/users/password/edit?reset_password_token=svvJMgbmh5BCjpojuTyL
+
+  validates :url, pattern: /\/users\/password(\/edit.*)?\z/
 
   add_field_locator :password_input, 'user_password'
   add_field_locator :confirm_password_input, 'user_password_confirmation'

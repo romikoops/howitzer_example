@@ -6,7 +6,7 @@ class ConfirmationInstructionEmail < Email
   end
 
   def confirmation_link
-    res = plain_text_body[/Confirm my account \((.+?)\)/, 1]
+    res = plain_text_body[/Confirm my account\s+<([^>]*)>/, 1]
     log.error("Confirmation link was not found") if res.nil?
     res
   end

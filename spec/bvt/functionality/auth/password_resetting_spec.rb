@@ -45,6 +45,7 @@ feature "Password Resetting" do
 
   scenario "user can login with old password until confirmation email for new password is not confirmed" do
     user = Gen.user
+    sign_up_as(user)
     LoginPage.open.
         navigate_to_forgot_password_page
     ForgotPasswordPage.given.

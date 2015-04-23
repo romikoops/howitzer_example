@@ -6,4 +6,9 @@ class UsersPage < WebPage
 
   include MainMenu
 
+  def click_user_link(user_email)
+    find(apply(locator(:user_link), user_email)).click
+    UserViewPage.given
+  end
+
 end
