@@ -5,7 +5,7 @@ require_relative "gen"
 
 World(Capybara::Settings)
 World(DataGenerator)
-include Gen
+
 
 log.settings_as_formatted_text
 DataStorage.store('sauce', :start_time, Time.now.utc)

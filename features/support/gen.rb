@@ -1,4 +1,3 @@
-module DataGenerator
   module Gen
     class << self
 
@@ -19,7 +18,7 @@ module DataGenerator
     gen_entity('article_text', serial*7)
   end
 
-  class Article < Object
+  class Article
     attr_reader :title, :text
     def initialize(params={})
       @title = params.delete(:title)
@@ -37,5 +36,4 @@ module DataGenerator
   end
 
 end
-  end
   end
