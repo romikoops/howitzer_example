@@ -78,8 +78,8 @@
 ###########################################################
 # MAILGUN SETTINGS                                        #
 ###########################################################
- mailgun_key: key-9d5w503rm8bfz8bl4kk5jyfquwq6q113
- mailgun_domain: sandboxbaf443d4c81b43d0b64a413805dc6f68.mailgun.org
+ mailgun_key: key-fdc7dfaf228e6c6827ebe94da27125b6
+ mailgun_domain: mg.strongqa.com
 
 ############################################################
 # TIMEOUTS                                                 #
