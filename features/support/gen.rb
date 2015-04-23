@@ -1,39 +1,39 @@
 module Gen
   class << self
 
-  def article(params={})
+ def article(params={})
     prefix = serial
     default = {
         title: gen_article_title(prefix),
         text: gen_article_text(prefix),
     }
     Article.new(default.merge(params))
-  end
+ end
 
-  def gen_article_title(serial=nil)
+ def gen_article_title(serial=nil)
     gen_entity('article_title', serial)
-  end
+ end
 
-  def gen_article_text(serial=nil)
+ def gen_article_text(serial=nil)
     gen_entity('article_text', serial*7)
-  end
+ end
 
-  class Article
-    attr_reader :title, :text
-    def initialize(params={})
-      @title = params.delete(:title)
-      @text = params.delete(:text)
-    end
-  end
+ class Article
+   attr_reader :title, :text
+   def initialize(params={})
+     @title = params.delete(:title)
+     @text = params.delete(:text)
+   end
+ end
 
-  def given_article_by_number(num)
-    data = DataStorage.extract('article', num.to_i)
-    unless data
-      data = Gen::article
-      DataStorage.store('article', num.to_i, data)
-    end
-    data
-  end
+ def given_article_by_number(num)
+   data = DataStorage.extract('article', num.to_i)
+   unless data
+     data = Gen::article
+     DataStorage.store('article', num.to_i, data)
+   end
+   data
+ end
 
+ end
 end
-  end
