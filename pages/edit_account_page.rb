@@ -35,14 +35,15 @@ class EditAccountPage < WebPage
   end
 
   def filled_right?(user_name: nil, email: nil, password: nil, password_confirmation: nil, current_password: nil)
-    if field_locator(:name).eql?(user_name) and
+    if find_field(field_locator(:name)).text == user_name
+      # and
         # field_locator(:email).eql?(email) and
         # field_locator(:password).eql?(password) and
         # field_locator(:password_confirmation).eql?(password_confirmation) and
         # field_locator(:current_password).eql?(current_password)
-      return true
+      true
     else
-      return false
+      false
     end
   end
 
