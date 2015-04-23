@@ -1,5 +1,5 @@
-  module Gen
-    class << self
+module Gen
+  class << self
 
   def article(params={})
     prefix = serial

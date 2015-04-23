@@ -23,6 +23,7 @@ end
 
 Then /^I should see article on (.+) page with data:$/ do |page, table|
   article = table.rows_hash.symbolize_keys
- expect(page.given.text).to include(article[:title]) and expect(page.given.text).to include(article[:text])
+  expect(page.given.text).to include(article[:title])
+  expect(page.given.text).to include(article[:text])
 end
 

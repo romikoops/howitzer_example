@@ -1,7 +1,6 @@
 require 'cucumber'
 require 'capybara/cucumber'
 require_relative '../../boot'
-require_relative "gen"
 
 World(Capybara::Settings)
 World(DataGenerator)
