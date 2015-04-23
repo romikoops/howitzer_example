@@ -34,12 +34,12 @@ class EditAccountPage < WebPage
     click_button(button_locator :update_account_btn)
   end
 
-  def filled_right?(user_name: nil, email: nil, password: nil, password_confirmation: nil, current_password: nil)
-    find_field(field_locator(:name)).value == user_name
-    find_field(field_locator(:email)).value == email
-    find_field(field_locator(:password)).value == password
-    find_field(field_locator(:password_confirmation)).value == password_confirmation
-    find_field(field_locator(:current_password)).value == current_password
+  def form_data
+    {:user_name => find_field(field_locator(:name)).value,
+     :email => find_field(field_locator(:email)).value,
+     :password => find_field(field_locator(:password)).value,
+     :password_confirmation => find_field(field_locator(:password_confirmation)).value,
+     :current_password => find_field(field_locator(:current_password)).value}
   end
 
 end
