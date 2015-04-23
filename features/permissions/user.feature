@@ -5,10 +5,7 @@ Feature: User Permissions
   So I can see what in system is available to the user
 
   Background:
-    Given registered user with data:
-      | user_name | UNIQ_USER1[:full_name]  |
-      | email     | UNIQ_USER1[:email]      |
-      | password  | UNIQ_USER1[:password]   |
+    Given there is registered UNIQ_USER1 user
     And registered admin user with parameters:
       | user_name | UNIQ_USER2[:full_name]  |
       | email     | UNIQ_USER2[:email]      |

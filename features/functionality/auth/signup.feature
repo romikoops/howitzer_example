@@ -97,7 +97,7 @@ Feature: Sign Up
     And I submit sign up form on sign up page
     Then I should not be logged in the system
     And I should see following text on sign up page:
-    """
+     """
      1 error prohibited this user from being saved: Password is too short (minimum is 8 characters)
      """
     When I fill form on sign up page with data:
@@ -108,17 +108,13 @@ Feature: Sign Up
     And I submit sign up form on sign up page
     Then I should not be logged in the system
     And I should see following text on sign up page:
-    """
+     """
      1 error prohibited this user from being saved: Password confirmation doesn't match Password
      """
 
   @p1
   Scenario: user cannot sign up with duplicated email
-    Given registered user with data:
-      | user_name             | UNIQ_USER[:full_name] |
-      | email                 | UNIQ_USER[:email]     |
-      | password              | UNIQ_USER[:password]  |
-
+    Given there is registered UNIQ_USER user
     And sign up page of web application
     When I fill form on sign up page with data:
       | user_name             | UNIQ_USER[:full_name] |
@@ -129,5 +125,5 @@ Feature: Sign Up
     Then I should not be logged in the system
     And I should see following text on sign up page:
     """
-   1 error prohibited this user from being saved: Email has already been taken
-   """
+    1 error prohibited this user from being saved: Email has already been taken
+    """

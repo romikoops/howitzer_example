@@ -4,17 +4,9 @@ Feature: User Viewing
   So I can see data of other user
 
   Background:
-    Given registered user with data:
-      | user_name | UNIQ_USER[:full_name]  |
-      | email     | UNIQ_USER[:email]      |
-      | password  | UNIQ_USER[:password]   |
-    And registered user with data:
-      | user_name | UNIQ_USER1[:full_name] |
-      | email     | UNIQ_USER1[:email]     |
-      | password  | UNIQ_USER1[:password]  |
-    And I logged as user:
-      | email     | UNIQ_USER1[:email]     |
-      | password  | UNIQ_USER1[:password]  |
+    Given there is registered UNIQ_USER user
+    And there is registered UNIQ_USER1 user
+    And I am logged in as UNIQ_USER1 user
     And users page of web application
 
   Scenario: user is viewing other user on user page

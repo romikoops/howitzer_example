@@ -5,10 +5,7 @@ Feature: Account Cancelling
   So I can cancel my account
 
   Scenario: user can cancel his account
-    Given registered user with data:
-      | user_name | UNIQ_USER[:full_name] |
-      | email     | UNIQ_USER[:email]     |
-      | password  | UNIQ_USER[:password]  |
+    Given there is registered UNIQ_USER user
     When I fill form on login page with data:
       | email     | UNIQ_USER[:email]     |
       | password  | UNIQ_USER[:password]  |

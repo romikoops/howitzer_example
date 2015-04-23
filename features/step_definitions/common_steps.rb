@@ -10,12 +10,10 @@ Given /^(.+) page of web application$/ do |page|
   page.open
 end
 
-
-Given /^registered user with data:$/ do |table|
-  data = table.rows_hash.symbolize_keys
-  SignUpPage.open.sign_up_as(data[:user_name], data[:email], data[:password])
-  step "I should receive confirmation instruction email for #{data[:email]} recipient"
-  step "I confirm #{data[:email]} account from confirmation instruction email"
+Given /^there is registered (.+) user$/ do |user|
+  SignUpPage.open.sign_up_as(user.full_name, user.email, user.password)
+  step "I should receive confirmation instruction email for #{user.email} recipient"
+  step "I confirm #{user.email} account from confirmation instruction email"
   step "I should see following text on login page:","Your account was successfully confirmed."
 end
 
@@ -29,11 +27,9 @@ Given /^article with parameters$/ do |table|
   #TODO add article creation
 end
 
-Given /^I logged as user:$/ do |table|
-  data = table.rows_hash.symbolize_keys
-  LoginPage.open.login_as(data[:email], data[:password])
+Given /^I am logged in as (.+) user$/ do |user|
+  LoginPage.open.login_as(user.email, user.password)
 end
-
 ####################################
 #              ACTIONS             #
 ####################################
@@ -43,7 +39,7 @@ When /^I open (.+?) page$/ do |page|
 end
 
 When /^I click (.+?) menu item on (.+) page$/ do |text, page|
-  page.given.choose_menu(text)
+  page.given.choose_menu(text.capitalize)
 end
 
 When /^I fill form on (.+) page with data:$/ do |page, table|
@@ -60,6 +56,10 @@ end
 
 When /^I click (.+) link on (.+) page$/ do |link, page|
   page.given.click_link link
+end
+
+When /^I log out$/ do
+  HomePage.given.choose_menu('Logout')
 end
 
 ####################################

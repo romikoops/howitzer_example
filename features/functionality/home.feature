@@ -2,10 +2,7 @@
 Feature: Home
 
   Scenario: visitor can see home page of web application
-    Given registered user with data:
-      | user_name | UNIQ_USER[:full_name] |
-      | email     | UNIQ_USER[:email]     |
-      | password  | UNIQ_USER[:password]  |
+    Given there is registered UNIQ_USER user
     And article created by UNIQ_USER[:email] user with parameters:
       | title     | UNIQ_ARTICLE[:title]   |
       | text      | UNIQ_ARTICLE[:text]    |

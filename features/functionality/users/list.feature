@@ -5,10 +5,7 @@ Feature: Users List
   So I can see Users list
 
   Background:
-    Given registered user with data:
-      | user_name | UNIQ_USER[:full_name]  |
-      | email     | UNIQ_USER[:email]      |
-      | password  | UNIQ_USER[:password]   |
+    Given there is registered UNIQ_USER user
     And registered admin user with parameters:
       | user_name | UNIQ_USER1[:full_name] |
       | email     | UNIQ_USER1[:email]     |
