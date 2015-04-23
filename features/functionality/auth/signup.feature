@@ -7,13 +7,13 @@ Feature: Sign Up
   @bvt
   Scenario: user can open sign up page via menu
     Given home page of web application
-    When I click Sign up menu item on home page
+    When I click sign up menu item on home page
     Then I should be redirected to sign up page
 
   @bvt
   Scenario: visitor can initiate sign up
     Given login page of web application
-    When I click Sign up menu item on login page
+    When I click sign up menu item on login page
     Then I should be redirected to sign up page
 
   @bvt

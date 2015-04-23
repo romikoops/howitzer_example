@@ -34,7 +34,7 @@ When /^I open (.+?) page$/ do |page|
 end
 
 When /^I click (.+?) menu item on (.+) page$/ do |text, page|
-  page.given.choose_menu(text)
+  page.given.choose_menu(text.capitalize)
 end
 
 When /^I fill form on (.+) page with data:$/ do |page, table|
