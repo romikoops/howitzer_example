@@ -6,4 +6,8 @@ class UsersPage < WebPage
 
   include MainMenu
 
+  def click_user_view_link(user_email)
+    click_link_or_button user_email
+  end
+
 end

@@ -22,6 +22,11 @@ Given /^logged in as admin user with data:$/ do |table|
   LoginPage.open.fill_form(table.rows_hash.symbolize_keys).submit_form
 end
 
+Given /^I logged as user:$/ do |table|
+  data = table.rows_hash.symbolize_keys
+  LoginPage.open.login_as(data[:email], data[:password])
+end
+
 Given /^article with parameters$/ do |table|
   article = table.rows_hash.symbolize_keys
   #TODO add article creation
