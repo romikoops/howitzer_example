@@ -1,7 +1,7 @@
 ###########################################################
 #  COMMON SETTINGS                                        #
 ###########################################################
- debug_mode: false
+ debug_mode: true
 
 ###########################################################
 # APPLICATION SETTINGS                                    #
@@ -84,7 +84,7 @@
 ############################################################
 # TIMEOUTS                                                 #
 ############################################################
- timeout_tiny: 1
- timeout_short: 3
- timeout_small: 20
- timeout_medium: 70
+ timeout_tiny: 10
+ timeout_short: 20
+ timeout_small: 30
+ timeout_medium: 150
