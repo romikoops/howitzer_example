@@ -1,15 +1,13 @@
 require_relative 'main_menu'
 
 class ChangePasswordPage < WebPage
-  URL = '/users/password'
-  #http://demoapp.strongqa.com/users/password
-  #http://demoapp.strongqa.com/users/password/edit?reset_password_token=svvJMgbmh5BCjpojuTyL
-
-  validates :url, pattern: /\/users\/password(\/edit.*)?\z/
+  URL = '/users/password/new'
+  validates :url, pattern: /\/users\/password/
 
   add_field_locator :password_input, 'user_password'
   add_field_locator :confirm_password_input, 'user_password_confirmation'
   add_button_locator :submit_form, 'Change my password'
+
   include MainMenu
 
   def fill_form(new_password: nil,confirm_new_password: nil)

@@ -6,9 +6,7 @@ Feature: User Viewing
   Background:
     Given there is registered UNIQ_USER user
     And there is registered UNIQ_USER1 user
-    And I logged as user:
-      | email     | UNIQ_USER1[:email]     |
-      | password  | UNIQ_USER1[:password]  |
+    And I am logged in as UNIQ_USER1 user
     And users page of web application
 
   Scenario: user is viewing other user on user page
