@@ -1,6 +1,6 @@
 class ForgotPasswordPage < WebPage
   URL = '/users/password/new'
-  validates :url, pattern: /\/users\/password/
+  validates :url, pattern: /\/users\/password\/new/
 
   add_field_locator :email_input, 'user_email'
   add_button_locator :reset_password_button, 'Reset Password'

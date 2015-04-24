@@ -7,7 +7,6 @@ module SignUpHelper
         password: user.password,
         password_confirmation: user.password)
         .submit_form
-
     ConfirmationInstructionEmail.
         find_by_recipient(user.email).
         confirm_my_account
