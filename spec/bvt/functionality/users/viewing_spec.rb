@@ -7,7 +7,7 @@ feature "Viewing Users" do
     sign_up_as(user1)
     sign_up_as(user2)
     log_in_as(user2)
-    UsersPage.open.click_user_view_link(user1.email)
+    UsersPage.open.open_user(user1.email)
     expect(UserViewPage.given.text).to include(user1.email)
   end
 end

@@ -5,12 +5,12 @@ Feature: Sign Up
   
   Scenario: user can open sign up page via menu
     Given home page of web application
-    When I click Sign up menu item on home page
+    When I click sign up menu item on home page
     Then I should be redirected to sign up page
 
   Scenario: visitor can initiate sign up
     Given login page of web application
-    When I click Sign up menu item on login page
+    When I click sign up menu item on login page
     Then I should be redirected to sign up page
 
   Scenario: user can sign up with correct credentials
