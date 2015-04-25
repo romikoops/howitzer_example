@@ -5,9 +5,8 @@ module SignUpHelper
         user_name: user.full_name,
         email: user.email,
         password: user.password,
-        password_confirmation: user.password)
-        .submit_form
-
+        password_confirmation: user.password).
+        submit_form
     ConfirmationInstructionEmail.
         find_by_recipient(user.email).
         confirm_my_account
@@ -23,8 +22,17 @@ module SignUpHelper
     HomePage.wait_for_opened
   end
 
+  def log_in_as_admin
+    LoginPage.
+        open.
+        fill_form(email: settings.def_test_user, password: settings.def_test_pass).
+        submit_form
+    expect(HomePage).to be_authenticated
+    HomePage.wait_for_opened
+  end
 end
 
 RSpec.configure do |config|
   config.include SignUpHelper
 end
+
