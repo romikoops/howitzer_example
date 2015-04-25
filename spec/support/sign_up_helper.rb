@@ -35,4 +35,3 @@ end
 RSpec.configure do |config|
   config.include SignUpHelper
 end
-

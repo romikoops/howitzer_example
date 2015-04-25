@@ -38,9 +38,9 @@ Feature: Password Resetting
       | email                | UNIQ_USER[:email]     |
     And I submit form on forgot password page
     Then I should see following text on login page:
-      """
-      You will receive an email with instructions on how to reset your password in a few minutes.
-      """
+    """
+    You will receive an email with instructions on how to reset your password in a few minutes.
+    """
     And I should receive reset password confirmation email for UNIQ_USER[:email] recipient
     When I confirm UNIQ_USER[:email] resetting password from reset password confirmation email
     And I fill form on change password page with data:
@@ -48,18 +48,17 @@ Feature: Password Resetting
       | confirm_new_password | 1234567    |
     And I submit form on change password page
     Then I should see following text on change password page:
-      """
-      Password confirmation doesn't match Password
-      """
+    """
+    1 error prohibited this user from being saved: Password confirmation doesn't match Password
+    """
     And I fill form on change password page with data:
       | new_password         | 1234567    |
       | confirm_new_password | 1234567    |
     And I submit form on change password page
     Then I should see following text on change password page:
-      """
-      Password is too short (minimum is 8 characters)
-      """
-
+    """
+    Password is too short (minimum is 8 characters)
+    """
   @p1
   Scenario: user can not reset password with incorrect email
     Given login page of web application
