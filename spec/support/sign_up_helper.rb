@@ -25,7 +25,7 @@ module SignUpHelper
   def log_in_as_admin
     LoginPage.
         open.
-        fill_form(email: "admin@strongqa.com", password: "1234567890").
+        fill_form(email: settings.def_test_user, password: settings.def_test_pass).
         submit_form
     expect(HomePage).to be_authenticated
     HomePage.wait_for_opened
