@@ -1,22 +1,18 @@
-@ok
 Feature: Sign Up
   As a user 
   I want to sign up to the system
   So I can login with a new account
   
-  @bvt
   Scenario: user can open sign up page via menu
     Given home page of web application
     When I click sign up menu item on home page
     Then I should be redirected to sign up page
 
-  @bvt
   Scenario: visitor can initiate sign up
     Given login page of web application
     When I click sign up menu item on login page
     Then I should be redirected to sign up page
 
-  @bvt
   Scenario: user can sign up with correct credentials
     Given sign up page of web application
     When I fill form on sign up page with data:
@@ -43,7 +39,6 @@ Feature: Sign Up
     Then I should be logged in the system
     And I should be redirected to home page
 
-  @p1
   Scenario: user can not sign up with blank data
     Given sign up page of web application
     When I fill form on sign up page with data:
@@ -80,7 +75,6 @@ Feature: Sign Up
     1 error prohibited this user from being saved: Email can't be blank
     """
 
-  @p1
   Scenario: user can not sign up with incorrect data
     Given sign up page of web application
     When I fill form on sign up page with data:
