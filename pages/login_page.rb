@@ -19,8 +19,11 @@ class LoginPage < WebPage
   def fill_form(email: nil, password: nil, remember_me: nil)
     fill_in(field_locator(:email_input), with: email) unless email.nil?
     fill_in(field_locator(:password_input), with: password) unless password.nil?
-    check(field_locator(:remember_me)) unless remember_me.nil?
     self
+  end
+
+  def click_checkbox
+    check(field_locator(:remember_me))
   end
 
   def submit_form

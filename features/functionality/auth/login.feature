@@ -13,14 +13,14 @@ Feature: Log In
   Scenario: user can login with correct credentials
     Given there is registered UNIQ_USER user
     And login page of web application
-    When I fill form data on login page:
+    When I fill form on login page with data:
       | email     | UNIQ_USER[:email]     |
       | password  | UNIQ_USER[:password]  |
     And I submit form on login page
     Then I should be logged in the system
     And I should be redirected to home page
 
-  @bvt @wip
+  @bvt @bug
   Scenario: user can login with remembering credentials
     Given there is registered UNIQ_USER user
     And login page of web application
@@ -31,8 +31,8 @@ Feature: Log In
     And I submit form on login page
     Then I should be logged in the system
     And I should be redirected to home page
-    When I click logout menu item
-    And I click login menu item
+    When I click logout menu item on home page
+    And I click login menu item on home page
     Then I should see Login form on login page with parameters:
       | email     | UNIQ_USER[:email]     |
       | password  | UNIQ_USER[:password]  |
@@ -40,7 +40,7 @@ Feature: Log In
     Then I should be logged in the system
     And I should be redirected to home page
 
-  @p1 @wip
+  @p1
   Scenario: user can not login without credentials
     Given there is registered UNIQ_USER user
     And login page of web application
@@ -72,7 +72,7 @@ Feature: Log In
       Invalid email or password.
       """
       
-  @p1 @wip
+  @p1
   Scenario: user can not login with incorrect credentials
     Given there is registered UNIQ_USER user
     And login page of web application
@@ -103,12 +103,11 @@ Feature: Log In
     When I fill form on login page with data:
       | email     | test.1234567890       |
       | password  |                       |
-    Then I should see following text on login page:
-      """
-      Необходимо ввести допустимый адрес электронной почты
-      """
-  
-  @bvt @wip
+    Then I should not be logged in the system
+
+
+
+  @bvt
   Scenario: user can not login until confirmation email is not confirmed
     Given sign up page of web application
     When I fill form on sign up page with data:
@@ -123,7 +122,8 @@ Feature: Log In
       """
       A message with a confirmation link has been sent to your email address. Please open the link to activate your account.
       """
-    When I fill form on login page with data:
+    When I open login page
+    And I fill form on login page with data:
       | email    | UNIQ_USER[:email]    |
       | password | UNIQ_USER[:password] |
     And I submit form on login page
@@ -133,12 +133,12 @@ Feature: Log In
       You have to confirm your account before continuing.
       """
 
-  @bvt @wip
+  @bvt
   Scenario: canceled user can not login
     Given there is registered UNIQ_USER user
     When I fill form on login page with data:
-         | email     | UNIQ_USER[:email]     |
-         | password  | UNIQ_USER[:password]  |
+      | email     | UNIQ_USER[:email]     |
+      | password  | UNIQ_USER[:password]  |
     And I submit form on login page
     And I should be logged in the system
     And I should be redirected to home page
@@ -146,14 +146,16 @@ Feature: Log In
     And I cancel account on edit account page
     And I confirm account cancelling on edit account page
     Then I should see following text on home page:
-      """
-      Bye! Your account was successfully cancelled. We hope to see you again soon.
-      """
+    """
+    Bye! Your account was successfully cancelled. We hope to see you again soon.
+    """
+    When I click login menu item on home page
+    Then login page should be displayed
     When I fill form on login page with data:
       | email     | UNIQ_USER[:email]     |
       | password  | UNIQ_USER[:password]  |
     And I submit form on login page
-    Then I should see following text on home page:
-      """
-      Invalid email or password.
-      """
+    Then I should see following text on login page:
+    """
+    Invalid email or password.
+    """
