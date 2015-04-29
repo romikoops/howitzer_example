@@ -107,8 +107,8 @@ feature "Sign Up" do
   end
 
   scenario "User cannot sign up with duplicated email" do
-    sign_up_as(Gen::given_user_by_number(0))
-    user = Gen::given_user_by_number(0)
+    user = Gen.user
+    sign_up_as(user)
     SignUpPage.
         open.fill_form(
         email: user.email,

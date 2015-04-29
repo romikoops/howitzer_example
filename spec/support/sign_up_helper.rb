@@ -13,6 +13,17 @@ module SignUpHelper
     expect(LoginPage.given.text).to include('Your account was successfully confirmed.')
   end
 
+  def sign_up_without_confirmation(user)
+    SignUpPage.
+        open.fill_form(
+        user_name: user.full_name,
+        email: user.email,
+        password: user.password,
+        password_confirmation: user.password).
+        submit_form
+    expect(HomePage.given.text).to include('A message with a confirmation link has been sent to your email address. Please open the link to activate your account.')
+  end
+
   def log_in_as(user)
     LoginPage.
         open.
