@@ -27,15 +27,16 @@ Feature: Log In
     When I fill form on login page with data:
       | email     | UNIQ_USER[:email]     |
       | password  | UNIQ_USER[:password]  |
-    And I check 'Remember me' checkbox
+      | remember_me| yes  |
     And I submit form on login page
     Then I should be logged in the system
     And I should be redirected to home page
     When I click logout menu item on home page
     And I click login menu item on home page
-    Then I should see Login form on login page with parameters:
-      | email     | UNIQ_USER[:email]     |
-      | password  | UNIQ_USER[:password]  |
+    And I should see following text on login page:
+    """
+    UNIQ_USER[:email]
+    """
     When I submit form on login page
     Then I should be logged in the system
     And I should be redirected to home page
