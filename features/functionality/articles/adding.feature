@@ -4,9 +4,7 @@ Feature: Article Adding
   So other users can see my article
 
   Background:
-    Given logged in as admin user with data:
-      | email     | admin@strongqa.com     |
-      | password  | 1234567890             |
+    Given logged in as admin user
     And I open articles list page
 
   Scenario: user can add article with correct data

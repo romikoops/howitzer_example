@@ -6,7 +6,7 @@ Given /^opened article '(.*)' page$/ do |article_title|
   HomePage.given.view_article article_title
 end
 
-And /^article with parameters:$/ do |table|
+Given /^there is article with parameters:$/ do |table|
   steps %Q{
     And I open articles list page
     When I click new article button on articles list page
@@ -25,17 +25,17 @@ When /^I click new article button on articles list page$/ do
   ArticlesListPage.given.add_new_article
 end
 
-When /^I click Destroy button on article UNIQ_ARTICLE\[:title\] on articles list page$/ do
+When /^I destroy UNIQ_ARTICLE\[:title\] article on articles list page$/ do
   title=Gen::given_article_by_number(0).title
   ArticlesListPage.given.destroy_article(title)
 end
 
-And /^I confirm action$/ do
-  ArticlesListPage.accept_alert
+When /^I confirm destroy action$/ do
+  ArticlesListPage.confirm_destroying
 end
 
-And /^I don't confirm action$/ do
-  page.driver.browser.switch_to.alert.dismiss
+When /^I don't confirm destroy action$/ do
+  ArticlesListPage.dismiss_destroying
 end
 
 ####################################
@@ -46,14 +46,10 @@ Then /^I see comment displayed on (.*) page:$/ do |page, table|
   expect(page.given.comment_data).to eql(table.rows_hash.symbolize_keys)
 end
 
-Then /^I should see article on (.+) page with data:$/ do |page, table|
-  article = table.rows_hash.symbolize_keys
-  expect(page.given.text).to include(article[:title])
-  expect(page.given.text).to include(article[:text])
+Then (/^I should see (UNIQ_ARTICLE\[:title\]) article on articles list page:$/) do |title|
+  expect(ArticlesListPage.given.text).to include(title)
 end
 
-Then /^I should not see article on (.+) page with data:$/ do |page, table|
-  article = table.rows_hash.symbolize_keys
-  expect(page.given.text).to_not include(article[:title])
-  expect(page.given.text).to_not include(article[:text])
+Then (/^I should not see (UNIQ_ARTICLE\[:title\]) article on articles list page:$/) do |title|
+  expect(ArticlesListPage.given.text).to_not include(title)
 end

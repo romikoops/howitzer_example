@@ -17,9 +17,8 @@ Given /^there is registered (.+) user$/ do |user|
   step "I should see following text on login page:","Your account was successfully confirmed."
 end
 
-Given /^logged in as admin user with data:$/ do |table|
-  data = table.rows_hash.symbolize_keys
-  LoginPage.open.fill_form(table.rows_hash.symbolize_keys).submit_form
+Given /^logged in as admin user$/ do
+  LoginPage.open.fill_form(email: settings.def_test_user , password: settings.def_test_pass).submit_form
 end
 
 Given /^article with parameters$/ do |table|
