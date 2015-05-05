@@ -8,7 +8,7 @@ end
 
 Given /^there is article with parameters:$/ do |table|
   steps %Q{
-    And I open articles list page
+   When I open articles list page
     And I click new article button on articles list page
     And I fill form on new article page with data:
       | title     | UNIQ_ARTICLE[:title]  |
@@ -25,8 +25,7 @@ When /^I click new article button on articles list page$/ do
   ArticlesListPage.given.add_new_article
 end
 
-When /^I destroy UNIQ_ARTICLE\[:title\] article on articles list page$/ do
-  title=Gen::given_article_by_number(0).title
+When /^I destroy (.+) article on articles list page$/ do |title|
   ArticlesListPage.given.destroy_article(title)
 end
 
@@ -46,10 +45,10 @@ Then /^I see comment displayed on (.*) page:$/ do |page, table|
   expect(page.given.comment_data).to eql(table.rows_hash.symbolize_keys)
 end
 
-Then /^I should see (UNIQ_ARTICLE\[:title\]) article on articles list page$/ do |title|
+Then /^I should see (.+) article on articles list page$/ do |title|
   expect(ArticlesListPage.given.text).to include(title)
 end
 
-Then /^I should not see (UNIQ_ARTICLE\[:title\]) article on articles list page$/ do |title|
+Then /^I should not see (.+) article on articles list page$/ do |title|
   expect(ArticlesListPage.given.text).to_not include(title)
 end

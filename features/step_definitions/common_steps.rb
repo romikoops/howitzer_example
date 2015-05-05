@@ -23,8 +23,8 @@ Given /^article with parameters$/ do |table|
 end
 
 Given /^I am logged in as (.+) user$/ do |user|
-  if user="admin" then
-     LoginPage.open.fill_form(email: settings.def_test_user , password: settings.def_test_pass).submit_form
+  if user=="admin" then
+    LoginPage.open.login_as(settings.def_test_user, settings.def_test_pass)
    else
      LoginPage.open.login_as(user.email, user.password)
    end
