@@ -1,5 +1,5 @@
 Feature: Article Destroying
-  As a admin user
+  As an admin user
   I want to delete my article
   So other users can't see my article
 
