@@ -9,8 +9,8 @@ end
 Given /^there is article with parameters:$/ do |table|
   steps %Q{
     And I open articles list page
-    When I click new article button on articles list page
-And I fill form on new article page with data:
+    And I click new article button on articles list page
+    And I fill form on new article page with data:
       | title     | UNIQ_ARTICLE[:title]  |
       | text      | UNIQ_ARTICLE[:text]   |
     And I submit form on new article page
@@ -46,10 +46,10 @@ Then /^I see comment displayed on (.*) page:$/ do |page, table|
   expect(page.given.comment_data).to eql(table.rows_hash.symbolize_keys)
 end
 
-Then (/^I should see (UNIQ_ARTICLE\[:title\]) article on articles list page:$/) do |title|
+Then /^I should see (UNIQ_ARTICLE\[:title\]) article on articles list page$/ do |title|
   expect(ArticlesListPage.given.text).to include(title)
 end
 
-Then (/^I should not see (UNIQ_ARTICLE\[:title\]) article on articles list page:$/) do |title|
+Then /^I should not see (UNIQ_ARTICLE\[:title\]) article on articles list page$/ do |title|
   expect(ArticlesListPage.given.text).to_not include(title)
 end

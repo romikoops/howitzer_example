@@ -17,18 +17,23 @@ Given /^there is registered (.+) user$/ do |user|
   step "I should see following text on login page:","Your account was successfully confirmed."
 end
 
-Given /^logged in as admin user$/ do
-  LoginPage.open.fill_form(email: settings.def_test_user , password: settings.def_test_pass).submit_form
-end
-
 Given /^article with parameters$/ do |table|
   article = table.rows_hash.symbolize_keys
   #TODO add article creation
 end
 
 Given /^I am logged in as (.+) user$/ do |user|
-  LoginPage.open.login_as(user.email, user.password)
+  if user="admin" then
+     LoginPage.open.fill_form(email: settings.def_test_user , password: settings.def_test_pass).submit_form
+   else
+     LoginPage.open.login_as(user.email, user.password)
+   end
 end
+
+Given /^I am on (.+) page$/ do |page|
+  page.open
+end
+
 ####################################
 #              ACTIONS             #
 ####################################
@@ -67,10 +72,6 @@ end
 
 Then /^(.+) page should be displayed$/ do |page|
   page.wait_for_opened
-end
-
-Then /^I should see (.+) page$/ do |page|
-  page.given
 end
 
 Then /^I should be logged in the system$/ do
