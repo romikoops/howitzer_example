@@ -15,11 +15,4 @@ class ArticlesListPage < WebPage
     find(apply(locator(:destroy_button), title)).click
   end
 
-  def self.confirm_destroying
-    accept_alert
-  end
-
-  def self.dismiss_destroying
-    page.driver.browser.switch_to.alert.dismiss
-  end
 end

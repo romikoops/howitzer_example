@@ -7,14 +7,10 @@ Given /^opened article '(.*)' page$/ do |article_title|
 end
 
 Given /^there is article with parameters:$/ do |table|
-  steps %Q{
-   When I open articles list page
-    And I click new article button on articles list page
-    And I fill form on new article page with data:
-      | title     | UNIQ_ARTICLE[:title]  |
-      | text      | UNIQ_ARTICLE[:text]   |
-    And I submit form on new article page
-        }
+  step "I open articles list page"
+  step "I click new article button on articles list page"
+  step "I fill form on new article page with data:", table
+  step "I submit form on new article page"
 end
 
 #############################################################
@@ -30,11 +26,11 @@ When /^I destroy (.+) article on articles list page$/ do |title|
 end
 
 When /^I confirm destroy action$/ do
-  ArticlesListPage.confirm_destroying
+  WebPage.accept_js_alert
 end
 
 When /^I don't confirm destroy action$/ do
-  ArticlesListPage.dismiss_destroying
+  WebPage.dismiss_js_alert
 end
 
 ####################################
