@@ -6,5 +6,5 @@ When /^I cancel account on edit account page$/ do
 end
 
 When /^I confirm account cancelling on edit account page$/ do
-  EditAccountPage.accept_alert
+  WebPage.accept_js_alert
 end
