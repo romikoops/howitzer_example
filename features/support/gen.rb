@@ -19,11 +19,12 @@ module Gen
     end
 
     class Article
-      attr_reader :title, :text
+      attr_reader :title, :text, :creation_time
 
       def initialize(params={})
         @title = params.delete(:title)
         @text = params.delete(:text)
+        @creation_time = "#{Time.now.utc.hour+1}#{Time.now.utc.strftime ':%M'}"
       end
     end
 
