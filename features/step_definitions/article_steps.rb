@@ -10,7 +10,7 @@ end
 #############################################################
 
 When /^I click new article button on articles list page$/ do
-  ArticlesListPage.given.add_new_article
+  ArticleListPage.given.add_new_article
 end
 
 ####################################

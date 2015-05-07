@@ -24,11 +24,16 @@ end
 
 Given /^article with parameters$/ do |table|
   article = table.rows_hash.symbolize_keys
-  #TODO add article creation
+  ArticleListPage.given.add_new_article
+  NewArticlePage.given.fill_form(table.rows_hash.symbolize_keys).submit_form
 end
 
 Given /^I am logged in as (.+) user$/ do |user|
   LoginPage.open.login_as(user.email, user.password)
+end
+
+Given /^I am logged in as admin$/ do
+  LoginPage.open.login_as(settings.def_test_user, settings.def_test_pass)
 end
 ####################################
 #              ACTIONS             #
