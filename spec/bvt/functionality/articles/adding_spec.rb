@@ -4,7 +4,7 @@ feature "Article adding" do
 
   before(:each) do
     log_in_as_admin
-    ArticlesListPage.open.add_new_article
+    ArticleListPage.open.add_new_article
   end
 
   scenario "User can add article with correct data" do
