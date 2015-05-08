@@ -8,7 +8,7 @@ Feature: Article Adding
     And I am on articles list page
 
   Scenario: user can add article with correct data
-    When I click new article button on articles list page
+    When I click new article button on article list page
     And I fill form on new article page with data:
       | title     | UNIQ_ARTICLE[:title]  |
       | text      | UNIQ_ARTICLE[:text]   |
@@ -16,13 +16,13 @@ Feature: Article Adding
     Then I should see article on article page with data:
       | title     | UNIQ_ARTICLE[:title]  |
       | text      | UNIQ_ARTICLE[:text]   |
-    When I open articles list page
-    Then I should see article on articles list page with data:
+    When I open article list page
+    Then I should see article on article list page with data:
       | title     | UNIQ_ARTICLE[:title]  |
       | text      | UNIQ_ARTICLE[:text]   |
 
   Scenario: user can not add article with blank field
-    When I click new article button on articles list page
+    When I click new article button on article list page
     And  I fill form on new article page with data:
       | title     |                       |
       | text      |                       |
@@ -33,7 +33,7 @@ Feature: Article Adding
     """
 
   Scenario: user can not add article with title is too short
-    When I click new article button on articles list page
+    When I click new article button on article list page
     And I fill form on new article page with data:
       | title     | 1234                  |
       | text      | UNIQ_ARTICLE[:text]   |
