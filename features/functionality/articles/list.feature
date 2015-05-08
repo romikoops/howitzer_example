@@ -18,7 +18,9 @@ Feature: Articles list
 
   Scenario: user can see articles in Articles list
     When I open articles list page
-    Then I should see UNIQ_ARTICLE1[:title] article on articles list page
-    And I should see UNIQ_ARTICLE1[:text] article on articles list page
-    And I should see UNIQ_ARTICLE2[:title] article on articles list page
-    And I should see UNIQ_ARTICLE2[:text] article on articles list page
+    Then I should see following article parameters on articles list page:
+      | title     | UNIQ_ARTICLE1[:title] |
+      | text      | UNIQ_ARTICLE1[:text]  |
+    And I should see following article parameters on articles list page:
+      | title     | UNIQ_ARTICLE2[:title] |
+      | text      | UNIQ_ARTICLE2[:text]  |
