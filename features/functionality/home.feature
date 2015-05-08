@@ -3,7 +3,6 @@ Feature: Home
 
   Background:
     Given I am logged in as admin user
-    And I open articles list page
     And there is article with parameters:
       | title | UNIQ_ARTICLE[:title] |
       | text | UNIQ_ARTICLE[:text] |
