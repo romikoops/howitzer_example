@@ -1,3 +1,5 @@
+require_relative 'main_menu'
+
 class ArticlePage < WebPage
   validates :title, pattern: /\ADemo web application - Article\z/
   validates :url, pattern: /\/articles\/\d+\/?\z/
@@ -7,6 +9,8 @@ class ArticlePage < WebPage
   add_locator :commenter_name, xpath: ".//p[contains(.,'Commenter:')]"
   add_locator :comment_text, xpath: ".//p[contains(.,'Comment:')]"
   add_locator :article_button, lambda{|title| {xpath: "//a[contains(.,'#{title}')]"} }
+
+  include MainMenu
 
   def fill_form(body: nil)
     log.info "Fill in Add Comment form with body: #{body}"

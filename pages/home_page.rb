@@ -6,6 +6,7 @@ class HomePage < WebPage
   validates :url, pattern: /\A(?:.*?:\/\/)?[^\/]*\/?\z/
 
   add_locator :article_link, lambda{|title| {xpath: ".//a[.='#{title}']"}}
+  add_locator :panel_heading, lambda{|title| {xpath: "//h3[text()=\"#{title}\"]/parent::*/following-sibling::*"}}
 
   include MainMenu
 
@@ -13,5 +14,9 @@ class HomePage < WebPage
     log.info "Open article page byb title: '#{article_title}'"
     find(apply(locator(:article_link), article_title)).click
     ArticlePage.given
+  end
+
+  def find_form_text(panel_title)
+    find(apply(locator(:panel_heading), panel_title)).text
   end
 end
