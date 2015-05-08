@@ -5,14 +5,12 @@ Feature: Articles list
   So I can view my articles in articles list
 
   Background:
-    Given I am logged in as admin user
-    And there is article with parameters:
+    Given there is UNIQ_ARTICLE1 article:
       | title     | UNIQ_ARTICLE1[:title] |
       | text      | UNIQ_ARTICLE1[:text]  |
-    And there is article with parameters:
+    And there is UNIQ_ARTICLE2 article:
       | title     | UNIQ_ARTICLE2[:title] |
       | text      | UNIQ_ARTICLE2[:text]  |
-    And user logged out
     And there is registered UNIQ_USER user
     And I am logged in as UNIQ_USER user
 

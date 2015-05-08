@@ -13,6 +13,15 @@ Given /^there is article with parameters:$/ do |table|
   step "I submit form on new article page"
 end
 
+Given /^there is (.+) article:$/ do |article,table|
+  step "I am logged in as admin user"
+  step "I open articles list page"
+  step "I click new article button on articles list page"
+  step "I fill form on new article page with data:", table
+  step "I submit form on new article page"
+  step 'user logged out'
+end
+
 #############################################################
 #                      ACTIONS                              #
 #############################################################
@@ -31,6 +40,10 @@ end
 
 When /^I don't confirm destroy action$/ do
   WebPage.dismiss_js_alert
+end
+
+When /^I click (.+) article on articles list page$/ do |article|
+  ArticlesListPage.given.open_article(article)
 end
 
 ####################################
