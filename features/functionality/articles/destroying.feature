@@ -11,11 +11,11 @@ Feature: Article Destroying
     And I am on articles list page
 
   Scenario: user can remove article with confirmation action
-    When I destroy UNIQ_ARTICLE[:title] article on articles list page
+    When I destroy UNIQ_ARTICLE[:title] article on article list page
     And I confirm destroy action
-    Then I should not see UNIQ_ARTICLE[:title] article on articles list page
+    Then I should not see UNIQ_ARTICLE[:title] article on article list page
 
   Scenario: user can not remove article without confirmation action
-    When I destroy UNIQ_ARTICLE[:title] article on articles list page
+    When I destroy UNIQ_ARTICLE[:title] article on article list page
     And I don't confirm destroy action
-    Then I should see UNIQ_ARTICLE[:title] article on articles list page
+    Then I should see UNIQ_ARTICLE[:title] article on article list page

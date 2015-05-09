@@ -35,6 +35,10 @@ Given /^I am on (.+) page$/ do |page|
   page.open
 end
 
+Given /^user logged out$/ do
+  ArticlePage.given.choose_menu('Logout')
+end
+
 ####################################
 #              ACTIONS             #
 ####################################
