@@ -13,11 +13,11 @@ Feature: Article Adding
       | title     | UNIQ_ARTICLE[:title]  |
       | text      | UNIQ_ARTICLE[:text]   |
     And I submit form on new article page
-    Then I should see article on article page with data:
+    Then I should see following article parameters on article page:
       | title     | UNIQ_ARTICLE[:title]  |
       | text      | UNIQ_ARTICLE[:text]   |
     When I open article list page
-    Then I should see article on article list page with data:
+    Then I should see following article parameters on articles list page:
       | title     | UNIQ_ARTICLE[:title]  |
       | text      | UNIQ_ARTICLE[:text]   |
 
