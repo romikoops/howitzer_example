@@ -7,5 +7,5 @@ rvm:
   - 2.2.1
   - 2.2.0
 script:
-  - bundle exec rake rspec
+  - bundle exec rake rspec:all
   - bundle exec rake cucumber:ok
