@@ -31,7 +31,7 @@ When /^I click new article button on article list page$/ do
 end
 
 When /^I destroy (.+) article on article list page$/ do |title|
-  ArticlesListPage.given.destroy_article(title)
+  ArticleListPage.given.destroy_article(title)
 end
 
 When /^I confirm destroy action$/ do
@@ -43,7 +43,7 @@ When /^I don't confirm destroy action$/ do
 end
 
 When /^I click (.+) article on article list page$/ do |article|
-  ArticlesListPage.given.open_article(article)
+  ArticleListPage.given.open_article(article)
 end
 
 ####################################
@@ -55,9 +55,9 @@ Then /^I see comment displayed on (.*) page:$/ do |page, table|
 end
 
 Then /^I should see (.+) article on article list page$/ do |title|
-  expect(ArticlesListPage.given.text).to include(title)
+  expect(ArticleListPage.given.text).to include(title)
 end
 
 Then /^I should not see (.+) article on article list page$/ do |title|
-  expect(ArticlesListPage.given.text).to_not include(title)
+  expect(ArticleListPage.given.text).to_not include(title)
 end
