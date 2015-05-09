@@ -54,8 +54,8 @@ Then /^I see comment displayed on (.*) page:$/ do |page, table|
   expect(page.given.comment_data).to eql(table.rows_hash.symbolize_keys)
 end
 
-Then /^I should see (.+) article on article list page$/ do |title|
-  expect(ArticlesListPage.given.text).to include(title)
+Then /^I should see (.+) article on (.+) page$/ do |title,page|
+  expect(page.given.text).to include(title)
 end
 
 Then /^I should not see (.+) article on article list page$/ do |title|

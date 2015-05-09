@@ -13,13 +13,9 @@ Feature: Article Adding
       | title     | UNIQ_ARTICLE[:title]  |
       | text      | UNIQ_ARTICLE[:text]   |
     And I submit form on new article page
-    Then I should see article on article page with data:
-      | title     | UNIQ_ARTICLE[:title]  |
-      | text      | UNIQ_ARTICLE[:text]   |
+    Then I should see UNIQ_ARTICLE[:title] article on article page
     When I open article list page
-    Then I should see article on article list page with data:
-      | title     | UNIQ_ARTICLE[:title]  |
-      | text      | UNIQ_ARTICLE[:text]   |
+    Then I should see UNIQ_ARTICLE[:title] article on articles list page
 
   Scenario: user can not add article with blank field
     When I click new article button on article list page
