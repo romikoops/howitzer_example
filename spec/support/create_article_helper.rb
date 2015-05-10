@@ -6,6 +6,12 @@ module CreateArticleHelper
     expect(ArticlePage.given.text).to include(article.text)
     ArticlePage.given.choose_menu('Logout')
   end
+
+  def open_article(article)
+    ArticleListPage.open.open_article(article.title)
+    expect(ArticlePage).to be_authenticated
+    ArticlePage.wait_for_opened
+  end
 end
 
 RSpec.configure do |config|

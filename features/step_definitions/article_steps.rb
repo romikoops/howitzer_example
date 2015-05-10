@@ -22,6 +22,11 @@ Given /^there is (.+) article:$/ do |article,table|
   step 'user logged out'
 end
 
+Given /^opened (.+) article page$/ do |article|
+  ArticleListPage.open
+  ArticleListPage.given.open_article(article)
+end
+
 #############################################################
 #                      ACTIONS                              #
 #############################################################
@@ -46,6 +51,19 @@ When /^I click (.+) article on article list page$/ do |article|
   ArticleListPage.given.open_article(article)
 end
 
+When /^I fill new comment form on article page with data:$/ do |table|
+  ArticlePage.given.fill_form(table.rows_hash.symbolize_keys)
+end
+
+When /^I fill new comment form on article page with blank data:$/ do |table|
+  ArticlePage.given.fill_form(table.rows_hash.symbolize_keys)
+end
+
+When /^I submit new comment form on article page$/ do
+  ArticlePage.given.submit_form
+end
+
+
 ####################################
 #              CHECKS              #
 ####################################
@@ -60,4 +78,10 @@ end
 
 Then /^I should not see (.+) article on article list page$/ do |title|
   expect(ArticleListPage.given.text).to_not include(title)
+end
+
+Then /^I should see comment on (.+) page with data:$/ do |page, table|
+  comment = table.rows_hash.symbolize_keys
+  expect(page.given.text).to include(comment[:commenter])
+  expect(page.given.text).to include(comment[:comment])
 end

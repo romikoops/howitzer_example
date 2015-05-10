@@ -3,7 +3,7 @@ class ArticleListPage < WebPage
   validates :title, pattern: /\ADemo web application - Listing Articles\z/
 
   add_locator :new_article_button,  xpath: "//a[@href='/articles/new']"
-  add_locator :article_button, lambda{|title| {xpath: "///a[contains(.,'#{title}')]"} }
+  add_locator :article_button, lambda{|title| {xpath: "//a[contains(.,'#{title}')]"} }
   add_locator :destroy_button, ->(title) { {xpath: "//strong[.='#{title}']/following-sibling::a[normalize-space(.)='Destroy'][1]"} }
 
   def add_new_article
@@ -16,14 +16,13 @@ class ArticleListPage < WebPage
     find(apply(locator(:destroy_button), title)).click
   end
 
-  def click_article_button(text)
+  def open_article(text)
     log.info "Open '#{text}' article"
     if phantomjs_driver?
-      find(locator(:article_button)).click
       click_link("#{text}",match: :first)
     else
       find(apply(locator(:article_button),(text))).click
     end
+    puts "777777"
   end
-
 end

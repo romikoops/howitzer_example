@@ -1,4 +1,3 @@
-@wip
 Feature: Article Comment Adding
   As a user
   I want to add a comment to article
@@ -6,9 +5,10 @@ Feature: Article Comment Adding
 
   Background:
     Given there is registered UNIQ_USER user
-    And article with parameters
+    And there is UNIQ_ARTICLE article:
       | title     | UNIQ_ARTICLE[:title]  |
       | text      | UNIQ_ARTICLE[:text]   |
+    And I am logged in as UNIQ_USER user
     And opened UNIQ_ARTICLE[:title] article page
 
   Scenario: user can add comment with valid comment body

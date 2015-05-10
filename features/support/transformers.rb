@@ -11,6 +11,7 @@ end
 
 define_uniq_entity_transform 'ARTICLE'
 define_uniq_entity_transform 'USER'
+define_uniq_entity_transform 'COMMENT'
 
 Transform /^table:.*$/ do |table|
   raw = table.raw.map do |array|
@@ -32,6 +33,15 @@ Transform /^table:.*$/ do |table|
         res = Gen::given_article_by_number(article[:num])
         if article[:property]
           res = res.send(article[:property])
+        end
+      end
+
+      # UNIQ_COMMENT
+      data = /UNIQ_COMMENT(?<num>\d*)(?:\[\:(?<property>.+)\])?/.match(el)
+      if data
+        res = Gen::given_comment_by_number(data[:num])
+        if data[:property]
+          res = res.send(data[:property])
         end
       end
 
