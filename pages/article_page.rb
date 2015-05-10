@@ -4,7 +4,7 @@ class ArticlePage < WebPage
   validates :title, pattern: /\ADemo web application - Article\z/
   validates :url, pattern: /\/articles\/\d+\/?\z/
 
-  add_field_locator :comment_field, 'comment[body]'
+  add_field_locator :comment_field, 'comment_body'
   add_button_locator :add_comment_button, 'Create comment'
   add_locator :commenter_name, xpath: ".//p[contains(.,'Commenter:')]"
   add_locator :comment_text, xpath: ".//p[contains(.,'Comment:')]"
