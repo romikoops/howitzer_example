@@ -1,4 +1,3 @@
-@wip
 Feature: Article Viewing
   As a user
   I want to view my article
@@ -6,22 +5,22 @@ Feature: Article Viewing
 
   Background:
     Given there is registered UNIQ_USER user
-    And article with parameters:
-      | title     | UNIQ_ARTICLE[:title]  |
-      | text      | UNIQ_ARTICLE[:text]   |
+    And there is UNIQ_ARTICLE article:
+      | title     | UNIQ_ARTICLE[:title] |
+      | text      | UNIQ_ARTICLE[:text]  |
+    And I am logged in as UNIQ_USER user
     And comment to UNIQ_ARTICLE[:title] article with parameter:
       | body      | UNIQ_COMMENT[:text]   |
 
   Scenario: user is viewing article page
-    When I open UNIQ_ARTICLE[:title] article page     
-    Then I should see article parameters with data:
+    When I open article page for UNIQ_ARTICLE[:title]
+    Then I should see following article parameters on article page:
       | title     | UNIQ_ARTICLE[:title]  |
       | text      | UNIQ_ARTICLE[:text]   |
-    And I should see comment parameters with data:
+    And I should see comment on article page with data:
       | commenter | UNIQ_USER[:email]     |
       | comment   | UNIQ_COMMENT[:text]   |
     And I should see add comment form on article page
     And I should see body field on article page
-    And I should see buttons: edit article, destroy comment, create comment on article page
-    When I click back to articles link on article page
-    Then I should be redirected to articles list page
+    When I click Back to Articles link on article page
+    Then I should be redirected to article list page

@@ -27,6 +27,12 @@ Given /^opened (.+) article page$/ do |article|
   ArticleListPage.given.open_article(article)
 end
 
+Given /^comment to (.+) article with parameter:$/ do |article,table|
+  step "I open article list page"
+  ArticleListPage.given.open_article(article)
+  step "I fill new comment form on article page with data:",table
+  step "I submit new comment form on article page"
+end
 #############################################################
 #                      ACTIONS                              #
 #############################################################
@@ -63,7 +69,10 @@ When /^I submit new comment form on article page$/ do
   ArticlePage.given.submit_form
 end
 
-
+When /^I open article page for (.+)$/ do |article|
+  ArticleListPage.open
+  ArticleListPage.given.open_article(article)
+end
 ####################################
 #              CHECKS              #
 ####################################
@@ -84,4 +93,12 @@ Then /^I should see comment on (.+) page with data:$/ do |page, table|
   comment = table.rows_hash.symbolize_keys
   expect(page.given.text).to include(comment[:commenter])
   expect(page.given.text).to include(comment[:comment])
+end
+
+Then /^I should see add comment form on article page$/ do
+  ArticlePage.given.comment_form_present.should be_visible
+end
+
+Then /^I should see body field on article page$/ do
+  ArticlePage.given.body_field_present.should be_visible
 end

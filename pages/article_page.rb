@@ -9,6 +9,8 @@ class ArticlePage < WebPage
   add_locator :commenter_name, xpath: ".//p[contains(.,'Commenter:')]"
   add_locator :comment_text, xpath: ".//p[contains(.,'Comment:')]"
   add_locator :article_button, lambda{|title| {xpath: "//a[contains(.,'#{title}')]"} }
+  add_locator :comment_form, "#new_comment"
+
 
   include MainMenu
 
@@ -39,4 +41,11 @@ class ArticlePage < WebPage
     end
   end
 
+  def comment_form_present()
+    find(locator(:comment_form))
+  end
+
+  def body_field_present()
+    find("#comment_body")
+  end
 end
