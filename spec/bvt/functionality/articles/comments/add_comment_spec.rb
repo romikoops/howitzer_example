@@ -4,13 +4,13 @@ feature "Adding Comment" do
   background "Create article, user, comment" do
     @article = Gen.article
     @comment = Gen.comment
-    @user1 = Gen.user
+    @user = Gen.user
 
     log_in_as_admin
     create_article(@article)
-    sign_up_as(@user1)
-    log_in_as(@user1)
-    article_open(@article)
+    sign_up_as(@user)
+    log_in_as(@user)
+    open_article(@article)
   end
 
   scenario "User can add comment with valid comment body" do

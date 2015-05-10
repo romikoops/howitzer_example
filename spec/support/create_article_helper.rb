@@ -7,8 +7,8 @@ module CreateArticleHelper
     ArticlePage.given.choose_menu('Logout')
   end
 
-  def article_open(article)
-    ArticleListPage.open.click_article_button(article.title)
+  def open_article(article)
+    ArticleListPage.open.open_article(article.title)
     expect(ArticlePage).to be_authenticated
     ArticlePage.wait_for_opened
   end

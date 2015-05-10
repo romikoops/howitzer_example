@@ -16,12 +16,13 @@ class ArticleListPage < WebPage
     find(apply(locator(:destroy_button), title)).click
   end
 
-  def click_article_button(text)
+  def open_article(text)
     log.info "Open '#{text}' article"
     if phantomjs_driver?
       click_link("#{text}",match: :first)
     else
       find(apply(locator(:article_button),(text))).click
     end
+    puts "777777"
   end
 end

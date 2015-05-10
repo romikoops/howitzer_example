@@ -21,17 +21,11 @@ Given /^there is (.+) article:$/ do |article,table|
   step "I submit form on new article page"
   step 'user logged out'
 end
-Given /^comment to (.+) article with parameter:$/ do |article,table|
-
-end
 
 Given /^opened (.+) article page$/ do |article|
   ArticleListPage.open
-  ArticleListPage.given.click_article_button(article)
+  ArticleListPage.given.open_article(article)
 end
-
-#And comment to UNIQ_ARTICLE[:title] article with parameter:
-
 
 #############################################################
 #                      ACTIONS                              #

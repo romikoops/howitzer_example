@@ -22,7 +22,7 @@
  maximized_window: true
 
  # Specify one of the following drivers: selenium, selenium_dev, webkit, poltergeist, sauce, testingbot, phantomjs
- driver: phantomjs
+ driver: poltergeist
 
  # -Selenium-
  # specify one of next browsers: iexplore (ie), firefox (ff), chrome, opera
