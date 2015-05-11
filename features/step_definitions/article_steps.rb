@@ -22,6 +22,17 @@ Given /^there is (.+) article:$/ do |article,table|
   step 'user logged out'
 end
 
+Given /^there is comment in (.+) article with parameter:$/ do |article,table|
+  step "I am logged in as admin user"
+  step "I open article list page"
+  step "I click new article button on article list page"
+ # ArticleListPage.given.open_article(article)
+  step "I fill form on new article page with data:", table
+  step "I submit form on new article page"
+  step "I fill new comment form on article page with data:",table
+  step "I submit new comment form on article page"
+end
+
 Given /^opened (.+) article page$/ do |article|
   ArticleListPage.open
   ArticleListPage.given.open_article(article)
@@ -89,9 +100,13 @@ Then /^I should not see (.+) article on article list page$/ do |title|
   expect(ArticleListPage.given.text).to_not include(title)
 end
 
-Then /^I should see comment on (.+) page with data:$/ do |page, table|
+Then /^I should see (.+) user comment on (.+) page with data:$/ do |user, page, table|
   comment = table.rows_hash.symbolize_keys
-  expect(page.given.text).to include(comment[:commenter])
+  if user=="admin" then
+    expect(page.given.text).to include(settings.def_test_user)
+  else
+    expect(page.given.text).to include(comment[:commenter])
+  end
   expect(page.given.text).to include(comment[:comment])
 end
 
@@ -101,4 +116,8 @@ end
 
 Then /^I should see body field on article page$/ do
   ArticlePage.given.body_field_present.should be_visible
+end
+
+Then /^I should see buttons: edit article, destroy comment, create comment on article page$/ do
+  ArticlePage.given.admin_buttons_present.should be_visible
 end

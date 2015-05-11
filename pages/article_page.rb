@@ -48,4 +48,10 @@ class ArticlePage < WebPage
   def body_field_present()
     find("#comment_body")
   end
+
+  def admin_buttons_present
+    find("[href*='/edit']")
+    find("[name='commit']")
+    find("[href*='comment']")
+  end
 end
