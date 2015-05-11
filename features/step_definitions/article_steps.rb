@@ -26,7 +26,6 @@ Given /^there is comment in (.+) article with parameter:$/ do |article,table|
   step "I am logged in as admin user"
   step "I open article list page"
   step "I click new article button on article list page"
- # ArticleListPage.given.open_article(article)
   step "I fill form on new article page with data:", table
   step "I submit form on new article page"
   step "I fill new comment form on article page with data:",table
