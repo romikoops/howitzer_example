@@ -21,7 +21,7 @@ Feature: Article Comment Adding
       """
     And I should see comment on article page with data:
       | commenter | UNIQ_USER[:email]     |
-      | comment   | UNIQ_COMMENT[:text]   |
+      | body      | UNIQ_COMMENT[:text]   |
 
   Scenario: user can not add comment with blank comment body
     When I fill new comment form on article page with blank data:

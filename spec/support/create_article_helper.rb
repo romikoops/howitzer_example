@@ -4,6 +4,9 @@ module CreateArticleHelper
         .submit_form
     expect(ArticlePage.given.text).to include(article.title)
     expect(ArticlePage.given.text).to include(article.text)
+   end
+
+  def logout
     ArticlePage.given.choose_menu('Logout')
   end
 

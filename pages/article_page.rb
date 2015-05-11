@@ -8,8 +8,8 @@ class ArticlePage < WebPage
   add_button_locator :add_comment_button, 'Create comment'
   add_locator :commenter_name, xpath: ".//p[contains(.,'Commenter:')]"
   add_locator :comment_text, xpath: ".//p[contains(.,'Comment:')]"
+  add_locator :destroy_comment, lambda{|comment| {xpath: ".//p[contains(.,'#{comment}')]/following-sibling::p/a[.='Destroy Comment']"} }
   add_locator :article_button, lambda{|title| {xpath: "//a[contains(.,'#{title}')]"} }
-
   include MainMenu
 
   def fill_form(body: nil)
@@ -37,6 +37,11 @@ class ArticlePage < WebPage
       else
         find(apply(locator(:article_button),(text))).click
     end
+  end
+
+  def destroy_comment(comment_text)
+    log.info "Destroy comment on article page"
+    find(apply(locator(:destroy_comment),(comment_text))).click
   end
 
 end

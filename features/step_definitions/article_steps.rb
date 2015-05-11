@@ -6,6 +6,11 @@ Given /^opened article '(.*)' page$/ do |article_title|
   HomePage.given.view_article article_title
 end
 
+And /^comment for UNIQ_ARTICLE\[:title\] article with parameter:$/ do |table|
+step "I fill new comment form on article page with data:", table
+step "I submit new comment form on article page"
+end
+
 Given /^there is article with parameters:$/ do |table|
   step "I open article list page"
   step "I click new article button on article list page"
@@ -63,11 +68,13 @@ When /^I submit new comment form on article page$/ do
   ArticlePage.given.submit_form
 end
 
+When /^I destroy (.+) comment on article page$/ do |comment_text|
+  ArticlePage.given.destroy_comment(comment_text)
+end
 
 ####################################
 #              CHECKS              #
 ####################################
-
 Then /^I see comment displayed on (.*) page:$/ do |page, table|
   expect(page.given.comment_data).to eql(table.rows_hash.symbolize_keys)
 end
@@ -80,8 +87,13 @@ Then /^I should not see (.+) article on article list page$/ do |title|
   expect(ArticleListPage.given.text).to_not include(title)
 end
 
+Then /^I should not see comment on (.+) page with data:$/ do |page, table|
+  comment = table.rows_hash.symbolize_keys
+  expect(page.given.text).to_not include(comment[:body])
+end
+
 Then /^I should see comment on (.+) page with data:$/ do |page, table|
   comment = table.rows_hash.symbolize_keys
   expect(page.given.text).to include(comment[:commenter])
-  expect(page.given.text).to include(comment[:comment])
+  expect(page.given.text).to include(comment[:body])
 end

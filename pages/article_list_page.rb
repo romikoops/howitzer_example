@@ -23,6 +23,5 @@ class ArticleListPage < WebPage
     else
       find(apply(locator(:article_button),(text))).click
     end
-    puts "777777"
   end
 end

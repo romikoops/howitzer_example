@@ -8,6 +8,7 @@ feature "Adding Comment" do
 
     log_in_as_admin
     create_article(@article)
+    logout
     sign_up_as(@user)
     log_in_as(@user)
     open_article(@article)
