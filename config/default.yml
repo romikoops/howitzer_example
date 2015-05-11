@@ -84,7 +84,7 @@
 ############################################################
 # TIMEOUTS                                                 #
 ############################################################
- timeout_tiny: 1
- timeout_short: 3
- timeout_small: 20
- timeout_medium: 70
+ timeout_tiny: 2
+ timeout_short: 6
+ timeout_small: 40
+ timeout_medium: 120
