@@ -31,12 +31,7 @@ class ArticlePage < WebPage
 
   def click_article_button(text)
     log.info "Open '#{text}' article"
-    if phantomjs_driver?
-      find(locator(:article_button)).click
-      click_link("#{text}",match: :first)
-      else
-        find(apply(locator(:article_button),(text))).click
-    end
+    find(apply(locator(:article_button),(text))).click
   end
 
 end

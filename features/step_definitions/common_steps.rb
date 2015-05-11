@@ -24,7 +24,7 @@ Given /^article with parameters$/ do |table|
 end
 
 Given /^I am logged in as (.+) user$/ do |user|
-  if user=="admin" then
+  if user == "admin"
     LoginPage.open.login_as(settings.def_test_user, settings.def_test_pass)
    else
      LoginPage.open.login_as(user.email, user.password)

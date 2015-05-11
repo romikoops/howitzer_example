@@ -4,7 +4,7 @@ Feature: Article Editing
   So other users can see my edited article
 
   Background:
-    Given I am logged in as admin
+    Given I am logged in as admin user
     And I am on article list page
     And article with parameters
       | title     | UNIQ_ARTICLE[:title]  |

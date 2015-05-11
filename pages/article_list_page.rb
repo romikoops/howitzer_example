@@ -1,6 +1,10 @@
+require_relative 'main_menu'
+
 class ArticleListPage < WebPage
   URL = '/articles/'
   validates :title, pattern: /\ADemo web application - Listing Articles\z/
+
+  include MainMenu
 
   add_locator :new_article_button,  xpath: "//a[@href='/articles/new']"
   add_locator :article_button, lambda{|title| {xpath: "//a[contains(.,'#{title}')]"} }
@@ -12,17 +16,26 @@ class ArticleListPage < WebPage
     NewArticlePage.given
   end
 
-  def destroy_article(title)
-    find(apply(locator(:destroy_button), title)).click
+  def destroy_article(title, confirmation = true)
+    log.info "Destroy article: '#{title}' with confirmation: '#{confirmation}'"
+    destroy = -> {find(apply(locator(:destroy_button), title)).click}
+    if confirmation
+      accept_js_confirmation do
+        destroy.call
+      end
+    else
+      dismiss_js_confirmation do
+        destroy.call
+      end
+    end
   end
 
   def open_article(text)
     log.info "Open '#{text}' article"
     if phantomjs_driver?
-      click_link("#{text}",match: :first)
+      click_link(text, match: :first)
     else
       find(apply(locator(:article_button),(text))).click
     end
-    puts "777777"
   end
 end

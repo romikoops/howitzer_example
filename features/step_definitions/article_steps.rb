@@ -35,16 +35,9 @@ When /^I click new article button on article list page$/ do
   ArticleListPage.given.add_new_article
 end
 
-When /^I destroy (.+) article on article list page$/ do |title|
-  ArticleListPage.given.destroy_article(title)
-end
-
-When /^I confirm destroy action$/ do
-  WebPage.accept_js_alert
-end
-
-When /^I don't confirm destroy action$/ do
-  WebPage.dismiss_js_alert
+When /^I destroy with(out)? confirmation (.+) article on article list page$/ do |option, title|
+  confirmation = false ? true : option != 'out'
+  ArticleListPage.given.destroy_article(title, confirmation)
 end
 
 When /^I click (.+) article on article list page$/ do |article|
