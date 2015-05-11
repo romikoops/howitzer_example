@@ -1,7 +1,3 @@
-Given /^I am on article list page$/ do
-  ArticleListPage.open
-end
-
 When /^I click (.+) article button on article page$/ do |button|
   ArticlePage.given.click_article_button(button)
 end

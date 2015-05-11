@@ -17,6 +17,7 @@ class LoginPage < WebPage
   include MainMenu
 
   def fill_form(email: nil, password: nil, remember_me: nil)
+    log.info "Fill in Login Form with data: email: #{email}, password: #{password}, remember_me: #{remember_me}"
     fill_in(field_locator(:email_input), with: email) unless email.nil?
     fill_in(field_locator(:password_input), with: password) unless password.nil?
     check(field_locator(:remember_me)) unless remember_me.nil?
@@ -24,6 +25,7 @@ class LoginPage < WebPage
   end
 
   def submit_form
+    log.info "Submit Login Form"
     js_click(locator(:login_btn))
   end
 
@@ -35,6 +37,7 @@ class LoginPage < WebPage
   end
 
   def navigate_to_forgot_password_page
+    log.info "Navigate to forgot password page"
     click_link link_locator(:forgot_password_link)
   end
 end

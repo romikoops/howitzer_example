@@ -17,10 +17,13 @@ class EditAccountPage < WebPage
 
   def cancel_my_account
     log.info "Cancelling user account"
-    click_button(button_locator :cancel_account_button)
+    accept_js_confirmation do
+      click_button(button_locator :cancel_account_button)
+    end
   end
 
   def fill_form(user_name: nil, email: nil, password: nil, password_confirmation: nil, current_password: nil)
+    log.info "Fill in Edit Account form with data: user_name: #{user_name}, email: #{email}, password_confirmation: #{password_confirmation}, current_password: #{current_password}"
     fill_in(field_locator(:name), with: user_name) unless user_name.nil?
     fill_in(field_locator(:email), with: email) unless email.nil?
     fill_in(field_locator(:password), with: password) unless password.nil?

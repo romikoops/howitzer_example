@@ -8,11 +8,10 @@ module MainMenu
       add_locator :flash_message, css: '#flash_notice'
 
       def self.authenticated?
-        if phantomjs_driver?
-          find(locator(:menu_small)).click
-        end
-
+        find(locator(:menu_small)).click if phantomjs_driver?
         find(locator :menu)
+        find(locator(:menu_item).('Logout'))
+      rescue Capybara::ElementNotFound
         !first(locator(:menu_item).('Logout')).nil?
       end
     end
@@ -34,5 +33,23 @@ module MainMenu
 
   def error_message
     find(locator(:error_message)).text
+  end
+
+  private
+
+  def accept_js_confirmation
+    page.execute_script 'window.confirm = function(){return true;}'
+    yield
+    window_confirm
+  end
+
+  def dismiss_js_confirmation
+    page.execute_script 'window.confirm = function(){return false;}'
+    yield
+    window_confirm
+  end
+
+  def window_confirm
+    page.execute_script 'return window.confirm'
   end
 end

@@ -5,7 +5,7 @@ Feature: Article Adding
 
   Background:
     Given I am logged in as admin user
-    And I am on articles list page
+    And I am on article list page
 
   Scenario: user can add article with correct data
     When I click new article button on article list page
@@ -17,7 +17,7 @@ Feature: Article Adding
       | title     | UNIQ_ARTICLE[:title]  |
       | text      | UNIQ_ARTICLE[:text]   |
     When I open article list page
-    Then I should see following article parameters on articles list page:
+    Then I should see following article parameters on article list page:
       | title     | UNIQ_ARTICLE[:title]  |
       | text      | UNIQ_ARTICLE[:text]   |
 
