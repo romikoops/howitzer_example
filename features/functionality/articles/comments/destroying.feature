@@ -8,19 +8,17 @@ Feature: Article Comment Destroying
     And there is article with parameters:
       | title     | UNIQ_ARTICLE[:title]  |
       | text      | UNIQ_ARTICLE[:text]   |
-    And comment for UNIQ_ARTICLE[:title] article with parameter:
+    And there is comment for UNIQ_ARTICLE[:title] article with parameter:
       | body      | UNIQ_COMMENT[:text]   |
     And opened UNIQ_ARTICLE[:title] article page
 
   Scenario: user can remove comment with confirmation action
-    When I destroy UNIQ_COMMENT[:text] comment on article page
-    And I confirm destroy action
+    When I destroy with confirmation UNIQ_COMMENT[:text] comment on article page
     Then I should not see comment on article page with data:
       | body      | UNIQ_COMMENT[:text]   |
 
   Scenario: user can not remove comment without confirmation action
-    When I destroy UNIQ_COMMENT[:text] comment on article page
-    And I don't confirm destroy action
+    When I destroy without confirmation UNIQ_COMMENT[:text] comment on article page
     Then I should see comment on article page with data:
       | commenter | admin                 |
       | body      | UNIQ_COMMENT[:text]   |

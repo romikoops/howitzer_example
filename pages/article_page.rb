@@ -34,9 +34,18 @@ class ArticlePage < WebPage
     find(apply(locator(:article_button),(text))).click
   end
 
-  def destroy_comment(comment_text)
-    log.info "Destroy comment on article page"
-    find(apply(locator(:destroy_comment),(comment_text))).click
-  end
+  def destroy_comment(comment_text,confirmation = true)
+    log.info "Destroy comment  '#{comment_text}' on article page with confirmation: '#{confirmation}'"
+    destroy = -> {find(apply(locator(:destroy_comment),(comment_text))).click}
+    if confirmation
+      accept_js_confirmation do
+        destroy.call
+      end
+    else
+      dismiss_js_confirmation do
+        destroy.call
+      end
+    end
 
+  end
 end

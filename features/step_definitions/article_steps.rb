@@ -6,7 +6,7 @@ Given /^opened article '(.*)' page$/ do |article_title|
   HomePage.given.view_article article_title
 end
 
-And /^comment for UNIQ_ARTICLE\[:title\] article with parameter:$/ do |table|
+Given /^there is comment for UNIQ_ARTICLE\[:title\] article with parameter:$/ do |table|
 step "I fill new comment form on article page with data:", table
 step "I submit new comment form on article page"
 end
@@ -61,8 +61,9 @@ When /^I submit new comment form on article page$/ do
   ArticlePage.given.submit_form
 end
 
-When /^I destroy (.+) comment on article page$/ do |comment_text|
-  ArticlePage.given.destroy_comment(comment_text)
+When /^I destroy with(out)? confirmation (.+) comment on article page$/ do |option, comment_text|
+  confirmation = false ? true : option != 'out'
+  ArticlePage.given.destroy_comment(comment_text,confirmation)
 end
 
 ####################################
