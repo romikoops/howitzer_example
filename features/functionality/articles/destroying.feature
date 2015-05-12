@@ -8,14 +8,12 @@ Feature: Article Destroying
     And there is article with parameters:
       | title     | UNIQ_ARTICLE[:title]  |
       | text      | UNIQ_ARTICLE[:text]   |
-    And I am on articles list page
+    And I am on article list page
 
   Scenario: user can remove article with confirmation action
-    When I destroy UNIQ_ARTICLE[:title] article on article list page
-    And I confirm destroy action
+    When I destroy with confirmation UNIQ_ARTICLE[:title] article on article list page
     Then I should not see UNIQ_ARTICLE[:title] article on article list page
 
   Scenario: user can not remove article without confirmation action
-    When I destroy UNIQ_ARTICLE[:title] article on article list page
-    And I don't confirm destroy action
+    When I destroy without confirmation UNIQ_ARTICLE[:title] article on article list page
     Then I should see UNIQ_ARTICLE[:title] article on article list page

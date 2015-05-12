@@ -12,14 +12,12 @@ feature "Article destroying" do
   end
 
   scenario "User can remove article with confirmation action" do
-    ArticleListPage.given.destroy_article(@article.title)
-    WebPage.accept_js_alert
+    ArticleListPage.given.destroy_article(@article.title, true)
     expect(ArticleListPage.given.text).to_not include(@article.title)
   end
 
   scenario "User can not remove article without confirmation action" do
-    ArticleListPage.given.destroy_article(@article.title)
-    WebPage.dismiss_js_alert
+    ArticleListPage.given.destroy_article(@article.title, false)
     expect(ArticleListPage.given.text).to include(@article.title)
   end
 

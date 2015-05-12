@@ -14,7 +14,6 @@ Feature: Account Cancelling
     And I should be redirected to home page
     And I open edit account page
     And I cancel account on edit account page
-    And I confirm account cancelling on edit account page
     Then I should see following text on home page:
       """
       Bye! Your account was successfully cancelled. We hope to see you again soon.

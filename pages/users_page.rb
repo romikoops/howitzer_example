@@ -7,6 +7,7 @@ class UsersPage < WebPage
   include MainMenu
 
   def open_user(user_email)
+    log.info "Open user '#{user_email}' page"
     click_link_or_button user_email
   end
 
