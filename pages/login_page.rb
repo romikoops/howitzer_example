@@ -36,7 +36,7 @@ class LoginPage < WebPage
     HomePage.given
   end
 
-  def navigate_to_forgot_password_page
+  def navigate_to_page
     log.info "Navigate to forgot password page"
     click_link link_locator(:forgot_password_link)
   end

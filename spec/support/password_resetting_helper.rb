@@ -1,7 +1,7 @@
 module PasswordResettingHelper
   def user_restores_password(email)
     LoginPage.open.
-        navigate_to_forgot_password_page
+        navigate_to_page
     ForgotPasswordPage.given.
         fill_form(email: email).
         submit_form

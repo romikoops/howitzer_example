@@ -19,7 +19,7 @@ Feature: Article Comment Adding
       """
       Comment was successfully added to current article.
       """
-    And I should see comment on article page with data:
+    And I should see user comment on article page with data:
       | commenter | UNIQ_USER[:email]     |
       | comment   | UNIQ_COMMENT[:text]   |
 

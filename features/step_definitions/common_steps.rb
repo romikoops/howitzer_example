@@ -63,8 +63,8 @@ When /^I confirm (.+) account from (.+) email$/ do |recipient, email|
   email.as_email_class.find_by_recipient(recipient).confirm_my_account
 end
 
-When /^I click (.+) link on (.+) page$/ do |link, page|
-  page.given.click_link link
+When /^I click (.+) link on (.+) page$/ do |link,page|
+  page.given.navigate_to_page
 end
 
 When /^I log out$/ do
