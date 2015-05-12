@@ -40,8 +40,13 @@ When /^I click new article button on article list page$/ do
   ArticleListPage.given.add_new_article
 end
 
-When /^I destroy with(out)? confirmation (.+) article on article list page$/ do |option, title|
-  confirmation = false ? true : option != 'out'
+When /^I destroy (.+) article with confirmation on article list page$/ do |title|
+  confirmation =  true
+  ArticleListPage.given.destroy_article(title, confirmation)
+end
+
+When /^I destroy (.+) article without confirmation on article list page$/ do |title|
+  confirmation =  false
   ArticleListPage.given.destroy_article(title, confirmation)
 end
 
@@ -61,8 +66,13 @@ When /^I submit new comment form on article page$/ do
   ArticlePage.given.submit_form
 end
 
-When /^I destroy with(out)? confirmation (.+) comment on article page$/ do |option, comment_text|
-  confirmation = false ? true : option != 'out'
+When /^I destroy (.+) comment with confirmation on article page$/ do |comment_text|
+  confirmation = true
+  ArticlePage.given.destroy_comment(comment_text,confirmation)
+end
+
+When /^I destroy (.+) comment without confirmation on article page$/ do |comment_text|
+  confirmation = false
   ArticlePage.given.destroy_comment(comment_text,confirmation)
 end
 
