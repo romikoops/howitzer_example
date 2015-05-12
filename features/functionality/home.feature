@@ -10,5 +10,4 @@ Feature: Home
   Scenario: visitor can see home page of web application
     When I open home page
     Then I should see today form on home page with data:
-      | creation_time | UNIQ_ARTICLE[:creation_time] |
-      | article_title | UNIQ_ARTICLE[:title] |
+       | article_title | UNIQ_ARTICLE[:title] |
