@@ -6,9 +6,10 @@ Given /^opened article '(.*)' page$/ do |article_title|
   HomePage.given.view_article article_title
 end
 
-Given /^there is comment for UNIQ_ARTICLE\[:title\] article with parameter:$/ do |table|
-step "I fill new comment form on article page with data:", table
-step "I submit new comment form on article page"
+Given /^there is comment for article (.*) with parameter:$/ do |article, table|
+  step "there is article with parameters:", Cucumber::Ast::Table.new([[:title,article.title], [:text,article.text]] )
+  step "I fill new comment form on article page with data:", table
+  step "I submit new comment form on article page"
 end
 
 Given /^there is article with parameters:$/ do |table|
@@ -55,11 +56,11 @@ When /^I click (.+) article on article list page$/ do |article|
 end
 
 When /^I fill new comment form on article page with data:$/ do |table|
-  ArticlePage.given.fill_form(table.rows_hash.symbolize_keys)
+  ArticlePage.given.fill_comment_form(table.rows_hash.symbolize_keys)
 end
 
 When /^I fill new comment form on article page with blank data:$/ do |table|
-  ArticlePage.given.fill_form(table.rows_hash.symbolize_keys)
+  ArticlePage.given.fill_comment_form(table.rows_hash.symbolize_keys)
 end
 
 When /^I submit new comment form on article page$/ do

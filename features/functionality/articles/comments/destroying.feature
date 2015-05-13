@@ -5,11 +5,8 @@ Feature: Article Comment Destroying
 
   Background:
     Given I am logged in as admin user
-    And there is article with parameters:
-      | title     | UNIQ_ARTICLE[:title]  |
-      | text      | UNIQ_ARTICLE[:text]   |
-    And there is comment for UNIQ_ARTICLE[:title] article with parameter:
-      | body      | UNIQ_COMMENT[:text]   |
+    And there is comment for article UNIQ_ARTICLE with parameter:
+       | body      | UNIQ_COMMENT[:text]   |
     And opened UNIQ_ARTICLE[:title] article page
 
   Scenario: user can remove comment with confirmation action

@@ -12,7 +12,7 @@ class ArticlePage < WebPage
   add_locator :article_button, lambda{|title| {xpath: "//a[contains(.,'#{title}')]"} }
   include MainMenu
 
-  def fill_form(body: nil)
+  def fill_comment_form(body: nil)
     log.info "Fill in Add Comment form with body: #{body}"
     fill_in(field_locator(:comment_field), with: body) unless body.nil?
   end
