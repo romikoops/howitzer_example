@@ -8,13 +8,14 @@ class ArticlePage < WebPage
   add_button_locator :add_comment_button, 'Create comment'
   add_locator :commenter_name, xpath: ".//p[contains(.,'Commenter:')]"
   add_locator :comment_text, xpath: ".//p[contains(.,'Comment:')]"
+  add_locator :destroy_comment, lambda{|comment| {xpath: ".//p[contains(.,'#{comment}')]/following-sibling::p/a[.='Destroy Comment']"} }
   add_locator :article_button, lambda{|title| {xpath: "//a[contains(.,'#{title}')]"} }
   add_locator :comment_form, "#new_comment"
 
 
   include MainMenu
 
-  def fill_form(body: nil)
+  def fill_comment_form(body: nil)
     log.info "Fill in Add Comment form with body: #{body}"
     fill_in(field_locator(:comment_field), with: body) unless body.nil?
   end
@@ -36,6 +37,20 @@ class ArticlePage < WebPage
     find(apply(locator(:article_button),(text))).click
   end
 
+  def destroy_comment(comment_text,confirmation = true)
+    log.info "Destroy comment  '#{comment_text}' on article page with confirmation: '#{confirmation}'"
+    destroy = -> {find(apply(locator(:destroy_comment),(comment_text))).click}
+    if confirmation
+      accept_js_confirmation do
+        destroy.call
+      end
+    else
+      dismiss_js_confirmation do
+        destroy.call
+      end
+    end
+
+  end
   def comment_form_present?
     find(locator(:comment_form))
     true
