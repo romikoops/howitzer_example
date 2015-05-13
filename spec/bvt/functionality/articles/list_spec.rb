@@ -8,8 +8,8 @@ feature "Articles list" do
 
     log_in_as_admin
     create_article(@article1)
-    log_in_as_admin
     create_article(@article2)
+    logout
     sign_up_as(@user1)
     log_in_as(@user1)
   end
