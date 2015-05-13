@@ -12,7 +12,7 @@ class UsersPage < WebPage
     click_link_or_button user_email
   end
 
-  def check_user_signed_up(email)
+  def user_registration_date(email)
     find(apply(locator(:registered_user_date),email)).text
   end
 

@@ -10,14 +10,11 @@ Given /^(.+) page of web application$/ do |page|
   page.open
 end
 
-Given /^there is registered (.+) user( logged in system)?$/ do |user, logged_in|
+Given /^there is registered (.+) user$/ do |user|
   SignUpPage.open.sign_up_as(user.full_name, user.email, user.password)
   step "I should receive confirmation instruction email for #{user.email} recipient"
   step "I confirm #{user.email} account from confirmation instruction email"
   step "I should see following text on login page:","Your account was successfully confirmed."
-  if logged_in
-    LoginPage.open.login_as(user.email, user.password)
-  end
 end
 
 Given /^logged in as admin user with data:$/ do |table|
@@ -65,8 +62,8 @@ When /^I log out$/ do
   HomePage.given.choose_menu('Logout')
 end
 
-When /\AI click '(.*)' menu item\Z/ do |item|
-  HomePage.given.choose_menu(item)
+When /^I navigate to (.*) list via main menu$/ do |item|
+  HomePage.given.choose_menu(item.capitalize)
 end
 
 ####################################
@@ -101,6 +98,6 @@ Then /^I should be redirected to (.+) page$/ do |page|
   page.given
 end
 
-Then /\AI should see (.*) signed up on today's date\Z/ do |email|
-  expect(UsersPage.given.check_user_signed_up(email)).to include (Time.now.to_s[0..9])
+Then /^I should see (.*) signed up on today's date$/ do |email|
+  expect(UsersPage.given.user_registration_date(email)).to include (Date.current.to_s(:db))
 end
