@@ -26,7 +26,7 @@ feature "Article Viewing" do
   end
 
   scenario "Admin can be redirected from article page back to article list" do
-    ArticlePage.given.navigate_to_page
+    ArticlePage.given.back_to_article_list
     expect(ArticleListPage).to be_authenticated
   end
 end

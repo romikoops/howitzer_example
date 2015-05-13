@@ -36,7 +36,7 @@ feature "Password Resetting" do
 
   scenario "user can not reset password with incorrect email" do
     LoginPage.open.
-        navigate_to_page
+        navigate_to_forgot_password_page
     ForgotPasswordPage.given.
         fill_form(email: "test.1234567890").
         submit_form
@@ -47,7 +47,7 @@ feature "Password Resetting" do
     user = Gen.user
     sign_up_as(user)
     LoginPage.open.
-        navigate_to_page
+        navigate_to_forgot_password_page
     ForgotPasswordPage.given.
         fill_form(email: user.email).
         submit_form

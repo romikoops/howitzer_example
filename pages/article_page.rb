@@ -72,7 +72,7 @@ class ArticlePage < WebPage
     false
   end
 
-  def navigate_to_page()
+  def back_to_article_list()
     find_link("Back to Articles").click
   end
 end
