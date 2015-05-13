@@ -28,11 +28,27 @@ Given /^there is (.+) article:$/ do |article,table|
   step 'user logged out'
 end
 
+Given /^there is comment in (.+) article with parameter:$/ do |article,table|
+  step "I am logged in as admin user"
+  step "I open article list page"
+  step "I click new article button on article list page"
+  step "I fill form on new article page with data:", table
+  step "I submit form on new article page"
+  step "I fill new comment form on article page with data:",table
+  step "I submit new comment form on article page"
+end
+
 Given /^opened (.+) article page$/ do |article|
   ArticleListPage.open
   ArticleListPage.given.open_article(article)
 end
 
+Given /^comment to (.+) article with parameter:$/ do |article,table|
+  step "I open article list page"
+  ArticleListPage.given.open_article(article)
+  step "I fill new comment form on article page with data:",table
+  step "I submit new comment form on article page"
+end
 #############################################################
 #                      ACTIONS                              #
 #############################################################
@@ -77,6 +93,10 @@ When /^I destroy (.+) comment without confirmation on article page$/ do |comment
   ArticlePage.given.destroy_comment(comment_text,confirmation)
 end
 
+When /^I navigate to (.+) article on article list page$/ do |article|
+  ArticleListPage.open
+  ArticleListPage.given.open_article(article)
+end
 ####################################
 #              CHECKS              #
 ####################################
@@ -98,7 +118,29 @@ Then /^I should not see comment on (.+) page with data:$/ do |page, table|
 end
 
 Then /^I should see comment on (.+) page with data:$/ do |page, table|
+Then /^I should see user comment on (.+) page with data:$/ do |page, table|
   comment = table.rows_hash.symbolize_keys
   expect(page.given.text).to include(comment[:commenter])
   expect(page.given.text).to include(comment[:body])
+  expect(page.given.text).to include(comment[:comment])
+end
+
+Then /^I should see admin user comment on (.+) page with data:$/ do |page, table|
+  comment = table.rows_hash.symbolize_keys
+  expect(page.given.text).to include(settings.def_test_user)
+  expect(page.given.text).to include(comment[:comment])
+end
+
+Then /^I should see add comment form on article page$/ do
+  expect(ArticlePage.given).to be_comment_form_present
+end
+
+Then /^I should see body field on article page$/ do
+  expect(ArticlePage.given).to be_body_field_present
+end
+
+Then /^I should see buttons: edit article, destroy comment, create comment on article page$/ do
+  expect(ArticlePage.given).to be_edit_button_present
+  expect(ArticlePage.given).to be_add_comment_button_present
+  expect(ArticlePage.given).to be_destroy_comment_link_present
 end

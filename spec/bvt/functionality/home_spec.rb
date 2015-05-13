@@ -10,7 +10,6 @@ feature "Home" do
     NewArticlePage.given.fill_form(title: article.title, text: article.text)
         .submit_form
     HomePage.open
-    expect(HomePage.given.find_form_text('Today')).to include(article.creation_time)
     expect(HomePage.given.find_form_text('Today')).to include(article.title)
   end
 

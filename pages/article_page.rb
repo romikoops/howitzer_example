@@ -10,6 +10,9 @@ class ArticlePage < WebPage
   add_locator :comment_text, xpath: ".//p[contains(.,'Comment:')]"
   add_locator :destroy_comment, lambda{|comment| {xpath: ".//p[contains(.,'#{comment}')]/following-sibling::p/a[.='Destroy Comment']"} }
   add_locator :article_button, lambda{|title| {xpath: "//a[contains(.,'#{title}')]"} }
+  add_locator :comment_form, "#new_comment"
+
+
   include MainMenu
 
   def fill_comment_form(body: nil)
@@ -47,5 +50,44 @@ class ArticlePage < WebPage
       end
     end
 
+  end
+  def comment_form_present?
+    find(locator(:comment_form))
+    true
+  rescue Capybara::ElementNotFound
+    false
+  end
+
+  def body_field_present?
+    find("#comment_body")
+    true
+  rescue Capybara::ElementNotFound
+    false
+  end
+
+
+  def edit_button_present?
+    find("[href*='/edit']")
+    true
+  rescue Capybara::ElementNotFound
+    false
+  end
+
+  def add_comment_button_present?
+    find("[name='commit']")
+    true
+  rescue Capybara::ElementNotFound
+    false
+  end
+
+  def destroy_comment_link_present?
+    find("[href*='comment']")
+    true
+  rescue Capybara::ElementNotFound
+    false
+  end
+
+  def back_to_article_list()
+    find_link("Back to Articles").click
   end
 end
