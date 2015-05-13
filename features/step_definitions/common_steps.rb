@@ -74,6 +74,10 @@ When /^I log out$/ do
   HomePage.given.choose_menu('Logout')
 end
 
+When /^I navigate to (.*) list via main menu$/ do |item|
+  HomePage.given.choose_menu(item.capitalize)
+end
+
 ####################################
 #              CHECKS              #
 ####################################
@@ -100,4 +104,8 @@ end
 
 Then /^I should be redirected to (.+) page$/ do |page|
   page.given
+end
+
+Then /^I should see (.*) signed up on today's date$/ do |email|
+  expect(UsersPage.given.user_registration_date(email)).to include (Date.current.to_s(:db))
 end
