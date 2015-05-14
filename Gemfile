@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'nokogiri'
-gem 'howitzer' #, github: "strongqa/howitzer", branch: "develop"
-gem 'byebug'
-gem "cucumber", '1.3.19'
+# Uncomment it if you are going to use 'webkit' driver. QT library should be installed. See https://github.com/thoughtbot/capybara-webkit/wiki/Installing-Qt-and-compiling-capybara-webkit
+#
+# gem 'capybara-webkit'
+
+gem 'howitzer' , github: "strongqa/howitzer", branch: "master"
