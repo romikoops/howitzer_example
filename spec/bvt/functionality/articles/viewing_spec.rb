@@ -8,9 +8,8 @@ feature "Article Viewing" do
     log_in_as_admin
     create_article(@article)
     open_article(@article)
-    ArticlePage.given.fill_form(body: @comment.text)
+    ArticlePage.given.fill_comment_form(body: @comment.text)
     ArticlePage.given.submit_form
-
   end
 
   scenario "Admin is viewing article page" do
