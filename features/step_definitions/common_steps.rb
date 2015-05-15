@@ -62,12 +62,17 @@ end
 When /^I confirm (.+) account from (.+) email$/ do |recipient, email|
   email.as_email_class.find_by_recipient(recipient).confirm_my_account
 end
+
 When /^I click back to articles link on (.+) page$/ do |page|
   page.given.back_to_article_list
 end
 
-When /^I click Forgot password? link on (.+) page$/ do |page|
-  page.given.navigate_to_forgot_password_page
+When /^I click Forgot password\? link on login page$/ do
+  LoginPage.given.navigate_to_forgot_password_page
+end
+
+When /^I click on (.+) link on users page$/ do |email|
+ UsersPage.given.open_user(email)
 end
 
 When /^I log out$/ do

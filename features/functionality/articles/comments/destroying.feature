@@ -16,6 +16,6 @@ Feature: Article Comment Destroying
 
   Scenario: user can not remove comment without confirmation action
     When I destroy UNIQ_COMMENT[:text] comment without confirmation on article page
-    Then I should see comment on article page with data:
+    Then I should see user comment on article page with data:
       | commenter | admin                 |
       | body      | UNIQ_COMMENT[:text]   |
