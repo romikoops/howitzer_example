@@ -4,4 +4,4 @@ source 'https://rubygems.org'
 #
 # gem 'capybara-webkit'
 
-gem 'howitzer' , github: "strongqa/howitzer", branch: "master"
+gem 'howitzer', '1.1.0'
