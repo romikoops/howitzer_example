@@ -117,12 +117,10 @@ Then /^I should not see comment on (.+) page with data:$/ do |page, table|
   expect(page.given.text).to_not include(comment[:body])
 end
 
-Then /^I should see comment on (.+) page with data:$/ do |page, table|
 Then /^I should see user comment on (.+) page with data:$/ do |page, table|
   comment = table.rows_hash.symbolize_keys
   expect(page.given.text).to include(comment[:commenter])
   expect(page.given.text).to include(comment[:body])
-  expect(page.given.text).to include(comment[:comment])
 end
 
 Then /^I should see admin user comment on (.+) page with data:$/ do |page, table|
