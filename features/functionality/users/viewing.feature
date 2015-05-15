@@ -10,7 +10,7 @@ Feature: User Viewing
     And users page of web application
 
   Scenario: user is viewing other user on user page
-    When I click on UNIQ_USER1[:email] link on users page
+    When I click on UNIQ_USER1[:email] user email on users page
     Then I should see following text on user view page:
     """
     Email: UNIQ_USER1[:email]

@@ -10,7 +10,6 @@ feature "Article Viewing" do
     open_article(@article)
     ArticlePage.given.fill_comment_form(body: @comment.text)
     ArticlePage.given.submit_form
-
   end
 
   scenario "Admin is viewing article page" do
