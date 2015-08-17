@@ -5,10 +5,7 @@ Feature: Account Cancelling
   So I can cancel my account
 
   Scenario: user can cancel his account
-    Given registered user with data:
-      | user_name | UNIQ_USER[:full_name] |
-      | email     | UNIQ_USER[:email]     |
-      | password  | UNIQ_USER[:password]  |
+    Given there is registered UNIQ_USER user
     When I fill form on login page with data:
       | email     | UNIQ_USER[:email]     |
       | password  | UNIQ_USER[:password]  |
@@ -17,9 +14,7 @@ Feature: Account Cancelling
     And I should be redirected to home page
     And I open edit account page
     And I cancel account on edit account page
-    And I confirm account cancelling on edit account page
     Then I should see following text on home page:
       """
       Bye! Your account was successfully cancelled. We hope to see you again soon.
       """
-

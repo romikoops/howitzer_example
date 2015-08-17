@@ -10,29 +10,40 @@ Given /^(.+) page of web application$/ do |page|
   page.open
 end
 
-Given /^registered user with data:$/ do |table|
-  data = table.rows_hash.symbolize_keys
-  SignUpPage.open.sign_up_as(data[:user_name], data[:email], data[:password])
-  step "I should receive confirmation instruction email for #{data[:email]} recipient"
-  step "I confirm #{data[:email]} account from confirmation instruction email"
-  step "I should see following text on Login page:","Your account was successfully confirmed."
+Given /^there is registered (.+) user$/ do |user|
+  SignUpPage.open.sign_up_as(user.full_name, user.email, user.password)
+  step "I should receive confirmation instruction email for #{user.email} recipient"
+  step "I confirm #{user.email} account from confirmation instruction email"
+  step "I should see following text on login page:","Your account was successfully confirmed."
 end
+
 
 Given /^built (.+) entity$/ do |factory|
   factory
 end
 
-Given /^I am logged in as (.+) user$/ do |factory|
-  factory.save!
-  LoginPage.open.login_as(factory.email, factory.password)
+Given /^article with parameters$/ do |table|
+  article = table.rows_hash.symbolize_keys
+  ArticleListPage.given.add_new_article
+  NewArticlePage.given.fill_form(table.rows_hash.symbolize_keys).submit_form
 end
 
-Given /^created (.+) factory with parameters:$/ do |name, table|
-  create(name.to_sym, table.rows_hash.symbolize_keys)
+
+Given /^I am logged in as (.+) user$/ do |user|
+  if user == "admin"
+    LoginPage.open.login_as(settings.def_test_user, settings.def_test_pass)
+  else
+    factory.save!
+    LoginPage.open.login_as(factory.email, factory.password)
+  end
 end
 
-Given /^logged in as (.+) user$/ do |user|
-  LoginPage.open.login_as(user.email, user.password)
+Given /^I am on (.+) page$/ do |page|
+  page.open
+end
+
+Given /^user logged out$/ do
+  ArticlePage.given.choose_menu('Logout')
 end
 
 ####################################
@@ -44,7 +55,7 @@ When /^I open (.+?) page$/ do |page|
 end
 
 When /^I click (.+?) menu item on (.+) page$/ do |text, page|
-  page.given.choose_menu(text)
+  page.given.choose_menu(text.capitalize)
 end
 
 When /^I fill form on (.+) page with data:$/ do |page, table|
@@ -59,8 +70,24 @@ When /^I confirm (.+) account from (.+) email$/ do |recipient, email|
   email.as_email_class.find_by_recipient(recipient).confirm_my_account
 end
 
-When /^I click (.+) link on (.+) page$/ do |link, page|
-  page.given.click_link link
+When /^I click back to articles link on (.+) page$/ do |page|
+  page.given.back_to_article_list
+end
+
+When /^I click Forgot password\? link on login page$/ do
+  LoginPage.given.navigate_to_forgot_password_page
+end
+
+When /^I click on (.+) link on users page$/ do |email|
+ UsersPage.given.open_user(email)
+end
+
+When /^I log out$/ do
+  HomePage.given.choose_menu('Logout')
+end
+
+When /^I navigate to (.*) list via main menu$/ do |item|
+  HomePage.given.choose_menu(item.capitalize)
 end
 
 ####################################
@@ -91,6 +118,6 @@ Then /^I should be redirected to (.+) page$/ do |page|
   page.given
 end
 
-Then /^I should see (.+) page$/ do |page|
-  page.given
+Then /^I should see (.*) signed up on today's date$/ do |email|
+  expect(UsersPage.given.user_registration_date(email)).to include (Date.current.to_s(:db))
 end

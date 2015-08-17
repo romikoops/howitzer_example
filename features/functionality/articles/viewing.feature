@@ -1,30 +1,26 @@
-@wip
 Feature: Article Viewing
   As a user
   I want to view my article
-  So I can see what Article page includes
+  So I can see what article page includes
 
   Background:
-    Given registered user with data:
-      | user_name | UNIQ_USER[:full_name] |
-      | email     | UNIQ_USER[:email]     |
-      | password  | UNIQ_USER[:password]  |
-    And article with parameters:
+    Given there is UNIQ_ARTICLE article:
       | title     | UNIQ_ARTICLE[:title]  |
       | text      | UNIQ_ARTICLE[:text]   |
+    And I am logged in as admin user
     And comment to UNIQ_ARTICLE[:title] article with parameter:
       | body      | UNIQ_COMMENT[:text]   |
 
-  Scenario: user is viewing Article page
-    When I open UNIQ_ARTICLE[:title] article page     
-    Then I should see article parameters with data:
+  Scenario: admin is viewing article page
+    When I navigate to UNIQ_ARTICLE[:title] article on article list page
+    Then I should see following article parameters on article page:
       | title     | UNIQ_ARTICLE[:title]  |
       | text      | UNIQ_ARTICLE[:text]   |
-    And I should see comment parameters with data:
-      | commenter | UNIQ_USER[:email]     |
+    And I should see admin user comment on article page with data:
+      | commenter | admin     |
       | comment   | UNIQ_COMMENT[:text]   |
-    And I should see Add comment form on Article page
-    And I should see Body field on Article page
-    And I should see buttons: Edit article, Destroy comment, Create comment on Article page
-    When I click Back to articles link on Article page
-    Then I should be redirected to Articles list page
+    And I should see add comment form on article page
+    And I should see body field on article page
+    And I should see buttons: edit article, destroy comment, create comment on article page
+    When I click back to articles link on article page
+    Then I should be redirected to article list page

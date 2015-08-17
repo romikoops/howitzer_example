@@ -18,15 +18,19 @@
 ###########################################################
 # TEST ENVIRONMENTS SETTINGS                              #
 ###########################################################
-# Specify maximized browser window size
- maximized_window: true
 
- # Specify one of the following drivers: selenium, selenium_dev, webkit, poltergeist, sauce, testingbot, phantomjs
+# Specify maximized browser window size
+ maximized_window: false
+
+ # Specify one of the following drivers: selenium, selenium_dev, selenium_grid, webkit, poltergeist, phantomjs, sauce, testingbot, browserstack
  driver: phantomjs
 
  # -Selenium-
  # specify one of next browsers: iexplore (ie), firefox (ff), chrome, opera
  sel_browser: ff
+
+ # -Selenium Grid-
+ sel_hub_url: "http://example.com:4444/wd/hub"
 
  # -PhantomJS-
  # specify settings for poltergeist
@@ -55,6 +59,31 @@
  tb_idle_timeout: '180'
  tb_record_screenshot: false
 
+ # -BrowserStack
+ bs_user_name: bs_user
+ bs_password: bs_password
+ bs_url: "http://${bs_user_name}:${bs_password}@hub.browserstack.com/wd/hub"
+ bs_os_name: 'Windows'
+ bs_os_version: '8'
+ bs_browser_name: 'Firefox'
+ bs_browser_version: '16.0'
+ bs_resolution: '1024x768'
+ bs_max_duration: '1800'
+ bs_idle_timeout: '180'
+
+ # Run tests on mobile browsers
+ bs_mobile: false
+ bs_m_browser: 'iPhone'
+ bs_m_platform: 'MAC'
+ bs_m_device: 'iPhone 5'
+
+ bs_local: 'false'
+ bs_local_ID: 'Testing123'
+ bs_build: 'v1'
+ bs_project: 'Test Project'
+ bs_ssl: 'true'
+ bs_debug: 'false'
+
 ###########################################################
 # DATABASE SETTINGS                                       #
 ###########################################################
@@ -78,13 +107,13 @@
 ###########################################################
 # MAILGUN SETTINGS                                        #
 ###########################################################
- mailgun_key: key-9d5w503rm8bfz8bl4kk5jyfquwq6q113
- mailgun_domain: sandboxbaf443d4c81b43d0b64a413805dc6f68.mailgun.org
+ mailgun_key: key-fdc7dfaf228e6c6827ebe94da27125b6
+ mailgun_domain: mg.strongqa.com
 
 ############################################################
 # TIMEOUTS                                                 #
 ############################################################
- timeout_tiny: 1
- timeout_short: 3
- timeout_small: 20
- timeout_medium: 70
+ timeout_tiny: 2
+ timeout_short: 6
+ timeout_small: 40
+ timeout_medium: 120

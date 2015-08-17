@@ -9,13 +9,24 @@ Feature: Article Comment Adding
     And I am on FACTORY_ARTICLE article page
 
   Scenario: user can add comment with valid comment body
-    When I fill form on article page with data:
-      | body      | FACTORY_COMMENT[:body]   |
-    And I submit form on article page
+    When I fill new comment form on article page with data:
+      | title     | FACTORY_COMMENT[:title]  |
+      | text      | FACTORY_COMMENT[:text]   |
+    And I submit new comment form on article page
     Then I should see following text on article page:
       """
       Comment was successfully added to current article.
       """
-    And I see comment displayed on article page:
+    And I should see user comment on article page with data:
       | commenter | FACTORY_USER[:email]     |
       | comment   | FACTORY_COMMENT[:body]   |
+
+  Scenario: user can not add comment with blank comment body
+    When I fill new comment form on article page with blank data:
+      | title      |                       |
+      | text       |                       |
+    And I submit new comment form on article page
+    Then I should see following text on article page:
+      """
+      Body can't be blank
+      """

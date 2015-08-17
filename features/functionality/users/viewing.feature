@@ -1,22 +1,17 @@
-@wip
 Feature: User Viewing
   As a user
   I want to view other user
   So I can see data of other user
 
   Background:
-    Given user with parameters:
-      | user_name | UNIQ_USER[:full_name]  |
-      | email     | UNIQ_USER[:email]      |
-      | password  | UNIQ_USER[:password]   |
-    And user with parameters:
-      | user_name | UNIQ_USER1[:full_name] |
-      | email     | UNIQ_USER1[:email]     |
-      | password  | UNIQ_USER1[:password]  |
-    And I logged as UNIQ_USER[:email] user
-    And opened Users page
+    Given there is registered UNIQ_USER user
+    And there is registered UNIQ_USER1 user
+    And I am logged in as UNIQ_USER1 user
+    And users page of web application
 
-  Scenario: user is viewing other user on User page
-    When I click on UNIQ_USER1[:email] link on Users page
-    Then I should see UNIQ_USER1[:email] user page with data:
-      | user_data | Email: UNIQ_USER1[:email] |
+  Scenario: user is viewing other user on user page
+    When I click on UNIQ_USER1[:email] user email on users page
+    Then I should see following text on user view page:
+    """
+    Email: UNIQ_USER1[:email]
+    """
