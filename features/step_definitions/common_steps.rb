@@ -25,7 +25,7 @@ end
 Given /^article with parameters$/ do |table|
   article = table.rows_hash.symbolize_keys
   ArticleListPage.given.add_new_article
-  NewArticlePage.given.fill_form(table.rows_hash.symbolize_keys).submit_form
+  NewArticlePage.given.fill_form(article).submit_form
 end
 
 
@@ -33,13 +33,18 @@ Given /^I am logged in as (.+) user$/ do |user|
   if user == "admin"
     LoginPage.open.login_as(settings.def_test_user, settings.def_test_pass)
   else
-    factory.save!
-    LoginPage.open.login_as(factory.email, factory.password)
+    user.save!
+    LoginPage.open.login_as(user.email, user.password)
   end
 end
 
-Given /^I am on (.+) page$/ do |page|
-  page.open
+Given /^I am on (.+) page$/ do |page_or_factory|
+  case page_or_factory.class
+    when String
+      page_or_factory.open
+    else
+      page_or_factory.class.name.open(page_or_factory.id)
+  end
 end
 
 Given /^user logged out$/ do

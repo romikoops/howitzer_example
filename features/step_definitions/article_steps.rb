@@ -2,10 +2,6 @@
 #                      PREREQUISITES                        #
 #############################################################
 
-Given /^I am on (.+) article page$/ do |factory|
-  ArticlePage.open(factory.id)
-end
-
 Given /^there is (.+) article$/ do |factory|
   factory.save!
 end
@@ -79,10 +75,6 @@ When /^I fill new comment form on article page with data:$/ do |table|
   ArticlePage.given.fill_comment_form(table.rows_hash.symbolize_keys)
 end
 
-When /^I fill new comment form on article page with blank data:$/ do |table|
-  ArticlePage.given.fill_comment_form(table.rows_hash.symbolize_keys)
-end
-
 When /^I submit new comment form on article page$/ do
   ArticlePage.given.submit_form
 end
@@ -124,7 +116,7 @@ end
 Then /^I should see user comment on (.+) page with data:$/ do |page, table|
   comment = table.rows_hash.symbolize_keys
   expect(page.given.text).to include(comment[:commenter])
-  expect(page.given.text).to include(comment[:body])
+  expect(page.given.text).to include(comment[:comment])
 end
 
 Then /^I should see admin user comment on (.+) page with data:$/ do |page, table|
