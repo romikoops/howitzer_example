@@ -1,4 +1,4 @@
-howitzer_example
+howitzer_example (!!!DEPRECATED!!!! Please see examples for Howitzer v2.0)
 ================
 
 # Howitzer
